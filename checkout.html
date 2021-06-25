@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/checkout.css">
+    <title>Checkout Page</title>
+</head>
+
+<body>
+    <!-- header -->
+    <h1 class="text-center head m-4">Checkout Page</h1>
+    <!-- header -->
+    <!-- icons starts here -->
+    <div class="icons">
+        <div class="row mr-0">
+            <div class="col-sm-6">
+                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-dollar-sign bg p-4 mr-4"></i>Cash on Delivery</h2>
+            </div>
+            <div class="col-sm-6 ">
+                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-arrows-alt-h bg p-4 mr-4"></i>100% Return</h2>
+            </div>
+        </div>
+
+        <div class="row mr-0">
+            <div class="col-sm-6">
+                <h2 class="my-3 mx-5 bord shadow"><i class="far fa-thumbs-up bg p-4 mr-4"></i>Quality Assured</h2>
+            </div>
+            <div class="col-sm-6 ">
+                <h2 class="my-3 mx-5 bord shadow"><i class="fas fa-stopwatch bg p-4 mr-4"></i>Delivery on time</h2>
+            </div>
+        </div>
+    </div>
+    <!-- icons end here -->
+    <!-- Checkout starts here -->
+    <form class="form">
+        <div class="row bord p-5 shadow m-5">
+            <div class="col-sm-6">
+                <div class="mt-3 row">
+                    <h5 class="my-auto">First Name :</h5>
+                    <input class="ml-3 name input rounded p-2" type="text" placeholder="First Name" />
+                    <p id="errorName">Numbers in the name are not valid</p>
+                </div>
+                <div class="mt-3 row ">
+                    <h5 class="my-auto">Email :</h5>
+                    <input class="ml-3 input rounded p-2" type="email" placeholder="Email" />
+                </div>
+                <div class="mt-3 row ">
+                    <h5 class="my-auto">Address :</h5>
+                    <input class="ml-3 input rounded p-2" type="text" placeholder="Address" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="mt-3 row">
+                    <h5 class="my-auto name my-auto">Last Name :</h5>
+                    <input class="ml-3 input rounded p-2" type="text" placeholder="Last Name" />
+                </div>
+                <div class="mt-3 row">
+                    <h5 class="my-auto my-auto">Password :</h5>
+                    <input class="ml-3 input password rounded p-2" title="(4-8 characters)" type="password" minlength="4"
+                        maxlength="8" placeholder="Password" />
+                    <p id="errorPassword">Enter a correct password</p>
+                </div>
+                <div class="mt-3 row">
+                    <h5 class="my-auto my-auto">Phone Number :</h5>
+                    <input class="ml-3 phone input rounded p-2" type="number" placeholder="Phone No." />
+                    <p id="errorPhone">Invalid phone number!!</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Checkout ends here -->
+        <!-- Buy button -->
+        <div class="m-5 final text-right">
+            <button type="submit" id="btn" class="p-2 px-4 btn btn-primary shadow-lg" onclick="validate()"><i
+                    class="fas fa-cart-arrow-down p-2"></i>Buy</button>
+        </div>
+    </form>
+    <!-- Buy Button -->
+    <!-- script tags -->
+    <script src="js/checkout.js"></script>
+
+</body>
+
+</html>
