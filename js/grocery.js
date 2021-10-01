@@ -1,4 +1,4 @@
-// Exercise 11
+// Exercise 10
 // Move this variable to a json file and load the data in this js
 var products = [
     {
@@ -88,36 +88,29 @@ function calculateTotal() {
 }
 
 // Exercise 5
-function applyPromotionsSubtotals() {
-
-}
-
-// Exercise 6
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 }
 
-// Exercise 7
+// Exercise 6
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
 }
 
-// Exercise 8
+// Exercise 7
 function addToCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
 }
 
-// Exercise 9
+// Exercise 8
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
 }
 
-
-
-// Exercise 10
+// Exercise 9
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
 }
