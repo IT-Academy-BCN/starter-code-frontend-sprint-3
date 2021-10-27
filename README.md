@@ -23,7 +23,7 @@ $ git remote rm origin
 
 3. Link your repo to the repository you have to create in your github account
 ```bash
-$ git remote add <your repo name!>
+$ git remote add origin <your repo name!>
 ```
 
 <br>
