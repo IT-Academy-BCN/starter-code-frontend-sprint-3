@@ -118,13 +118,13 @@ function addToCart(id) {
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
 }
 
-// Exercise 9
+// Exercise 10
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
 }
