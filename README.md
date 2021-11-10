@@ -13,7 +13,7 @@ You will be in charge of setting up an initial demo version of the application f
 
 1. Clone this repo
 ```bash
-$ git clone https://github.com/itacademyReact/starter-code-sprint3.git
+$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-sprint-3.git
 ```
 
 2. Unlink your repo from the itacademy repository
