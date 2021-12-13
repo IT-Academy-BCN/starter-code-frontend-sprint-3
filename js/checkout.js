@@ -8,7 +8,7 @@ var errorPassword = document.getElementById("errorPassword");
 var errorName = document.getElementById('errorName');  
 var errorPhone = document.getElementById('errorPhone');  
 
-// Exercise 8
+// Exercise 6
 function validate() {
     // Validate fields entered by the user: name, phone, password, and email
 }
