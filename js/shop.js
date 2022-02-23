@@ -1,10 +1,14 @@
 // If you have time, you can move this variable "products" to a json file and load the data in this js. It will look more professional
 var products = [
-    {
+   {
         id: 1,
         name: 'cooking oil',
         price: 10.5,
-        type: 'grocery'
+        type: 'grocery',
+        offer: {
+            number: 3,
+            percent: 20
+        }
     },
     {
         id: 2,
@@ -16,7 +20,11 @@ var products = [
         id: 3,
         name: 'Instant cupcake mixture',
         price: 5,
-        type: 'grocery'
+        type: 'grocery',
+        offer: {
+            number: 10,
+            percent: 30
+        }
     },
     {
         id: 4,
@@ -109,4 +117,9 @@ function removeFromCart(id) {
 // Exercise 9
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+}
+
+
+function open_modal(){
+	console.log("Open Modal");
 }
