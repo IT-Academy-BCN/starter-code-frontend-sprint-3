@@ -1,14 +1,10 @@
 // If you have time, you can move this variable "products" to a json file and load the data in this js. It will look more professional
 var products = [
-   {
+    {
         id: 1,
         name: 'cooking oil',
         price: 10.5,
         type: 'grocery',
-        offer: {
-            number: 3,
-            percent: 20
-        }
     },
     {
         id: 2,
@@ -21,10 +17,6 @@ var products = [
         name: 'Instant cupcake mixture',
         price: 5,
         type: 'grocery',
-        offer: {
-            number: 10,
-            percent: 30
-        }
     },
     {
         id: 4,
@@ -89,7 +81,7 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
+    // Using the "cartlist" array that contains all the items in the shopping cart,
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 }
 
@@ -103,7 +95,7 @@ function applyPromotionsCart() {
 
 // Exercise 7
 function addToCart(id) {
-    // Refactor previous code in order to simplify it 
+    // Refactor previous code in order to simplify it
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 }
@@ -120,6 +112,6 @@ function printCart() {
 }
 
 
-function open_modal(){
-	console.log("Open Modal");
+function open_modal() {
+    console.log("Open Modal");
 }
