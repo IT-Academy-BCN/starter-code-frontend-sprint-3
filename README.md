@@ -17,7 +17,6 @@ $ git clone https://github.com/itacademyReact/starter-code-sprint3.git
 ```
 
 2. Unlink your repo from the itacademy repository.
-<br>
 (Explanation: You have to upload the code to your GitHub repository, not to the IT Academy repository. That's why you have to unlink your project from IT Academy GitHub with the following command)
 
 ```bash
@@ -25,7 +24,6 @@ $ git remote rm origin
 ```
 
 3. Link your repo to the repository you have to create in your github account.
-<br>
 (Explanation: Now your project is not linked to any remote repository. In order to upload your code, you have to link your project to the new repository created on github.com using the following command)
 
 ```bash
