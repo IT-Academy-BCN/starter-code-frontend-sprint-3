@@ -48,7 +48,7 @@ $ git push origin master
 
 <br>
 
-## Introduction
+## Additional Information
 
 The statement of the exercise is available on the virtual campus.
 
