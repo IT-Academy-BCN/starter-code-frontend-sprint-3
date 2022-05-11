@@ -105,15 +105,27 @@ function generateCart() {
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
   cart = []
-  for(let item in cartList){     
+/*   for(let item in cartList){     
     if(cart.includes(cartList[item])){
       cartList[item].quantity++;
     } else {
       cart.push(cartList[item])
       cart[cart.length - 1].quantity = 1
     }
-  } 
-   //console.log(cart)
+  }  */
+
+   /*  Convirtiendo FOR-IN a FOR-OF  */
+
+   for(let item of cartList){
+     if(cart.includes(item)){
+       item.quantity++;
+     } else {
+       cart.push(item)
+       cart[cart.length - 1].quantity = 1;
+     }
+   }
+   console.log(cart) 
+   
  }
 
 
@@ -124,13 +136,26 @@ function applyPromotionsCart() {
   /* Si el usuario compra 3 o más botellas de aceite, el precio del producto desciende a 10 euros.
   Al comprarse 10 o más mezclas para hacer tarta, su precio se rebaja a 2/3.
   Ayuda: como cada producto del carrito tiene cantidad, ya puedes validar si tiene descuento. */
-  for(let i = 0; i < cart.length; i++){
+  
+  /* for(let i = 0; i < cart.length; i++){
     if(cart[i].quantity >= 3 && cart[i].id === 1){
       cart[i].price = 10
     } else if(cart[i].quantity >= 10 && cart[i].id === 3) {
       cart[i].price = 5 * 2/3
     }
-  } //console.log(cart)
+  } //console.log(cart) */
+
+  /*  Convirtiendo FOR loop a FOR-OF  */
+
+   for(let item of cart){
+     if(item.quantity >= 3 && item.id ===1) {
+       item.price = 10
+     } else if(item.quantity >= 10 && item.id === 3){
+       item.price =  5 * 2/3
+
+     }
+   }
+
 }
 
 
