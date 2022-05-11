@@ -78,6 +78,8 @@ for(let i=0; i < products.length  ; i++){
 
   }
   generateCart()
+  applyPromotionsCart()
+  calculateTotal()
   
 }
 
@@ -92,7 +94,8 @@ function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
   for(let i = 0; i < cartList.length; i++){
      total += cartList[i].price
-  }
+  } 
+
   console.log(total)
 }
 
@@ -110,8 +113,7 @@ function generateCart() {
       cart[cart.length - 1].quantity = 1
     }
   } 
-  console.log(cart)
-
+   //console.log(cart)
  }
 
 
@@ -119,6 +121,22 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
+  /* Si el usuario compra 3 o más botellas de aceite, el precio del producto desciende a 10 euros.
+  Al comprarse 10 o más mezclas para hacer tarta, su precio se rebaja a 2/3.
+  Ayuda: como cada producto del carrito tiene cantidad, ya puedes validar si tiene descuento. */
+  for(let i = 0; i < cart.length; i++){
+    if(cart[i].quantity >= 3 && cart[i].id === 1){
+      cart[i].price = 10
+    } else if(cart[i].quantity >= 10 && cart[i].id === 3) {
+      cart[i].price = 5 * 2/3
+    }
+  } //console.log(cart)
+}
+
+
+// Exercise 6
+function printCart() {
+  // Fill the shopping cart modal manipulating the shopping cart dom
 }
 
 // ** Nivell II **
