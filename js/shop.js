@@ -73,33 +73,48 @@ for(let i=0; i < products.length  ; i++){
     if(products[i].id === id){
      //console.log(products[i]) 
     cartList.push(products[i])
-    console.log(cartList)
+   // console.log(cartList)
     }
 
   }
+  generateCart()
   
 }
 
 // Exercise 2
 function cleanCart() {
-  cartList.splice(0,cartList.length);
+  cartList = [];
 }
 
 // Exercise 3
 function calculateTotal() {
-  let totalPrice = 0
+  let total = 0
   // Calculate total price of the cart using the "cartList" array
   for(let i = 0; i < cartList.length; i++){
-     totalPrice += cartList[i].price
+     total += cartList[i].price
   }
-  console.log(totalPrice)
+  console.log(total)
 }
 
 // Exercise 4
 function generateCart() {
+
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-}
+  cart = []
+  for(let item in cartList){     
+    if(cart.includes(cartList[item])){
+      cartList[item].quantity++;
+    } else {
+      cart.push(cartList[item])
+      cart[cart.length - 1].quantity = 1
+    }
+  } 
+  console.log(cart)
+
+ }
+
+
 
 // Exercise 5
 function applyPromotionsCart() {
