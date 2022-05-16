@@ -1,9 +1,11 @@
 
+
+
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
 var products = [
   {
     id: 1,
-    name: "cooking oil",
+    name: "Cooking Oil",
     price: 10.5,
     type: "grocery",
   },
@@ -85,8 +87,16 @@ for(let i=0; i < products.length  ; i++){
 }
 
 // Exercise 2
+
+
+
 function cleanCart() {
+  let list = document.getElementById('cart_list')
+  list.innerHTML = '<h1>Empty Cart</h1>'
+  cart = []; 
   cartList = [];
+  document.getElementById('total_price').textContent = 0
+  document.getElementById("count_product").innerHTML = 0
 }
 
 // Exercise 3
@@ -94,10 +104,10 @@ function calculateTotal() {
   let total = 0
   // Calculate total price of the cart using the "cartList" array
   for(let i = 0; i < cartList.length; i++){
-     total += cartList[i].price
+     total += (cartList[i].subTotalWithDiscount / cartList[i].quantity)
   } 
-
-  console.log(total)
+  return total.toFixed(2)
+  //console.log(total.toFixed(2))
 }
 
 // Exercise 4
@@ -125,8 +135,9 @@ function generateCart() {
        cart[cart.length - 1].quantity = 1;
      }
    }
+ 
    console.log(cart) 
-   
+  
  }
 
 
@@ -150,10 +161,13 @@ function applyPromotionsCart() {
 
    for(let item of cart){
      if(item.quantity >= 3 && item.id ===1) {
-       item.price = 10
+       let newPrice = 10
+       item.subTotalWithDiscount = newPrice * item.quantity;
      } else if(item.quantity >= 10 && item.id === 3){
-       item.price =  5 * 2/3
-
+       let newPrice = item.price * 2/3;
+       item.subTotalWithDiscount = (newPrice * item.quantity).toFixed(2);
+     } else {
+       item.subTotalWithDiscount = (item.price * item.quantity).toFixed(2);
      }
    }
    
@@ -162,40 +176,54 @@ function applyPromotionsCart() {
   
 
   
-
 // Exercise 6
+// Fill the shopping cart modal manipulating the shopping cart dom
 
-
-function cartCounter() {
-  let cartItems = 0;
-  for (let item of cart) {
-    cartItems += item.quantity;
+function printCart() { 
+  /* Esta funcion reacciona al hacer CLICK en los botones 'Add To Cart'  */  
+    let addCart = document.querySelectorAll('.card-footer .btn') /* addCart son los 9 botones Add to Cart */
+    
+    for(let i = 0; i < addCart.length; i++){
+      addCart[i].addEventListener('click', () => {
+       cartCounter()
+       showInCart()
+       
+      })
+    }
   }
-  document.getElementById("count_product").innerHTML = cartItems;
-}
 
-function showInCart(){
- let total = 100;
+let list = document.getElementById('cart_list')
+list.innerHTML = '<h1>Empty Cart</h1>'
+
+
+
+function showInCart(){ 
+/* Esta funcion muestra los productos en el carrito y el total */
+ let total = calculateTotal();
+ document.getElementById('cart_list').innerHTML = ''
+
  for(let item of cart){
   document.getElementById('total_price').textContent = total
-  document.getElementById('prod').innerHTML += item.name
+  document.getElementById('cart_list').innerHTML += `<tr>
+  <th scope="row">${item.name}</th>
+  <td>$${item.price}</td>
+  <td>${item.quantity}</td>
+  <td>$${item.subTotalWithDiscount}</td>
+  </tr>`
+
  }
 }
 
-function printCart() {
-  // Fill the shopping cart modal manipulating the shopping cart dom
-  let addCart = document.querySelectorAll('.card-footer .btn')
-  
-  for(let i = 0; i < addCart.length; i++){
-    addCart[i].addEventListener('click', () => {
-     cartCounter()
-     showInCart()
-    })
+function cartCounter() { 
+  /* Esta funcion cuenta la cantidad de productos en el array y los muestra en el icono carrito */
+    let cartItems = 0;
+    for (let item of cart) {
+      cartItems += item.quantity;
+    }
+    document.getElementById("count_product").innerHTML = cartItems;
   }
-}
 
 printCart()
-
 
 
 
