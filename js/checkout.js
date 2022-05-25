@@ -1,81 +1,94 @@
 // Get the input fields
-var password = document.querySelector(".password");
-var phone = document.querySelector(".phone");
-var name = document.querySelector(".name");
+//var password = document.querySelector(".password");
+//var phone = document.querySelector(".phone");
+//var name = document.querySelector(".name");
 
 // Get the error elements
 var errorPassword = document.getElementById("errorPassword");
 var errorName = document.getElementById("errorName");
 var errorPhone = document.getElementById("errorPhone");
 
-var letterRegex = /^[A-Za-z]+$/;
-var numberRegex = /^[1-9]\d{9}$/
+
 
 // Exercise 7
 function validate() {
 
-let fName = document.getElementById("fName").value
-let lName = document.getElementById("fLastN").value
-let email = document.getElementById("fEmail").value
-let address = document.getElementById("fAddress").value
-let password = document.getElementById("fPassword").value
-let phone = document.getElementById("fPhone").value
+const form = document.getElementById('mainForm')
+    form.addEventListener('submit', (event) => {
+    event.preventDefault()
+    console.log(event)})
+
+
+  
+let fName = document.getElementById("fName")
+let lName = document.getElementById("fLastN")
+let email = document.getElementById("fEmail")
+let address = document.getElementById("fAddress")
+let password = document.getElementById("fPassword")
+let phone = document.getElementById("fPhone")
+
+let letterRegex = /^[A-Za-z]+$/;
 
 //Validate Name
-if(fName.length < 3 || fName.length == "" || !letterRegex.test(fName)){
+if(fName.value.length < 3 || fName.value.length == "" || !letterRegex.test(fName.value)){
   errorName.style.display = "block"
-  document.getElementById("fName").style.borderColor = "red"
-} 
+  fName.style.borderColor = "red"
+ 
+} else {
+  errorName.style.display = "none"
+  fName.style.borderColor = "green"
+}
 
 //Validate Last Name
-if(lName.length < 3 || lName.length == "" || !letterRegex.test(lName)){
+if(lName.value.length < 3 || lName.value.length == "" || !letterRegex.test(lName.value)){
   errorLastN.style.display = "block"
-  document.getElementById("fLastN").style.borderColor = "red"
+  lName.style.borderColor = "red"
+} else {
+  errorLastN.style.display = "none"
+  lName.style.borderColor = "green"
 }
 
 //Validate e-Mail
 let emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-if(!email.match(emailRegex)){
+if(email.value.match(emailRegex)){
+  errorEmail.style.display = "none"
+  email.style.borderColor = "green"
+} else{
   errorEmail.style.display = "block"
-  document.getElementById("fEmail").style.borderColor = "red"
-
+  email.style.borderColor = "red"
 }
 
 //Validate address 
 
-if(address.length < 3 || address.length == ""){
+if(address.value.length < 3 || address.value.length == ""){
   errorAddress.style.display = "block"
-  document.getElementById("fAddress").style.borderColor = "red"
+  address.style.borderColor = "red"
+} else {
+  errorAddress.style.display = "none"
+  address.style.borderColor = "green"
 }
 
 //Validate Phone Number
+let numberRegex = /^[0-9]*$/
 
-if(phone.length > 9 || phone.length == "" || !phone.value.match(numberRegex) ){
+if(phone.value.length === 9 && phone.value.match(numberRegex) ){
+  errorPhone.style.display = "none"
+  phone.style.borderColor = "green"
+} else {
   errorPhone.style.display = "block"
-  document.getElementById("fPhone").style.borderColor = "red"
-
+  phone.style.borderColor = "red"
 }
 
 //Validate Password 
-let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(\W|_))/
-if (!passwordRegex.test(password) || password.length < 4){
+let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,8}$/
+if (passwordRegex.test(password.value)){
+  errorPassword.style.display = "none"
+  password.style.borderColor = "green"
+}
+else {
   errorPassword.style.display = "block"
-  document.getElementById("fPassword").style.borderColor = "red"
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  password.style.borderColor = "red"
+}
 
 }
 

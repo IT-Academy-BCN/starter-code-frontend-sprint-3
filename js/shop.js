@@ -92,7 +92,7 @@ for(let i=0; i < products.length  ; i++){
 
 function cleanCart() {
   let list = document.getElementById('cart_list')
-  list.innerHTML = '<h1>Empty Cart</h1>'
+  list.innerHTML = '<h2>Empty Cart</h2>'
   cart = []; 
   cartList = [];
   document.getElementById('total_price').textContent = 0
@@ -193,8 +193,7 @@ function printCart() {
   }
 
 let list = document.getElementById('cart_list')
-list.innerHTML = '<h1>Empty Cart</h1>'
-
+list.innerHTML = `<h2>Empty Cart</h2>`
 
 
 function showInCart(){ 
@@ -209,6 +208,7 @@ function showInCart(){
   <td>$${item.price}</td>
   <td>${item.quantity}</td>
   <td>$${item.subTotalWithDiscount}</td>
+  <td><button>X</button></td>
   </tr>`
 
  }
@@ -224,9 +224,6 @@ function cartCounter() {
   }
 
 printCart()
-
-
-
 
 
 
