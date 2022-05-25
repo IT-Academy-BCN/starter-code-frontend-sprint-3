@@ -67,11 +67,11 @@ var cart = [];
 var total = 0;
 
 // Exercise 1
-function buy(id) {
+/*function buy(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
 
-for(let i=0; i < products.length  ; i++){
+ for(let i=0; i < products.length  ; i++){
     if(products[i].id === id){
      //console.log(products[i]) 
     cartList.push(products[i])
@@ -84,7 +84,7 @@ for(let i=0; i < products.length  ; i++){
   applyPromotionsCart()
   calculateTotal()
 
-}
+} */
 
 // Exercise 2
 
@@ -111,11 +111,11 @@ function calculateTotal() {
 }
 
 // Exercise 4
-function generateCart() {
+//function generateCart() {
 
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-  cart = []
+  
 /*   for(let item in cartList){     
     if(cart.includes(cartList[item])){
       cartList[item].quantity++;
@@ -126,7 +126,7 @@ function generateCart() {
   }  */
 
    /*  Convirtiendo FOR-IN a FOR-OF  */
-
+  /*  cart = []
    for(let item of cartList){
      if(cart.includes(item)){
        item.quantity++;
@@ -138,7 +138,7 @@ function generateCart() {
  
    console.log(cart) 
   
- }
+ } */
 
 
 
@@ -229,12 +229,33 @@ printCart()
 
 // ** Nivell II **
 
-// Exercise 7
+// Exercise 8
 function addToCart(id) {
+
+    for(let item of products){
+        if(id === item.id){
+            if(cart.includes(item)){
+                item.quantity++;
+               }else{
+                cart.push(item);
+                cart[cart.length-1].quantity = 1;
+            } 
+            console.log(cart);
+            applyPromotionsCart();
+           
+        }
+    }
+    
+};
+ 
+  
+
+  
+  //console.log(cart) 
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-}
+
 
 // Exercise 8
 function removeFromCart(id) {
