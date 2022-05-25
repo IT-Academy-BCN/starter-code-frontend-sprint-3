@@ -130,6 +130,8 @@
                 class="form-control ml-3"
                 type="text"
                 placeholder="First Name"
+                minlength="3"
+                required
               />
               <div id="errorName" class="invalid-feedback">
                 This field is required and must have, at least, 3 characters
@@ -143,6 +145,7 @@
                 type="email"
                 placeholder="Email"
                 minlength="3"
+                required
               />
               <div id="errorEmail" class="invalid-feedback">
                 This field is required and must contain an '@' and have, at
@@ -157,6 +160,7 @@
                 type="text"
                 placeholder="Address"
                 minlength="3"
+                required
               />
               <div id="errorAddress" class="invalid-feedback">
                 This field is required and must have, at least, 3 characters
@@ -172,6 +176,7 @@
                 type="text"
                 placeholder="Last Name"
                 minlength="3"
+                required
               />
               <div id="errorLastN" class="invalid-feedback">
                 This field is required and must have, at least, 3 characters
@@ -187,6 +192,7 @@
                 minlength="4"
                 maxlength="8"
                 placeholder="Password"
+                required
               />
               <div id="errorPassword" class="invalid-feedback">
                 Enter a correct password
@@ -198,7 +204,9 @@
                 id="fPhone"
                 class="form-control"
                 type="number"
+                maxlength="9"
                 placeholder="Phone No."
+                required
               />
               <div id="errorPhone" class="invalid-feedback">
                 Invalid phone number!! Must be 9 digits with no letters
