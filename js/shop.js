@@ -94,7 +94,7 @@ function cleanCart() {
   let list = document.getElementById('cart_list')
   list.innerHTML = '<h2>Empty Cart</h2>'
   cart = []; 
-  cartList = [];
+  //cartList = [];
   document.getElementById('total_price').textContent = 0
   document.getElementById("count_product").innerHTML = 0
 }
@@ -220,7 +220,7 @@ function showInCart(){
   <td>$${item.price}</td>
   <td>${item.quantity}</td>
   <td>$${item.subTotalWithDiscount}</td>
-  <td><button class='btn btn-danger btn-sm'>X</button></td>
+  <td><button class='btn btn-danger btn-sm' onclick='removeFromCart(${item.id})'>X</button></td>
   </tr>`
 
  }
@@ -237,7 +237,7 @@ function cartCounter() {
     document.getElementById("count_product").innerHTML = cartItems;
   }
 
-printCart()
+
 
 
 // ** Nivell II **
@@ -280,17 +280,39 @@ function addToCart(id) {
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-
-
-// Exercise 9
-function removeFromCart(id) {
-  // 1. Loop for to the array products to get the item to add to cart
-  // 2. Add found product to the cartList array
-}
 */
 
+ // Exercise 9
+function removeFromCart(id) {
+
+  for(let item of cart){
+    if(item.id === id){
+      item.quantity--;
+      if(item.quantity == 0){
+       cart.splice()
+           // 
+           }
+        } 
+      }
+    }
+    
+  
+    
+
+/*  
+
+   
+ }) */
+
+
+  // 1. Loop for to the array products to get the item to remove cart
+
+
+//
+printCart()
 // Exercise 10
 
 function open_modal() {
+  
   console.log("Open Modal");
 }
