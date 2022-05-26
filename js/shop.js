@@ -100,11 +100,22 @@ function cleanCart() {
 }
 
 // Exercise 3
-function calculateTotal() {
+/* function calculateTotal() {
   let total = 0
   // Calculate total price of the cart using the "cartList" array
   for(let i = 0; i < cartList.length; i++){
      total += (cartList[i].subTotalWithDiscount / cartList[i].quantity)
+  } 
+  return total.toFixed(2)
+  //console.log(total.toFixed(2))
+} */
+
+/* se modifica el cart para que funcione la refactorizacion*/
+function calculateTotal() {
+  let total = 0
+  // Calculate total price of the cart using the "cartList" array
+  for(let i = 0; i < cart.length; i++){
+     total += Number(cart[i].subTotalWithDiscount) 
   } 
   return total.toFixed(2)
   //console.log(total.toFixed(2))
@@ -203,16 +214,19 @@ function showInCart(){
 
  for(let item of cart){
   document.getElementById('total_price').textContent = total
+  //document.getElementById('remove').classList.add('btn-danger')
   document.getElementById('cart_list').innerHTML += `<tr>
   <th scope="row">${item.name}</th>
   <td>$${item.price}</td>
   <td>${item.quantity}</td>
   <td>$${item.subTotalWithDiscount}</td>
-  <td><button>X</button></td>
+  <td><button class='btn btn-danger btn-sm'>X</button></td>
   </tr>`
 
  }
 }
+
+
 
 function cartCounter() { 
   /* Esta funcion cuenta la cantidad de productos en el array y los muestra en el icono carrito */
@@ -226,46 +240,56 @@ function cartCounter() {
 printCart()
 
 
-
 // ** Nivell II **
 
 // Exercise 8
 function addToCart(id) {
 
     for(let item of products){
-        if(id === item.id){
+        if(item.id === id){
             if(cart.includes(item)){
                 item.quantity++;
                }else{
                 cart.push(item);
                 cart[cart.length-1].quantity = 1;
+
             } 
             console.log(cart);
             applyPromotionsCart();
+            calculateTotal();
            
         }
     }
     
 };
- 
-  
 
-  
+ 
+ /*  Convirtiendo FOR-IN a FOR-OF  */
+  /*  cart = []
+   for(let item of cartList){
+     if(cart.includes(item)){
+       item.quantity++;
+     } else {
+       cart.push(item)
+       cart[cart.length - 1].quantity = 1;
+     }
+   }  
+
+
   //console.log(cart) 
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
 }
+*/
 
-// Exercise 9
-
-  // Fill the shopping cart modal manipulating the shopping cart dom
+// Exercise 10
 
 function open_modal() {
   console.log("Open Modal");
