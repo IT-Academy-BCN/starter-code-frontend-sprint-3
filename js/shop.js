@@ -230,18 +230,20 @@ function cartCounter() {
 function addToCart(id) {
   for (let item of products) {
     if (item.id === id) {
-      if (cart.includes(item)) {
+      if (cart.indexOf(item) > -1) {
         item.quantity++;
+        
       } else {
         cart.push(item);
         cart[cart.length - 1].quantity = 1;
       }
-
+      console.log(cart.indexOf(item) > -1)
       applyPromotionsCart();
       calculateTotal();
     }
   }
 }
+
 
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
