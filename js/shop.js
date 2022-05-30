@@ -277,3 +277,4 @@ printCart();
 function open_modal() {
   console.log("Open Modal");
 }
+

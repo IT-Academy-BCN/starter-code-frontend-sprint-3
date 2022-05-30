@@ -13,17 +13,17 @@ You will be in charge of setting up an initial demo version of the application f
 
 1. Clone this repo
 ```bash
-$ git clone https://github.com/itacademyReact/starter-code-sprint3.git
+$ git clone https://github.com/IT-Academy-BCN/starter-code-frontend-sprint-3
 ```
 
 2. Unlink your repo from the itacademy repository.
-(Explanation: You have to upload the code to your GitHub repository, not to the IT Academy repository. That's why you have to unlink your project from IT Academy GitHub with the following command)
+(Explanation: You have to upload the code to your GitHub repository, not to the IT Academy. That's why you have to unlink your project from IT Academy GitHub with the following command)
 
 ```bash
 $ git remote rm origin
 ```
 
-3. Link your repo to the repository you have to create in your github account.
+3. Link your repo to the repository you have to create in your github account
 (Explanation: Now your project is not linked to any remote repository. In order to upload your code, you have to link your project to the new repository created on github.com using the following command)
 
 ```bash
@@ -48,7 +48,7 @@ $ git push origin master
 
 <br>
 
-## Additional Information
+## Introduction
 
 The statement of the exercise is available on the virtual campus.
 
@@ -59,7 +59,7 @@ The statement of the exercise is available on the virtual campus.
 
 You have the following indications from the frontend manager:
 
-- You have prepared the base of the project on which you will work: https://github.com/itacademyreact/starter-code-sprint3
+- You have prepared the base of the project on which you will work: https://github.com/IT-Academy-BCN/starter-code-frontend-sprint-3
 
 - The base of the project on which you will work has already created all the files, and an initial version of the interface, so you can focus on programming the logic.
 
