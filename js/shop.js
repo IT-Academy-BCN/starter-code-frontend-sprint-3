@@ -123,6 +123,47 @@ function applyPromotionsCart() {
 // Exercise 6
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    let shoppingCart = document.getElementById('cart_list');
+    let totalPrice = document.getElementById('total_price');
+
+    // make sure it is empty first
+    shoppingCart.innerHTML = "";
+    totalPrice.innerHTML = "";
+
+
+    // create a row for every product in cart and add it to the shopping cart
+    for(let i = 0; i < cart.length; i++){
+        let row = document.createElement("tr");
+        // add the product name to the first column
+        let nameColumn = document.createElement("th");
+        nameColumn.scope = "row";
+        nameColumn.innerHTML = cart[i].name;
+        row.appendChild(nameColumn);
+        // add the product price to the second column
+        let priceColumn = document.createElement("td");
+        priceColumn.innerHTML = "$" + cart[i].price;
+        row.appendChild(priceColumn);
+        // add the product qty to the third column
+        let qtyColumn = document.createElement("td");
+        qtyColumn.innerHTML = cart[i].quantity;
+        row.appendChild(qtyColumn);
+        // add the product total price with discount to the last column
+        let totalColum = document.createElement("td");
+        totalColum.innerHTML = cart[i].subtotalWithDiscount != undefined ? "$" + cart[i].subtotalWithDiscount : "$" + cart[i].subtotal;
+        row.appendChild(totalColum);
+        // finally, add this row to the shopping cart table
+        shoppingCart.appendChild(row);
+    }
+
+    // calculate the total price (with discounts)
+    total = 0;
+
+    for(let i = 0; i < cart.length; i++){
+        total += cart[i].subtotalWithDiscount != undefined ? cart[i].subtotalWithDiscount : cart[i].subtotal;
+    }
+
+    // update the total price of the shopping cart
+    totalPrice.innerHTML = total;
 }
 
 
