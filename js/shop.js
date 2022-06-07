@@ -81,7 +81,9 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-
+    while(cartList.length > 0){
+        cartList.pop();
+    }
 }
 
 // Exercise 3
