@@ -171,9 +171,30 @@ function printCart() {
 
 // Exercise 7
 function addToCart(id) {
-    // Refactor previous code in order to simplify it 
+// Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
+    let selectedProduct = products.find(p => p.id == id);
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    index = cart.findIndex(p => p.id == id);
+    
+    if(index == -1){
+        // if this product is not in the cart, add it
+        cart.push({...selectedProduct, quantity: 1, subtotal: selectedProduct.price});
+    } else {
+        // else, update its quantity & subtotal... 
+        cart[index].quantity++;
+        cart[index].subtotal += selectedProduct.price;
+        // ...and check if there are promotions to be applied
+        if(cart[index].offer != undefined && cart[index].quantity >= cart[index].offer.number){
+            cart[index].subtotalWithDiscount = cart[index].subtotal * (100 - cart[index].offer.percent) / 100;
+        }
+    }
+}
+
+function cleanTheCart() {
+    while(cart.length > 0){
+        cart.pop();
+    }
 }
 
 // Exercise 8
