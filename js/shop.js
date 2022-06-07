@@ -199,8 +199,29 @@ function cleanTheCart() {
 
 // Exercise 8
 function removeFromCart(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
+    // 1. Loop for to the array products to get the item to decrease from cart
+    let selectedProduct = products.find(p => p.id == id);
+    // 2. Decrease the product quantity
+    index = cart.findIndex(p => p.id == id);
+    cart[index].quantity--;
+    // 3. Update the cart
+    if(cart[index].quantity == 0){
+        // If quantity is 0, remove the product from the cart
+        cart.splice(index,1);
+    } else {
+        // Update the subtotal
+        cart[index].subtotal -= selectedProduct.price;
+        // ...and check if there are promotions to be reviewed
+        if(cart[index].subtotalWithDiscount != undefined){
+            if(cart[index].quantity >= cart[index].offer.number){
+                // if the quantity still applies for a promotion, update the subtotal with discounts
+                cart[index].subtotalWithDiscount = cart[index].subtotal * (100 - cart[index].offer.percent) / 100;
+            } else {
+                // else, remove the subtotalWithDiscount property
+                delete cart[index].subtotalWithDiscount;
+            }
+        }
+    } 
 }
 
 function open_modal(){
