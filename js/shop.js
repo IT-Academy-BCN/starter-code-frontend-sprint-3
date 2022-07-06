@@ -56,8 +56,35 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
+	
 	// Using the "cartlist" array that contains all the items in the shopping cart,
 	// generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+
+	let i, cartListItem, cartItem;
+	for (i = 0; i < cartList.length; i++) {
+
+			cartListItem = cartList[i];
+			cartItem = cart.find(element => element.id === cartListItem.id);
+
+			if (cartItem == undefined) {
+
+					cartListItem.quantity = 1;
+					cartListItem.subTotal = cartListItem.price * cartListItem.quantity;
+					// preparem propietat
+					cartListItem.subTotalWithDiscount = "not available";
+					cart.push(cartListItem);
+
+			} else {
+
+					cartItem.quantity += 1;
+					cartItem.subTotal = cartItem.price * cartItem.quantity;
+					// preparem propietat
+					cartItem.subTotalWithDiscount = "not available";
+			}
+	}
+
+	console.table(cart);
+	// Funció generateCart() en botó "Generate Cart"
 }
 
 // Exercise 5
@@ -87,6 +114,7 @@ function removeFromCart(id) {
 }
 
 function open_modal(){
-	console.log("Open Modal");
+	console.log("Open Modal + Generate Cart");
+	generateCart();
 	printCart();
 }
