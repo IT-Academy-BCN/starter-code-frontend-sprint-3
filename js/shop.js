@@ -56,7 +56,7 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
-	
+
 	// Using the "cartlist" array that contains all the items in the shopping cart,
 	// generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
@@ -83,13 +83,32 @@ function generateCart() {
 			}
 	}
 
+	applyPromotionsCart();
 	console.table(cart);
-	// Funció generateCart() en botó "Generate Cart"
+	// Funció generateCart() + applyPromotioCart() en botó "Generate Cart"
 }
 
 // Exercise 5
 function applyPromotionsCart() {
+
   // Apply promotions to each item in the array "cart"
+
+	let i, cartItem;
+	for(i = 0; i < cart.length; i++) {
+
+		cartItem = cart[i];
+
+		if (cartItem.id == 1 && cartItem.quantity >= 3 ) {
+				cartItem.subTotalWithDiscount = Number((10 * cartItem.quantity).toFixed(2));
+		}
+
+		if (cartItem.id == 3 && cartItem.quantity >= 10 ) {
+				cartItem.subTotalWithDiscount = Number((2/3 * cartItem.price * cartItem.quantity).toFixed(2));
+		}
+	}
+
+	console.table(cart);
+	// Funció applyPromotionsCart() afegit al botó "Generate Cart"
 }
 
 // Exercise 6
