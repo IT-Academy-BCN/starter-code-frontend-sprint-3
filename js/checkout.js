@@ -8,7 +8,7 @@ function validate() {
 
 	// Get the error elements
 	var errorName = document.getElementById("errorName");
-	var errorEmail = document.getElementById("errorEmail");  
+	var errorEmail = document.getElementById("errorEmail");
 	
 	// Validate fields entered by the user: name, phone, password, and email
 	if(fName.value == ""){
@@ -18,7 +18,7 @@ function validate() {
 	if(fEmail.value == ""){
 		error++;
 	}
-	 
+	
 	if(error>0){
 		alert("Error");
 	}else{
