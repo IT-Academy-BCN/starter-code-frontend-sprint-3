@@ -10,8 +10,24 @@ let total = 0;
 
 // Exercise 1
 function buy(id) {
+
 	// 1. Loop for to the array products to get the item to add to cart
+  
+	let i = 0, productChosen, found = false;
+	while (i < products.length && found == false) {
+
+			if (products[i].id == id) {
+				productChosen = products[i];
+				found = true;
+			}
+		i++;
+	}
+
 	// 2. Add found product to the cartList array
+
+	if (found == true) cartList.push(productChosen);
+
+	console.table(cartList);
 }
 
 // Exercise 2
