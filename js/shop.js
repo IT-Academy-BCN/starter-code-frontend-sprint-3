@@ -14,7 +14,7 @@ let counter = 0;
 function buy(id) {
 
   // 1. Loop for to the array products to get the item to add to cart
-
+  
   let i, productChosen, product, found = false;
   for (i = 0; i < products.length; i++) {
 
@@ -40,7 +40,6 @@ function buy(id) {
     counter++;
   }
   document.getElementById("count_product").innerHTML = counter;
-
 }
 
 // Exercise 2
@@ -66,7 +65,7 @@ function calculateTotal() {
       price = cartList[i].price;
       totalPrice += price;
   }
-  
+
 }
 
 // Exercise 4
@@ -81,28 +80,25 @@ function generateCart() {
   for (i = 0; i < cartList.length; i++) {
 
       cartListItem = cartList[i];
-      cartItem = cart.find(element => element.id === cartListItem.id);
-
-      if (cartItem == undefined) {
+      cartItemIndex = cart.findIndex(element => element.id === cartListItem.id);
+      
+      if (cartItemIndex == -1) {
 
           cart.push(cartListItem);
-          cartListItem = cart[cart.length-1];
-          cartListItem.quantity = 1;
-          cartListItem.subTotal = cartListItem.price * cartListItem.quantity;
-          // preparem propietat
-          cartListItem.subTotalWithDiscount = "not available";
-
+          cartItem = cart.at(-1);
+          cartItem.quantity = 1;
+          
       } else {
-
-          cartItem.quantity += 1;
-          cartItem.subTotal = cartItem.price * cartItem.quantity;
-          // preparem propietat
-          cartItem.subTotalWithDiscount = "not available";
+          cartItem = cart[cartItemIndex];
+          cartItem.quantity++;
+          
       }
+      cartItem.subTotal = cartItem.price * cartItem.quantity;
+      // preparem propietat
+      cartItem.subTotalWithDiscount = "not available";
+      
   }
-
   applyPromotionsCart();
-
 }
 
 // Exercise 5
