@@ -7,35 +7,51 @@ const cartList = [];
 const cart = [];
 
 let total = 0;
+//Variable global pel comptador de productes habilitat al botó "Cart"
+let counter = 0;
 
 // Exercise 1
 function buy(id) {
 
-	// 1. Loop for to the array products to get the item to add to cart
-  
-	let i = 0, productChosen, found = false;
-	while (i < products.length && found == false) {
+  // 1. Loop for to the array products to get the item to add to cart
 
-			if (products[i].id == id) {
-				productChosen = products[i];
-				found = true;
-			}
-		i++;
-	}
+  let i, productChosen, product, found = false;
+  for (i = 0; i < products.length; i++) {
 
-	// 2. Add found product to the cartList array
+      // Tornem els objectes al format original, si ja han estat triats abans
+      product = products[i];
+      delete product.quantity;
+      delete product.subTotal;
+      delete product.subTotalWithDiscount;
 
-	if (found == true) cartList.push(productChosen);
+      if (product.id == id) {
 
-	console.table(cartList);
+        productChosen = product;
+        found = true;
+      }
+  }
+
+  // 2. Add found product to the cartList array
+  // Incropora comptador d'articles per la icona del botó "Cart"
+
+  if (found == true) {
+
+    cartList.push(productChosen);
+    counter++;
+  }
+  document.getElementById("count_product").innerHTML = counter;
+
 }
 
 // Exercise 2
 function cleanCart() {
 
-	cartList.length = 0;
-
-	console.table(cartList);
+  cartList.length = 0;
+  // Reinici comptador
+  counter = 0;
+  document.getElementById("count_product").innerHTML = counter;
+  generateCart();
+  printCart();
 
 }
 
@@ -44,96 +60,121 @@ function calculateTotal() {
 
   // Calculate total price of the cart using the "cartList" array
 
-	let i, price = 0, totalPrice = 0;
-	for (i = 0; i < cartList.length; i++) {
+  let i, price = 0, totalPrice = 0;
+  for (i = 0; i < cartList.length; i++) {
 
-			price = cartList[i].price;
-			totalPrice += price;
-	}
-
-	console.log(totalPrice);
+      price = cartList[i].price;
+      totalPrice += price;
+  }
+  
 }
 
 // Exercise 4
 function generateCart() {
 
-	// Using the "cartlist" array that contains all the items in the shopping cart,
-	// generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+  // Using the "cartlist" array that contains all the items in the shopping cart,
+  // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
-	let i, cartListItem, cartItem;
-	for (i = 0; i < cartList.length; i++) {
+  cart.length = 0;
 
-			cartListItem = cartList[i];
-			cartItem = cart.find(element => element.id === cartListItem.id);
+  let i, cartListItem, cartItem;
+  for (i = 0; i < cartList.length; i++) {
 
-			if (cartItem == undefined) {
+      cartListItem = cartList[i];
+      cartItem = cart.find(element => element.id === cartListItem.id);
 
-					cartListItem.quantity = 1;
-					cartListItem.subTotal = cartListItem.price * cartListItem.quantity;
-					// preparem propietat
-					cartListItem.subTotalWithDiscount = "not available";
-					cart.push(cartListItem);
+      if (cartItem == undefined) {
 
-			} else {
+          cart.push(cartListItem);
+          cartListItem = cart[cart.length-1];
+          cartListItem.quantity = 1;
+          cartListItem.subTotal = cartListItem.price * cartListItem.quantity;
+          // preparem propietat
+          cartListItem.subTotalWithDiscount = "not available";
 
-					cartItem.quantity += 1;
-					cartItem.subTotal = cartItem.price * cartItem.quantity;
-					// preparem propietat
-					cartItem.subTotalWithDiscount = "not available";
-			}
-	}
+      } else {
 
-	applyPromotionsCart();
-	console.table(cart);
-	// Funció generateCart() + applyPromotioCart() en botó "Generate Cart"
+          cartItem.quantity += 1;
+          cartItem.subTotal = cartItem.price * cartItem.quantity;
+          // preparem propietat
+          cartItem.subTotalWithDiscount = "not available";
+      }
+  }
+
+  applyPromotionsCart();
+
 }
 
 // Exercise 5
 function applyPromotionsCart() {
 
   // Apply promotions to each item in the array "cart"
+  // Funció applyPromotionsCart() afegit a la funció GenerateCart()
+  // Nous càlculs de les promocions segons "percent" de "products"
 
-	let i, cartItem;
-	for(i = 0; i < cart.length; i++) {
+  let i, cartItem;
+  for(i = 0; i < cart.length; i++) {
 
-		cartItem = cart[i];
+    cartItem = cart[i];
 
-		if (cartItem.id == 1 && cartItem.quantity >= 3 ) {
-				cartItem.subTotalWithDiscount = Number((10 * cartItem.quantity).toFixed(2));
-		}
+    if (cartItem.id == 1 && cartItem.quantity >= cartItem.offer.number ) {
+        cartItem.subTotalWithDiscount = Number((cartItem.subTotal - cartItem.subTotal * cartItem.offer.percent/100).toFixed(2));
+    }
 
-		if (cartItem.id == 3 && cartItem.quantity >= 10 ) {
-				cartItem.subTotalWithDiscount = Number((2/3 * cartItem.price * cartItem.quantity).toFixed(2));
-		}
-	}
+    if (cartItem.id == 3 && cartItem.quantity >= cartItem.offer.number ) {
+        cartItem.subTotalWithDiscount = Number((cartItem.subTotal - cartItem.subTotal * cartItem.offer.percent/100).toFixed(2));
+    }
+  }
 
-	console.table(cart);
-	// Funció applyPromotionsCart() afegit al botó "Generate Cart"
 }
 
 // Exercise 6
 function printCart() {
-  // Fill the shopping cart modal manipulating the shopping cart dom
-}
 
+  // Fill the shopping cart modal manipulating the shopping cart dom
+
+  let i, list = "", cartItem, cartTotal = 0;
+  for (i = 0; i < cart.length; i++) {
+
+    cartItem = cart[i];
+
+    list += "<tr>";
+    list += "<th scope='row'>" +cartItem.name+ "</th>";
+    list += "<td>" +cartItem.price+ "</td>";
+    list += "<td>" +cartItem.quantity+ "</td>";
+    if (cartItem.subTotalWithDiscount == "not available") {
+      list += "<td>" +cartItem.subTotal+ "</td>";
+      cartTotal += cartItem.subTotal;
+    }else{
+      list += "<td>" +cartItem.subTotalWithDiscount+ "</td>";
+      cartTotal += cartItem.subTotalWithDiscount;
+    }
+    list +="</tr>";
+
+  }
+  document.getElementById("cart_list").innerHTML = list;
+  document.getElementById("total_price").innerHTML = cartTotal.toFixed(2);
+
+  // Habilitat comptador de productes al botó "Cart"
+}
 
 // ** Nivell II **
 
-// Exercise 7
+// Exercise 8
 function addToCart(id) {
     // Refactor previous code in order to simplify it
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
 }
 
 function open_modal(){
-	console.log("Open Modal + Generate Cart");
-	generateCart();
-	printCart();
+  console.log("Open Modal");
+  generateCart();
+  printCart();
 }
