@@ -89,6 +89,8 @@
 						<input id="fName" class="form-control ml-3" type="text" placeholder="First Name" />
 						<div id="errorName" class="invalid-feedback">This field is required and must have, at least, 3 characters
 						</div>
+						<!-- Afegim classe "is-valid" per la validació -->
+						<div id="correctName" class="valid-feedback">Looks good!</div>
 					</div>
 
 					<div class="mt-3 ">
@@ -96,6 +98,8 @@
 						<input id="fEmail" class="form-control ml-3" type="email" placeholder="Email" minlength="3" />
 						<div id="errorEmail" class="invalid-feedback">This field is required and must contain an '@' and have, at
 							least, 3 characters</div>
+							<!-- Afegim classe "is-valid" per la validació -->
+						<div id="correctEmail" class="valid-feedback">Looks good!</div>
 					</div>
 
 					<div class="mt-3 ">
@@ -103,6 +107,8 @@
 						<input id="fAddress" class="form-control" type="text" placeholder="Address" minlength="3" />
 						<div id="errorAddress" class="invalid-feedback">This field is required and must have, at least, 3 characters
 						</div>
+						<!-- Afegim classe "is-valid" per la validació -->
+						<div id="correctAddress" class="valid-feedback">Looks good!</div>
 					</div>
 				</div>
 
@@ -113,6 +119,8 @@
 						<input id="fLastN" class="form-control" type="text" placeholder="Last Name" minlength="3" />
 						<div id="errorLastN" class="invalid-feedback">This field is required and must have, at least, 3 characters
 						</div>
+						<!-- Afegim classe "is-valid" per la validació -->
+						<div id="correctLastN" class="valid-feedback">Looks good!</div>
 					</div>
 
 					<div class="mt-3">
@@ -120,17 +128,22 @@
 						<input id="fPassword" class="form-control" title="(4-8 characters)" type="password" minlength="4"
 							maxlength="8" placeholder="Password" />
 						<div id="errorPassword" class="invalid-feedback">Enter a correct password</div>
+						<!-- Afegim classe "is-valid" per la validació -->
+						<div id="correctPassword" class="valid-feedback">Looks good!</div>
 					</div>
 
 					<div class="mt-3">
 						<label for="fPhone" class="form-label">Phone Number:</label>
 						<input id="fPhone" class="form-control" type="number" placeholder="Phone No." />
 						<div id="errorPhone" class="invalid-feedback">Invalid phone number!! Must be 9 digits with no letters</div>
+						<!-- Afegim classe "is-valid" per la validació -->
+						<div id="correctPhone" class="valid-feedback">Looks good!</div>
 					</div>
 				</div>
 
 				<div class="col-12 mt-4 final">
-					<button type="submit" id="btn" class="p-2 px-4 btn btn-primary shadow-lg" onclick="validate()">
+					<!-- Canviem deSubmit a Button per comprovar la validació -->
+					<button type="button" id="btn" class="p-2 px-4 btn btn-primary shadow-lg" onclick="validate()">
 						<i class="fas fa-cart-arrow-down p-2"></i>Save
 					</button>
 				</div>
