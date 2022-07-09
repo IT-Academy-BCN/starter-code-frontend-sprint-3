@@ -158,9 +158,41 @@ function printCart() {
 
 // Exercise 8
 function addToCart(id) {
-    // Refactor previous code in order to simplify it
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+
+  // Refactor previous code in order to simplify it
+  // 1. Loop for to the array products to get the item to add to cart
+  // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+
+  let productChosen, cartItem;
+  // Els objectes no queden com originalment a products :-(
+  let productChosenIndex = products.findIndex(element => element.id === id);
+
+    if (productChosenIndex != -1) {
+
+      productChosen = products[productChosenIndex];
+      counter++;
+    }
+
+  let cartItemIndex = cart.findIndex(element => element.id === productChosen.id);
+
+    if(cartItemIndex == -1) {
+
+      cart.push(productChosen);
+      cartItem = cart.at(-1);
+      cartItem.quantity = 1;
+          
+    } else {
+
+      cartItem = cart[cartItemIndex];
+      cartItem.quantity++;
+    }
+
+    cartItem.subTotal = cartItem.price * cartItem.quantity;
+    // preparem propietat
+    cartItem.subTotalWithDiscount = "not available";
+  
+  applyPromotionsCart();
+  document.getElementById("count_product").innerHTML = counter;
 }
 
 // Exercise 9
@@ -171,6 +203,6 @@ function removeFromCart(id) {
 
 function open_modal(){
   console.log("Open Modal");
-  generateCart();
+  //generateCart();
   printCart();
 }
