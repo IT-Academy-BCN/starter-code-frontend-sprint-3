@@ -113,11 +113,8 @@ function applyPromotionsCart() {
 
     cartItem = cart[i];
 
-    if (cartItem.id == 1 && cartItem.quantity >= cartItem.offer.number ) {
-        cartItem.subTotalWithDiscount = Number((cartItem.subTotal - cartItem.subTotal * cartItem.offer.percent/100).toFixed(2));
-    }
+    if ((cartItem.id == 1 || cartItem.id == 3) && cartItem.quantity >= cartItem.offer.number ) {
 
-    if (cartItem.id == 3 && cartItem.quantity >= cartItem.offer.number ) {
         cartItem.subTotalWithDiscount = Number((cartItem.subTotal - cartItem.subTotal * cartItem.offer.percent/100).toFixed(2));
     }
   }
@@ -136,8 +133,9 @@ function printCart() {
 
     list += "<tr>";
     list += "<th scope='row'>" +cartItem.name+ "</th>";
-    list += "<td>" +cartItem.price+ "</td>";
-    list += "<td>" +cartItem.quantity+ "</td>";
+    list += "<td class='text-center'>" +cartItem.price+ "</td>";
+    list += "<td class='text-center'><button type='button' class='btn btn-outline-dark btn-sm rounded-pill' style='padding: 0 .5rem' onclick='removeFromCart("+cartItem.id+")'>-</button></td>";
+    list += "<td class='text-center'>" +cartItem.quantity+ "</td>";
     if (cartItem.subTotalWithDiscount == "not available") {
       list += "<td>" +cartItem.subTotal+ "</td>";
       cartTotal += cartItem.subTotal;
@@ -197,8 +195,32 @@ function addToCart(id) {
 
 // Exercise 9
 function removeFromCart(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
+
+  let cartItem;
+  let cartItemIndex = cart.findIndex(element => element.id === id);
+
+    if (cartItemIndex != -1) {
+
+      cartItem = cart[cartItemIndex];
+
+      if(cartItem.quantity > 1) {
+
+        cartItem.quantity--;
+        
+      }else{
+        cart.splice(cartItemIndex, 1);
+      }
+    }
+
+    cartItem.subTotal = cartItem.price * cartItem.quantity;
+    cartItem.subTotalWithDiscount = "not available";
+    applyPromotionsCart();
+
+  printCart();
+  counter--;
+  document.getElementById("count_product").innerHTML = counter;
+
+  // Afegit botó '-' al modal per cada producte de Cart
 }
 
 function open_modal(){
