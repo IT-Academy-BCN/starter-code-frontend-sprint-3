@@ -138,11 +138,11 @@ function validate() {
 	}
 	*/
 
-	if(error > 0){
+	/* if(error > 0){
 		alert("Error");
 
 	}else{
 		alert("OK");
-	}
+	} */
 
 }

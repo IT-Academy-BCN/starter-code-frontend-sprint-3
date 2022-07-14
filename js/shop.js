@@ -133,16 +133,17 @@ function printCart() {
 
     list += "<tr>";
     list += "<th scope='row'>" +cartItem.name+ "</th>";
-    list += "<td class='text-center'>" +cartItem.price+ "</td>";
-    list += "<td class='text-center'><button type='button' class='btn btn-outline-dark btn-sm rounded-pill' style='padding: 0 .5rem' onclick='removeFromCart("+cartItem.id+")'>-</button></td>";
-    list += "<td class='text-center'>" +cartItem.quantity+ "</td>";
+    list += "<td class='text-center fs-5'>" +cartItem.price+ "</td>";
+    list += "<td class='text-center fs-5'>" +cartItem.quantity+ "</td>";
     if (cartItem.subTotalWithDiscount == "not available") {
-      list += "<td>" +cartItem.subTotal+ "</td>";
+      list += "<td class= 'fs-5'>" +cartItem.subTotal+ "</td>";
       cartTotal += cartItem.subTotal;
     }else{
-      list += "<td>" +cartItem.subTotalWithDiscount+ "</td>";
+      list += "<td class='fs-5'>" +cartItem.subTotalWithDiscount+ "</td>";
       cartTotal += cartItem.subTotalWithDiscount;
     }
+    list += "<td class='text-center'><button type='button' class='btn btn-outline-dark btn-sm rounded-pill px-2 py-0' onclick='oneMoreToCart("+cartItem.id+")'>+</button></td>";
+    list += "<td class='text-center'><button type='button' class='btn btn-outline-dark btn-sm rounded-pill px-2 py-0' onclick='removeFromCart("+cartItem.id+")'>-</button></td>";
     list +="</tr>";
 
   }
@@ -221,6 +222,29 @@ function removeFromCart(id) {
   document.getElementById("count_product").innerHTML = counter;
 
   // Afegit botó '-' al modal per cada producte de Cart
+}
+
+function oneMoreToCart(id) {
+
+  let cartItem;
+  let cartItemIndex = cart.findIndex(element => element.id === id);
+
+    if (cartItemIndex != -1) {
+
+      cartItem = cart[cartItemIndex];
+      cartItem.quantity++;
+        
+    }
+  
+    cartItem.subTotal = cartItem.price * cartItem.quantity;
+    cartItem.subTotalWithDiscount = "not available";
+    applyPromotionsCart();
+
+  printCart();
+  counter++;
+  document.getElementById("count_product").innerHTML = counter;
+
+  // Afegit botó '+' al modal per cada producte de Cart
 }
 
 function open_modal(){
