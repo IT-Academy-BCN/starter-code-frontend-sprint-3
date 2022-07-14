@@ -5,8 +5,8 @@ const cartList = [];
 
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
 const cart = [];
-
 let total = 0;
+
 //Variable global pel comptador de productes habilitat al botó "Cart"
 let counter = 0;
 
@@ -195,6 +195,7 @@ function addToCart(id) {
 }
 
 // Exercise 9
+// Afegit botó '-' al modal per cada producte de Cart
 function removeFromCart(id) {
 
   let cartItem;
@@ -221,9 +222,10 @@ function removeFromCart(id) {
   counter--;
   document.getElementById("count_product").innerHTML = counter;
 
-  // Afegit botó '-' al modal per cada producte de Cart
 }
 
+// Funcionalitat extra
+// Afegit botó '+' al modal per cada producte de Cart
 function oneMoreToCart(id) {
 
   let cartItem;
@@ -244,7 +246,6 @@ function oneMoreToCart(id) {
   counter++;
   document.getElementById("count_product").innerHTML = counter;
 
-  // Afegit botó '+' al modal per cada producte de Cart
 }
 
 function open_modal(){

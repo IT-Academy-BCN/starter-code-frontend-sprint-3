@@ -11,7 +11,7 @@ function validate() {
 	let regExpAdress = /^.{3,}$/;
 	let regExhPhone = /^\d{9}$/;
 
-// Get the input fields
+  // Get the input fields
 	let fName = document.getElementById("fName");
 	let fLastN = document.getElementById("fLastN");
 	let fEmail = document.getElementById("fEmail");
@@ -37,22 +37,20 @@ function validate() {
 			validation[i+6].classList.add("is-valid");
 			validation[i+6].classList.remove("is-invalid");
 		}
-
 	}
-
-	/*
+	
 	//Versió amb elements del DOM
 
 	// Get the error elements
-	let errorName = document.getElementById("errorName");
+	/* let errorName = document.getElementById("errorName");
 	let errorLastN = document.getElementById("errorLastN");
 	let errorEmail = document.getElementById("errorEmail");
 	let errorPassword = document.getElementById("errorPassword");
 	let errorAddress = document.getElementById("errorAddress");
-	let errorPhone = document.getElementById("errorPhone");
+	let errorPhone = document.getElementById("errorPhone"); */
 	
 	// Agafem els elements de no-error
-	let correctName = document.getElementById("correctName");
+	/* let correctName = document.getElementById("correctName");
 	let correctLastN = document.getElementById("correctLastN");
 	let correctEmail = document.getElementById("correctEmail");
 	let correctPassword = document.getElementById("correctPassword");
