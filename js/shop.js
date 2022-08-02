@@ -20,13 +20,10 @@ function buy(id) {
 
       // Tornem els objectes al format original, si ja han estat triats abans
       product = products[i];
-      delete product.quantity;
-      delete product.subTotal;
-      delete product.subTotalWithDiscount;
 
       if (product.id == id) {
 
-        productChosen = product;
+        productChosen = {...product};
         found = true;
       }
   }
@@ -79,8 +76,8 @@ function generateCart() {
   let i, cartListItem, cartItem;
   for (i = 0; i < cartList.length; i++) {
 
-      cartListItem = cartList[i];
-      cartItemIndex = cart.findIndex(element => element.id === cartListItem.id);
+      cartListItem = {...cartList[i]};
+      const cartItemIndex = cart.findIndex(element => element.id === cartListItem.id);
       
       if (cartItemIndex == -1) {
 
@@ -108,10 +105,10 @@ function applyPromotionsCart() {
   // Funció applyPromotionsCart() afegit a la funció GenerateCart()
   // Nous càlculs de les promocions segons "percent" de "products"
 
-  let i, cartItem;
+  let i;
   for(i = 0; i < cart.length; i++) {
 
-    cartItem = cart[i];
+    const cartItem = cart[i];
 
     if ((cartItem.id == 1 || cartItem.id == 3) && cartItem.quantity >= cartItem.offer.number ) {
 
@@ -164,15 +161,15 @@ function addToCart(id) {
 
   let productChosen, cartItem;
   // Els objectes no queden com originalment a products :-(
-  let productChosenIndex = products.findIndex(element => element.id === id);
+  const productChosenIndex = products.findIndex(element => element.id === id);
 
     if (productChosenIndex != -1) {
 
-      productChosen = products[productChosenIndex];
+      productChosen = {...products[productChosenIndex]};
       counter++;
     }
 
-  let cartItemIndex = cart.findIndex(element => element.id === productChosen.id);
+  const cartItemIndex = cart.findIndex(element => element.id === productChosen.id);
 
     if(cartItemIndex == -1) {
 
@@ -199,7 +196,7 @@ function addToCart(id) {
 function removeFromCart(id) {
 
   let cartItem;
-  let cartItemIndex = cart.findIndex(element => element.id === id);
+  const cartItemIndex = cart.findIndex(element => element.id === id);
 
     if (cartItemIndex != -1) {
 
@@ -229,7 +226,7 @@ function removeFromCart(id) {
 function oneMoreToCart(id) {
 
   let cartItem;
-  let cartItemIndex = cart.findIndex(element => element.id === id);
+  const cartItemIndex = cart.findIndex(element => element.id === id);
 
     if (cartItemIndex != -1) {
 
