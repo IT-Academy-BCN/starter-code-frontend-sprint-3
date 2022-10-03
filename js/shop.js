@@ -21,7 +21,9 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-    cartList = [];
+    cart = [];
+    printCart();
+    // cartList = [];
     // console.log("borrado cartlist", cartList);
 }
 
@@ -56,6 +58,7 @@ function generateCart() {
             cart.push(cartList[i]);
         }
     }
+    printCart();
     applyPromotionsCart();
     // console.log("array cart", cart);
 }
@@ -77,12 +80,28 @@ function applyPromotionsCart() {
             console.log("subtotal con promocion cupcake", cart[i].subtotalWithDiscount.toFixed(2));
         }
     }
-    console.log("cart",cart);
 }
 
 // Exercise 6
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    document.getElementById("cart_list").innerHTML = "";
+    let num = 0;
+    let contador = 0;
+    
+    for(let i in cart){
+        document.getElementById("cart_list").innerHTML += 
+        `<tr>
+        <th scope="row">${cart[i].name}</th>
+        <td>$${cart[i].price}</td>
+        <td>${cart[i].quantity}</td>
+        <td>$${parseFloat(cart[i].subtotalWithDiscount.toFixed(2))}</td>
+        </tr>`;
+        num += cart[i].subtotalWithDiscount;
+        contador += cart[i].quantity;
+    }
+    document.getElementById("total_price").innerHTML = parseFloat(num.toFixed(2)); 
+    document.getElementById("count_product").innerHTML = contador;
 }
 
 
