@@ -16,13 +16,13 @@ function buy(id) {
         }
     }
     calculateTotal();
-    console.log("carlist", cartList);
+    // console.log("carlist", cartList);
 }
 
 // Exercise 2
 function cleanCart() {
     cartList = [];
-    console.log("borrado cartlist", cartList);
+    // console.log("borrado cartlist", cartList);
 }
 
 // Exercise 3
@@ -32,13 +32,32 @@ function calculateTotal() {
     for(let i = 0; i < cartList.length; i++){
         total += cartList[i].price;
     }
-    console.log("precio total", total);
+    // console.log("precio total", total);
 }
 
 // Exercise 4
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    cart = [];
+
+    for(let i in cartList){
+        let valor = false;
+        if(valor = cart.find(producto => producto.id == cartList[i].id)){
+            valor.quantity++
+            valor.subtotal = valor.price * valor.quantity;
+            valor.subtotalWithDiscount = valor.price * valor.quantity;
+            valor = true;  
+        }      
+        if(!valor){
+            cartList[i]['quantity'] = 1;
+            cartList[i].subtotal =  cartList[i].price;
+            cartList[i].subtotalWithDiscount =  cartList[i].price;
+            cart.push(cartList[i]);
+        }
+    }
+    applyPromotionsCart();
+    console.log("array cart", cart);
 }
 
 // Exercise 5
