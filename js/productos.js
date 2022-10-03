@@ -1,4 +1,3 @@
-// Si tiene tiempo, puede mover esta variable "productos" a un archivo json o js y cargar los datos en este js. Se verá más profesional.
 var products = [
     {
          id: 1,
