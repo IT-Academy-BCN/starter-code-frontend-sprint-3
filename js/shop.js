@@ -57,12 +57,27 @@ function generateCart() {
         }
     }
     applyPromotionsCart();
-    console.log("array cart", cart);
+    // console.log("array cart", cart);
 }
 
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    for(let i in cart){
+        if(cart[i].id == 1 && cart[i].quantity >= 3){
+            cart[i].subtotalWithDiscount = cart[i].subtotal - 10;
+
+            console.log("subtotal oil", cart[i].subtotal);
+            console.log("subtotal con promocion oil", cart[i].subtotalWithDiscount.toFixed(2));
+
+        }else if(cart[i].id == 3 && cart[i].quantity >= 10){
+            cart[i].subtotalWithDiscount = (cart[i].subtotal / 3) * 2;
+
+            console.log("subtotal cupcake", cart[i].subtotal);
+            console.log("subtotal con promocion cupcake", cart[i].subtotalWithDiscount.toFixed(2));
+        }
+    }
+    console.log("cart",cart);
 }
 
 // Exercise 6
