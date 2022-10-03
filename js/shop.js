@@ -70,14 +70,14 @@ function applyPromotionsCart() {
         if(cart[i].id == 1 && cart[i].quantity >= 3){
             cart[i].subtotalWithDiscount = cart[i].subtotal - 10;
 
-            console.log("subtotal oil", cart[i].subtotal);
-            console.log("subtotal con promocion oil", cart[i].subtotalWithDiscount.toFixed(2));
+            // console.log("subtotal oil", cart[i].subtotal);
+            // console.log("subtotal con promocion oil", cart[i].subtotalWithDiscount.toFixed(2));
 
         }else if(cart[i].id == 3 && cart[i].quantity >= 10){
             cart[i].subtotalWithDiscount = (cart[i].subtotal / 3) * 2;
 
-            console.log("subtotal cupcake", cart[i].subtotal);
-            console.log("subtotal con promocion cupcake", cart[i].subtotalWithDiscount.toFixed(2));
+            // console.log("subtotal cupcake", cart[i].subtotal);
+            // console.log("subtotal con promocion cupcake", cart[i].subtotalWithDiscount.toFixed(2));
         }
     }
 }
@@ -107,14 +107,14 @@ function printCart() {
 
 // ** Nivell II **
 
-// Exercise 7
+// Exercise 8
 function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
