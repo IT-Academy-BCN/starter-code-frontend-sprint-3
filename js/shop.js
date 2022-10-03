@@ -3,7 +3,6 @@ var cartList = [];
 
 // Improved version of cartList. Cart is an array of products (objects), but each one has a quantity field to define its quantity, so these products are not repeated.
 var cart = [];
-
 var total = 0;
 
 // Exercise 1
@@ -91,10 +90,12 @@ function printCart() {
     for(let i in cart){
         document.getElementById("cart_list").innerHTML += 
         `<tr>
-        <th scope="row">${cart[i].name}</th>
-        <td>$${cart[i].price}</td>
-        <td>${cart[i].quantity}</td>
-        <td>$${parseFloat(cart[i].subtotalWithDiscount.toFixed(2))}</td>
+            <th scope="row">${cart[i].name}</th>
+            <td>$${cart[i].price}</td>
+            <td>${cart[i].quantity}
+                <button class="border-2 rounded btn-outline-dark" onclick ="removeFromCart(${cart[i].id})">-</button>
+            </td>
+            <td>$${parseFloat(cart[i].subtotalWithDiscount.toFixed(2))}</td>
         </tr>`;
         num += cart[i].subtotalWithDiscount;
         contador += cart[i].quantity;
@@ -139,6 +140,17 @@ function addToCart(id) {
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+    for(let i in cart){
+        if(id == cart[i].id){
+            cart[i].quantity--;
+            cart[i].subtotal = cart[i].price * cart[i].quantity;
+            cart[i].subtotalWithDiscount = cart[i].price * cart[i].quantity;
+            if(cart[i].quantity < 1){
+                cart.splice(i,1)
+            }
+        }
+    }
+    printCart()
 }
 
 function open_modal(){
