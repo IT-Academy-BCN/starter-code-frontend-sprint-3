@@ -20,31 +20,39 @@ var total = 0;
     // 2. Add found product to the cartList array
     cartList.push(product)
     return cartList
-}
+}*/
 
 // Provando si las ofertas se aplican
-buy(1)
-buy(1)
-buy(1)
-buy(2)
-buy(2)
-buy(3)
-buy(3)
-buy(3)
-buy(3)
-buy(3)
-buy(3)
-buy(3)
-buy(3)
-buy(3)
-buy(3)
+//buy(1)
+//buy(1)
+//buy(1)
+//buy(2)
+//buy(2)
+//buy(3)
+//buy(3)
+//buy(3)
+//buy(3)
+//buy(3)
+//buy(3)
+//buy(3)
+//buy(3)
+//buy(3)
+//buy(3)
 
-console.log(cartList)
-*/
+//console.log(cartList);
+
 // Exercise 2
 function cleanCart() {
-    cartList.length = 0
+    cart.length = 0;
+     //Agafem la llista de productes i el total
+     let carrito = document.getElementById('cart_list')
+     let totalCarrito = document.getElementById('total_price')
+ 
+     //Ho vuidem
+     carrito.innerHTML = " "
+     totalCarrito.innerHTML = " "
 }
+
 
 // Exercise 3
 function calculateTotal() {
@@ -53,8 +61,6 @@ function calculateTotal() {
         var productPrice = cartList[i].price
         total += productPrice
     }
-
-    console.log(total)
     return total
 }
 
@@ -107,7 +113,7 @@ function applyPromotionsCart() {
         }
     }
 }
-applyPromotionsCart();
+//applyPromotionsCart();
 
 // Exercise 6
 function printCart() {
@@ -147,12 +153,14 @@ function printCart() {
 
     }
      //Recorrem la llista per calcular el preu total de la llista
-    let totalProd = 0 
+    let totalProd = 0
 
     for (let i = 0; i< cart.length; i++) {
 
         let productDisc = cart[i].subtotalWithDiscount
-        totalProd += productDisc
+        let prodPrice = cart[i].subtotal
+        totalProd += (productDisc + prodPrice)
+        console.log(totalProd);
         
     }
 
@@ -168,6 +176,12 @@ function printCart() {
 
 // Exercise 7
 function addToCart(id) {
+
+    //Update de Cart counter
+
+    let carritoCount = document.getElementById('count_product')
+    carritoCount.innerHTML = Number(carritoCount.innerHTML) + 1
+
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     var selectedItem;
@@ -205,12 +219,12 @@ function addToCart(id) {
     }
 }
 
-addToCart(1);
-addToCart(1);
-addToCart(1);
-addToCart(2);
+//addToCart(1);
+//addToCart(1);
+//addToCart(1);
+//addToCart(2);
 
-console.log(cart);
+//console.log(cart);
 
 // Exercise 8
 function removeFromCart(id) {
