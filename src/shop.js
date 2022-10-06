@@ -8,7 +8,7 @@ var cart = [];
 var total = 0;
 
 // Exercise 1
-/*function buy(id) {
+function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     var product
 
@@ -20,7 +20,7 @@ var total = 0;
     // 2. Add found product to the cartList array
     cartList.push(product)
     return cartList
-}*/
+}
 
 // Provando si las ofertas se aplican
 //buy(1)
@@ -39,23 +39,24 @@ var total = 0;
 //buy(3)
 //buy(3)
 
-//console.log(cartList);
-
 // Exercise 2
 function cleanCart() {
-    cart.length = 0;
+    cart.length = 0
      //Agafem la llista de productes i el total
      let carrito = document.getElementById('cart_list')
      let totalCarrito = document.getElementById('total_price')
+     let carritoCount = document.getElementById('count_product')
  
      //Ho vuidem
-     carrito.innerHTML = " "
-     totalCarrito.innerHTML = " "
+     total = 0
+     carrito.innerHTML = ""
+     totalCarrito.innerHTML = 0
+     carritoCount.innerHTML = 0
 }
-
 
 // Exercise 3
 function calculateTotal() {
+    total = 0
     // Calculate total price of the cart using the "cartList" array
     for (let i = 0; i< cartList.length; i++) {
         var productPrice = cartList[i].price
@@ -64,7 +65,6 @@ function calculateTotal() {
     return total
 }
 
-calculateTotal()
 
 // Exercise 4
 /*function generateCart() {
@@ -147,22 +147,30 @@ function printCart() {
         qty.innerHTML = cart[i].quantity
         carrito.appendChild(qty)
 
+        
         let totalDisc = document.createElement('td')
-        totalDisc.innerHTML = '$ ' + (cart[i].subtotalWithDiscount).toFixed(2)
+
+        if(cart[i].subtotalWithDiscount == cart[i].price) {
+            totalDisc.innerHTML = '$ ' + (cart[i].subtotal).toFixed(2)
+        } else {
+            totalDisc.innerHTML = '$ ' + (cart[i].subtotalWithDiscount).toFixed(2)
+        }
+        
         carrito.appendChild(totalDisc)
 
     }
      //Recorrem la llista per calcular el preu total de la llista
     let totalProd = 0
+    
 
     for (let i = 0; i< cart.length; i++) {
-
-        let productDisc = cart[i].subtotalWithDiscount
-        let prodPrice = cart[i].subtotal
-        totalProd += (productDisc + prodPrice)
-        console.log(totalProd);
-        
+        if (cart[i].offer == undefined) {
+            totalProd += cart[i].subtotal
+        } else {
+            totalProd = cart[i].subtotal + cart[i].subtotalWithDiscount
+        }
     }
+    
 
     //Adherim el preu total al total.
     let totalPrecio = document.createElement('span')
@@ -178,9 +186,9 @@ function printCart() {
 function addToCart(id) {
 
     //Update de Cart counter
-
     let carritoCount = document.getElementById('count_product')
     carritoCount.innerHTML = Number(carritoCount.innerHTML) + 1
+    
 
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
@@ -194,7 +202,7 @@ function addToCart(id) {
     
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
     if (cart.length < 1){
-        cart.push({...selectedItem, quantity: 1, subtotal: selectedItem.price, subtotalWithDiscount: 0});
+        cart.push({...selectedItem, quantity: 1, subtotal: selectedItem.price, subtotalWithDiscount: selectedItem.price});
 
     } else {
 
@@ -205,11 +213,11 @@ function addToCart(id) {
         var index = cart.findIndex(checkExist); 
 
         if ( index == -1){
-            cart.push({...selectedItem, quantity: 1, subtotal: selectedItem.price, subtotalWithDiscount: 0});
+            cart.push({...selectedItem, quantity: 1, subtotal: selectedItem.price, subtotalWithDiscount: selectedItem.price});
 
         } else {
             cart[index].quantity++;
-            cart[index].subtotal += cart[index].price;
+            cart[index].subtotal = cart[index].quantity * selectedItem.price;
 
             if (cart[index].offer !== undefined && cart[index].quantity >= cart[index].offer.number) {
     
@@ -228,6 +236,9 @@ function addToCart(id) {
 
 // Exercise 8
 function removeFromCart(id) {
+
+    let carritoCount = document.getElementById('count_product')
+    carritoCount.innerHTML = Number(carritoCount.innerHTML) - 1
 
     // 1. Loop for to the array products to get the item to to decrease from cart
     var selectedItem;
