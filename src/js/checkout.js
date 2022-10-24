@@ -1,8 +1,10 @@
-// Exercise 6
-function validate() {
-  var error = 0;
+import { openModalSell, cleanCart } from "./main";
 
+// Exercise 6
+export function validate() {
+  let error;
   let form = document.querySelector(".form");
+  let modalSell = document.querySelector(".modal-sell");
 
   // Get the input fields
   var fName = document.getElementById("fName");
@@ -73,7 +75,10 @@ function validate() {
     });
   }
 
+  let sold = false;
+
   form.addEventListener("submit", (e) => {
+    error = 0;
     e.preventDefault();
     checkNameFormat(fName);
     checkNameFormat(fLastN);
@@ -82,5 +87,65 @@ function validate() {
     checkAddressFormat();
     checkPhoneFormat();
     checkShortFields();
+
+    if (error === 0 && !sold) {
+      generateModalSellContent();
+      openModalSell();
+      cleanCart();
+      sold = true;
+    }
   });
+}
+
+const modalSellContent = document.querySelector(".modal-sell .modal-content");
+let cart = JSON.parse(window.localStorage.getItem("cart"));
+const total = JSON.parse(window.localStorage.getItem("total"));
+const units = JSON.parse(window.localStorage.getItem("units"));
+
+function generateModalSellContent() {
+  if (units > 1) {
+    modalSellContent.insertAdjacentHTML(
+      "afterbegin",
+      `<p>
+  You bought ${units} products which cost ${total}€<br />
+  but in IT Academy they are
+  </p>
+  <p class="free">Free</p>`
+    );
+  } else {
+    modalSellContent.insertAdjacentHTML(
+      "afterbegin",
+      `<p>
+  You bought 1 product which costs ${total}€<br />
+  but in IT Academy it is
+  </p>
+  <p class="free">Free</p>`
+    );
+  }
+}
+
+export function addCartSummary() {
+  cart = JSON.parse(window.localStorage.getItem("cart"));
+
+  // Clean if already generated
+  document.querySelector(".cart-summary").innerHTML = "";
+
+  let cartHTML = "";
+
+  cart.forEach((el) => {
+    cartHTML += `<div class="card ${el.name.toLowerCase()}">
+    <div class="card__img--wrapper">
+      <div class="card__img"></div>
+    </div>
+    <div class="round-button">x ${el.quantity}</div>
+    <div class="card__info">
+      <h3 class="card__title">${el.name}</h3>
+      <p class="card__price">${
+        el.subtotalWithDiscount ? el.subtotalWithDiscount + "€ (" + el.offer.percent + "% DISC)" : el.subtotal + "€"
+      }</p>
+    </div>
+  </div>`;
+  });
+
+  document.querySelector(".cart-summary").insertAdjacentHTML("afterbegin", `${cartHTML}`);
 }

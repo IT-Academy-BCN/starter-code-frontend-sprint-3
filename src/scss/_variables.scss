@@ -1,0 +1,43 @@
+// Header height must fit with multiplier of hearderHeight const in main.js
+$header-factor: 35;
+$header-height: calc($header-factor * 1vh);
+$header-percent: calc($header-factor * 1%);
+$light: white;
+$dark: #d21684;
+$dark-overlay: rgba(137, 17, 87, 0.6);
+$padding: 60px;
+$padding-mobile: 5.5vw;
+
+// TODO: Fonts only load in 2 weights
+
+@font-face {
+  font-family: "Ridley";
+  font-weight: 900;
+  src: url("../assets/fonts/Ridley Grotesk Black.woff2") format("woff2"),
+    url("../assets/fonts/Ridley Grotesk Black.woff") format("woff"),
+    url("../assets/fonts/Ridley Grotesk Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ridley";
+  font-weight: 700;
+  src: url("../assets/fonts/Ridley Grotesk Bold.woff2") format("woff2"),
+    url("../assets/fonts/Ridley Grotesk Bold.woff") format("woff"),
+    url("../assets/fonts/Ridley Grotesk Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ridley";
+  font-weight: 400;
+  src: url("../assets/fonts/Ridley Grotesk Regular.woff2") format("woff2"),
+    url("../assets/fonts/Ridley Grotesk Regular.woff") format("woff"),
+    url("../assets/fonts/Ridley Grotesk Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Ridley";
+  font-weight: 100;
+  src: url("../assets/fonts/Ridley Grotesk Light.woff2") format("woff2"),
+    url("../assets/fonts/Ridley Grotesk Light.woff") format("woff"),
+    url("../assets/fonts/Ridley Grotesk Light.ttf") format("truetype");
+}

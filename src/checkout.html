@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" id="checkout">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="scss/main.scss" />
+    <title>Checkout</title>
+  </head>
+  <body class="checkout">
+    <div class="header-wrapper">
+      <header class="responsive-header">
+        <div class="header-content">
+          <div class="primary-anchor like">
+            <span class="like-title">Like</span>
+            <span class="like-counter">10</span>
+            <svg class="icon" width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M14.447 0.95727C12.7345 -0.502078 10.1877 -0.239583 8.61584 1.38226L8.00023 2.01663L7.38462 1.38226C5.8159 -0.239583 3.26595 -0.502078 1.55348 0.95727C-0.408984 2.63224 -0.512107 5.63843 1.24411 7.45403L7.29087 13.6977C7.68149 14.1008 8.31585 14.1008 8.70647 13.6977L14.7532 7.45403C16.5126 5.63843 16.4094 2.63224 14.447 0.95727V0.95727Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <nav>
+            <a class="primary-anchor" href="index.html">Home</a>
+          </nav>
+          <div class="primary-anchor cart" href="">Cart <span class="icon cart-counter">0</span></div>
+        </div>
+        <h2 class="heading" id="checkout-heading">Checkout</h2>
+      </header>
+    </div>
+    <main>
+      <div class="cart-summary"></div>
+      <form class="form" novalidate>
+        <div class="input-wrapper">
+          <label for="fName" class="form-label primary-anchor dark-anchor">First Name</label>
+          <input id="fName" class="form-control" type="text" placeholder="First Name" />
+          <div id="errorName" class="invalid-feedback">
+            This field is required and must have, at least, 3 characters
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label for="fLastN" class="form-label primary-anchor dark-anchor">Last Name</label>
+          <input id="fLastN" class="form-control" type="text" placeholder="Last Name" minlength="3" />
+          <div id="errorLastN" class="invalid-feedback">
+            This field is required and must have, at least, 3 characters
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label for="fEmail" class="form-label primary-anchor dark-anchor">Email</label>
+          <input id="fEmail" class="form-control ml-3" type="email" placeholder="Email" autocomplete="off" />
+          <div id="errorEmail" class="invalid-feedback">
+            This field is required and must contain an '@' and a '.' and have, at least, 3 characters
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label for="fPassword" class="form-label primary-anchor dark-anchor">Password</label>
+          <input
+            id="fPassword"
+            class="form-control"
+            title="(3-15 characters)"
+            type="password"
+            minlength="4"
+            maxlength="15"
+            placeholder="Password"
+          />
+          <div id="errorPassword" class="invalid-feedback">
+            Password must include a digit, a capital letter and a symbol
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label for="fAddress" class="form-label primary-anchor dark-anchor">Address</label>
+          <input id="fAddress" class="form-control" type="text" placeholder="Address" minlength="3" />
+          <div id="errorAddress" class="invalid-feedback">
+            This field is required and must have, at least, 3 characters
+          </div>
+        </div>
+        <div class="input-wrapper">
+          <label for="fPhone" class="form-label primary-anchor dark-anchor">Phone Number</label>
+          <input id="fPhone" class="form-control" type="number" placeholder="Phone Number" />
+          <div id="errorPhone" class="invalid-feedback">Invalid phone number!! Must be 9 digits with no letters</div>
+        </div>
+        <div class="input-wrapper submit">
+          <button type="submit" class="primary-anchor dark-anchor">Send</button>
+        </div>
+      </form>
+    </main>
+    <footer>
+      <h3 class="footer-heading">
+        IT academy<br />
+        shop
+      </h3>
+      <nav class="footer-nav">
+        <a class="primary-anchor" href="#front">Front</a>
+        <a class="primary-anchor" href="#back">Back</a>
+        <a class="primary-anchor" href="#data">Data</a>
+      </nav>
+      <p class="address">
+        CIBERNÀRIUM 22@
+        <br />
+        <br />
+        Edifici Media-TIC
+        <br />
+        C/ Roc Boronat 117 1a planta
+      </p>
+      <div class="logos">
+        <img src="assets/img/activa-logo.svg" alt="logo of barcelona activa" />
+        <img src="assets/img/ajunta-logo.svg" alt="logo of ajuntament de Barcelona" />
+        <img src="assets/img/europa-logo.svg" alt="logo of european union" />
+      </div>
+      <img class="map" src="assets/img/map.png" alt="map of IT academy" />
+      <div class="building-box"></div>
+      <img class="building" src="assets/img/building.png" alt="Cibernarium building" />
+    </footer>
+
+    <div class="modal-cart">
+      <div class="modal-bg modal-bg-cart"></div>
+      <div class="modal-dialog">
+        <div class="modal-header heading">Cart</div>
+        <div class="modal-content">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Total</th>
+                <th scope="col">Remove</th>
+              </tr>
+            </thead>
+            <tbody id="cart_list"></tbody>
+          </table>
+        </div>
+        <div class="modal-total">
+          <div class="total-title">Total</div>
+          <div class="total-price">20000€</div>
+        </div>
+        <div class="modal-buttons">
+          <a class="checkout-button" href="checkout.html">Checkout</a>
+          <div class="clean-button">Clean</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-sell">
+      <div class="modal-bg modal-bg-sell"></div>
+      <div class="modal-dialog">
+        <div class="modal-header heading">Thank you</div>
+        <div class="modal-content"></div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

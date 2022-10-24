@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "name": "React",
+    "price": 3000,
+    "type": "front",
+    "offer": {
+      "number": 3,
+      "percent": 20
+    }
+  },
+  {
+    "id": 2,
+    "name": "Angular",
+    "price": 2000,
+    "type": "front"
+  },
+  {
+    "id": 3,
+    "name": "Vue",
+    "price": 2000,
+    "type": "front",
+    "offer": {
+      "number": 10,
+      "percent": 30
+    }
+  },
+  {
+    "id": 4,
+    "name": "Node",
+    "price": 2000,
+    "type": "back"
+  },
+  {
+    "id": 5,
+    "name": "Java",
+    "price": 2000,
+    "type": "back"
+  },
+  {
+    "id": 6,
+    "name": "Php",
+    "price": 2000,
+    "type": "back"
+  },
+  {
+    "id": 7,
+    "name": "C",
+    "price": 2000,
+    "type": "data"
+  },
+  {
+    "id": 8,
+    "name": "Python",
+    "price": 2000,
+    "type": "data"
+  },
+  {
+    "id": 9,
+    "name": "R",
+    "price": 2000,
+    "type": "data"
+  }
+]
