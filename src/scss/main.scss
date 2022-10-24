@@ -338,10 +338,13 @@ footer p {
 }
 
 .logos {
-  width: 50%;
   display: flex;
   justify-content: space-between;
   gap: 30px;
+}
+
+.logos * {
+  height: 100%;
 }
 
 .map,
