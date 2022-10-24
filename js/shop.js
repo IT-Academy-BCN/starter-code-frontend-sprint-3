@@ -91,6 +91,10 @@ function cleanCart() {
 // Exercise 3
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
+  total = 0;
+  const addToTotal = (price) => (total += price);
+  cartList.forEach((product) => addToTotal(product.price));
+  return total;
 }
 
 // Exercise 4
