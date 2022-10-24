@@ -122,6 +122,12 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
+  cart.forEach((product) => {
+    if (product.offer && product.quantity >= product.offer.number) {
+      product.subtotalWithDiscount = product.subtotal * (1 - product.offer.percent / 100);
+      product.subtotalWithDiscount = product.subtotalWithDiscount.toFixed(2);
+    }
+  });
 }
 
 // Exercise 6
