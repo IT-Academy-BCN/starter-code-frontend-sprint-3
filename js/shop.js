@@ -73,17 +73,17 @@ var cart = [];
 var total = 0;
 
 // Exercise 1
-function buy(id) {
-  // 1. Loop for to the array products to get the item to add to cart
-  // 2. Add found product to the cartList array
-  products.forEach((element) => {
-    if (element.id === id) {
-      cartList.push(element);
-    }
-  });
-  generateCart();
-  calculateTotal();
-}
+// function buy(id) {
+//   // 1. Loop for to the array products to get the item to add to cart
+//   // 2. Add found product to the cartList array
+//   products.forEach((element) => {
+//     if (element.id === id) {
+//       cartList.push(element);
+//     }
+//   });
+//   generateCart();
+//   calculateTotal();
+// }
 
 // Exercise 2
 function cleanCart() {
@@ -155,6 +155,13 @@ function printCart() {
   });
 }
 
+//Refactored
+function countCart() {
+  let units = 0;
+  cart.forEach((element) => (units += element.quantity));
+  document.getElementById("count_product").innerHTML = units;
+}
+
 // ** Nivell II **
 
 // Exercise 7
@@ -162,6 +169,27 @@ function addToCart(id) {
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+  products.forEach((element, index) => {
+    if (id === element.id) {
+      // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+      let cartIds = cart.map((product) => product.id);
+      const productIndex = cartIds.indexOf(id);
+      if (productIndex === -1) {
+        let cartProduct = element;
+        cartProduct.quantity = 1;
+        cartProduct.subtotal = cartProduct.price;
+        cartProduct.subtotal = Number(cartProduct.subtotal.toFixed(2));
+        cart.push(cartProduct);
+      } else {
+        cart[productIndex].quantity++;
+        cart[productIndex].subtotal = cart[productIndex].price * cart[productIndex].quantity;
+        cart[productIndex].subtotal = Number(cart[productIndex].subtotal.toFixed(2));
+        applyPromotionsCart();
+      }
+    }
+  });
+  countCart();
+  calculateTotal();
 }
 
 // Exercise 8
