@@ -95,8 +95,9 @@ function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
   total = 0;
   const addToTotal = (price) => (total += price);
-  cartList.forEach((product) => addToTotal(product.price));
-  return total;
+  cart.forEach((product) => addToTotal(product.subtotalWithDiscount ? product.subtotalWithDiscount : product.subtotal));
+
+  document.getElementById("total_price").innerHTML = total;
 }
 
 // Exercise 4
@@ -141,15 +142,16 @@ function printCart() {
   cart.forEach((product) => {
     cartTableBody.insertAdjacentHTML(
       "beforeend",
-      `<tr>
+      `<tr class="align-middle">
   <th scope="row">${product.name}</th>
   <td>$${product.price}</td>
   <td>${product.quantity}</td>
   <td>$${
-    product.subtotalWithDiscount
+    product.subtotalWithDiscount < product.subtotal
       ? product.subtotalWithDiscount + " (" + product.offer.percent + "% Disc.)"
       : product.subtotal
   }</td>
+  <td><a onclick="removeFromCart(${product.id})" class="btn btn-primary">-</a></td>
   </tr>`
     );
   });
@@ -196,6 +198,18 @@ function addToCart(id) {
 function removeFromCart(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
+  // 1. Loop for to the array cart to get the item to remove to cart
+  cart.forEach((product, index) => {
+    if (product.id === id) {
+      // 2. Remove found product from de cart array
+      product.quantity === 1 ? cart.splice(index, 1) : product.quantity--;
+      applyPromotionsCart();
+      console.log(product.subtotal, product.subtotalWithDiscount);
+    }
+  });
+  countCart();
+  calculateTotal();
+  printCart();
 }
 
 function open_modal() {
