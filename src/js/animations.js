@@ -4,6 +4,7 @@ gsap.registerPlugin(ScrollTrigger);
 import { Observer } from "gsap/Observer";
 gsap.registerPlugin(Observer);
 
+const main = document.querySelector("main");
 const header = document.querySelector("header");
 const headerContent = document.querySelector(".header-content");
 const subheading = document.querySelector(".subheading");
@@ -34,12 +35,23 @@ export function doNotAnimateHeader() {
   }
 }
 
+function preventScroll(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+}
+
 export function animateHeader() {
+  // Prevent scroll on main
+  main.addEventListener("touchmove", preventScroll, { passive: false });
+  main.addEventListener("wheel", preventScroll, { passive: false });
+
   Observer.create({
     target: header, // can be any element (selector text is fine)
     type: "wheel,touch", // comma-delimited list of what to listen for ("wheel,touch,scroll,pointer")
     // onUp: () => previous(),
     onDown: () => next(),
+    tolerance: 30,
     preventDefault: true,
   });
 
@@ -61,8 +73,22 @@ export function animateHeader() {
 }
 
 export function animateRespHeadings() {
+  enableScrollHeader();
+  disableScrollHeader();
   addRespHeaderHeight();
   animateHeadings();
+}
+
+function enableScrollHeader() {
+  setTimeout(() => {
+    main.removeEventListener("wheel", preventScroll, { passive: false });
+    main.removeEventListener("touchmove", preventScroll, { passive: false });
+  }, "500");
+}
+
+function disableScrollHeader() {
+  header.addEventListener("wheel", preventScroll, { passive: false });
+  header.addEventListener("touchmove", preventScroll, { passive: false });
 }
 
 export function addRespHeaderHeight() {
