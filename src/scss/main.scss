@@ -19,6 +19,7 @@ body {
   flex-direction: column;
   font-family: "Ridley", sans-serif;
   color: $light;
+  overscroll-behavior-y: none;
 }
 
 /* ------ HEADER ------ */
@@ -27,6 +28,7 @@ body {
   height: 0;
   position: sticky;
   bottom: 0;
+  z-index: 10;
 }
 
 header {
@@ -205,7 +207,7 @@ footer {
   height: 100%;
   width: 100%;
   object-fit: contain;
-  transition: filter 0.5s;
+  // transition: filter 0.5s;
   transition: transform 0.5s ease-in-out;
 }
 
