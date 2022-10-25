@@ -1,0 +1,177 @@
+/* ------ MODAL ------ */
+
+.modal-cart,
+.modal-sell {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  color: $dark;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000;
+}
+
+.modal-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -43%);
+  width: 800px;
+  background: $light;
+}
+
+.modal-header {
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+  display: inline-block;
+  padding: 25px;
+  text-align: center;
+}
+
+.empty-cart {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0 20px;
+}
+
+.modal-content {
+  max-height: 50vh;
+  overflow: scroll;
+}
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+  text-transform: uppercase;
+  border-top: 2px solid $dark;
+
+  th {
+    width: 20%;
+  }
+
+  tr {
+    height: 60px;
+  }
+
+  tr * {
+    text-align: center;
+  }
+
+  td {
+    font-weight: 100;
+  }
+
+  td .round-button {
+    // text-transform: lowercase;
+    display: inline-block;
+    padding: 3px 20px;
+    cursor: pointer;
+  }
+}
+
+.modal-total {
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  height: 120px;
+}
+
+.modal-cart:not(.empty) .modal-total {
+  border-top: 2px solid $dark;
+}
+
+.modal-total * {
+  flex: 1;
+}
+
+.total-title {
+  text-align: right;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 2px;
+  height: auto;
+  align-items: center;
+}
+
+.modal-buttons * {
+  flex: 1;
+  color: $light;
+  text-transform: uppercase;
+  text-align: center;
+  background: $dark;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.checkout-button {
+  &:link,
+  &:visited,
+  &:active {
+    text-decoration: none;
+    color: $light;
+  }
+}
+
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: $dark-overlay;
+}
+
+/* ----- MODAL SELL ----- */
+
+.modal-sell .modal-content {
+  border-width: 2px 0 0 0;
+  padding: 40px 0;
+  background: $dark;
+}
+
+.modal-sell p {
+  text-align: center;
+  color: $light;
+}
+
+.free {
+  font-weight: 900;
+  text-transform: uppercase;
+  padding-top: 25px;
+}
+
+/* =========================================
+            RESPONSIVE
+============================================ */
+
+@media (max-width: 780px) {
+  .modal-cart,
+  .modal-sell {
+    padding: $padding-mobile;
+    box-sizing: border-box;
+  }
+
+  .modal-dialog {
+    position: relative;
+    width: 100%;
+  }
+
+  .modal-content {
+    max-height: 40vh;
+  }
+
+  .modal-total,
+  .modal-buttons * {
+    height: 60px;
+  }
+}

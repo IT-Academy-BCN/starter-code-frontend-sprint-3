@@ -1,0 +1,38 @@
+/* ------ COMPONENTS ------ */
+
+.primary-anchor {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: $light;
+
+  &:link,
+  &:visited,
+  &:active {
+    text-decoration: none;
+    color: $light;
+  }
+}
+
+.dark-anchor {
+  color: $dark;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: $dark;
+  }
+}
+
+.heading {
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.round-button {
+  padding: 3px 6px;
+  text-transform: uppercase;
+  font-weight: 100;
+  background: #aa2b97;
+  color: $light;
+  border-radius: 10px;
+}

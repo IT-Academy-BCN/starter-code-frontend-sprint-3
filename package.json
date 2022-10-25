@@ -1,0 +1,23 @@
+{
+  "name": "redesign",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel --open",
+    "clean": "rm -rf dist/*",
+    "build:parcel": "parcel build --no-content-hash --no-source-maps --public-url ./",
+    "build": "npm run clean && npm run build:parcel"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "firebase": "^9.12.1",
+    "gsap": "^3.11.3"
+  }
+}

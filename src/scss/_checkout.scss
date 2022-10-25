@@ -1,0 +1,191 @@
+/* ------ SUMMARY ------ */
+
+.checkout .cart-summary {
+  display: flex;
+
+  > * {
+    flex: 1;
+  }
+}
+
+#checkout .card .round-button {
+  // padding: 3px 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.checkout .card__img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.checkout {
+  .react .card__img {
+    background-image: url("../assets/img/react.svg");
+  }
+
+  .angular .card__img {
+    background-image: url("../assets/img/angular.svg");
+  }
+
+  .vue .card__img {
+    background-image: url("../assets/img/vue.svg");
+  }
+
+  .node .card__img {
+    background-image: url("../assets/img/node.svg");
+  }
+
+  .java .card__img {
+    background-image: url("../assets/img/java.svg");
+  }
+
+  .php .card__img {
+    background-image: url("../assets/img/php.svg");
+  }
+
+  .c .card__img {
+    background-image: url("../assets/img/c.svg");
+  }
+
+  .python .card__img {
+    background-image: url("../assets/img/python.svg");
+  }
+
+  .r .card__img {
+    background-image: url("../assets/img/r.svg");
+  }
+}
+
+/* ------ FORM ------ */
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: calc(100vh - $header-height);
+  gap: 2px;
+  border-top: 2px solid $dark;
+}
+
+input,
+button {
+  width: 100%;
+  height: calc((100vh - $header-height) / 4);
+}
+
+.input-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.form-label {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: $padding;
+  transition: top 0.3s;
+}
+
+input:not(:placeholder-shown) + .form-label,
+input:focus + .form-label {
+  top: 25%;
+}
+
+input {
+  text-indent: $padding;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 2px $dark;
+  border: none;
+  color: $dark;
+  font-weight: 400;
+}
+
+input::placeholder {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: $dark;
+  font-family: "Ridley", sans-serif;
+  opacity: 1;
+  text-indent: $padding;
+}
+
+.submit button {
+  background-color: $light;
+  border: none;
+  font-weight: 900;
+  font-family: "Ridley", sans-serif;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $dark;
+    color: $light;
+  }
+}
+
+.submit {
+  grid-column: 1/3;
+}
+
+.invalid-feedback {
+  font-weight: 100;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: $light;
+  background: $dark;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+  text-indent: 0;
+  padding-left: $padding;
+}
+
+.invalid-feedback-shown {
+  transform: translateY(0);
+}
+
+/* =========================================
+            RESPONSIVE
+============================================ */
+
+@media (max-width: 780px) {
+  .checkout .cart-summary {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+  }
+}
+
+@media (max-width: 500px) {
+  .checkout .cart-summary {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input-wrapper {
+    flex: 1;
+  }
+
+  input,
+  button {
+    height: 100%;
+    text-indent: $padding-mobile;
+  }
+
+  .submit button {
+    background: $dark;
+    color: $light;
+    width: auto;
+  }
+}
