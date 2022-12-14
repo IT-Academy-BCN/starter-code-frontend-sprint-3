@@ -10,13 +10,17 @@
         <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+		<link rel="stylesheet" href="/css/customStyle.css">
+
 		<!-- Bootstrap icons-->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <!-- Core theme CSS (includes Bootstrap)-->
     </head>
     <body data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="50">
-        <!-- Navigation-->
+        <!-- BG Image -->
+		
+		<!-- Navigation-->
 		<nav class="navbar py-3 py-lg-0 navbar-light bg-light navbar-expand-lg" id="navbar-example2">
 			 <div class="container d-flex">
 				 <a class="navbar-brand" href="#!">ShopNow</a>
@@ -67,156 +71,576 @@
 			<div class="container px-4 px-lg-5 mt-5">
 				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-groceries card shadow">
+							<img class="product-picture" src="./images/olive_oil.png" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">Cooking Oil</h5>
-									$10.5
+									<h5 class="fw-bolder product-name">Cooking Oil</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$10.5</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(1)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(1)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(1)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-groceries card shadow">
+							<img class="product-picture" src="./images/olive_oil.png" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">Pasta</h5>
-									$6.25
+									<h5 class="fw-bolder product-name">Cooking Oil</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$10.5</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(1)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(1)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(2)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-groceries card shadow">
+							<img class="product-picture" src="./images/olive_oil.png" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">Instant cupcake mixture</h5>
-									$5
+									<h5 class="fw-bolder product-name">Cooking Oil</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$10.5</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(1)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(1)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(3)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
-	   
+					<div class="col mb-5">
+						<div class="product-card-groceries card shadow">
+							<img class="product-picture" src="./images/pasta.png" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Pasta</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$6.25</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(2)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(2)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-groceries card shadow">
+							<img class="product-picture" src="./images/pasta.png" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Pasta</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$6.25</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(2)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(2)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-groceries card shadow">
+							<img class="product-picture" src="./images/pasta.png" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Pasta</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$6.25</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(2)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(2)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-groceries card shadow">
+							<img class="product-picture" src="./images/cupcake.png" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Instant cupcacke mix</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$5</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(3)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(3)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-groceries card shadow">
+							<img class="product-picture" src="./images/cupcake.png" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Instant cupcacke mix</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$5</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(3)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(3)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
-		<section class="pt-5" id="beauty">
-			 <h2 class="text-center"><i class="fas fa-heart pe-3"></i>Beauty</h2>
+		<section class="pt-5 bgColor reveal" id="beauty">
+			<h2 class="text-center beautyColor"><i class="fas fa-heart pe-3 beautyColor"></i>Beauty</h2>
 			<div class="container px-4 px-lg-5 mt-5">
 				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-beauty card shadow">
+							<img class="product-picture rounded" src="./images/all-in-one.jpg" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">All-in-1</h5>
-									$260
+									<h5 class="fw-bolder product-name">All-in-1</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$260</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(4)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(4)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(4)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-beauty card shadow">
+							<img class="product-picture rounded" src="./images/palette.webp" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">Zero makeup kit</h5>
-									$20.5
+									<h5 class="fw-bolder product-name">Zero makeup kit</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$20.5</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(5)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(5)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(5)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-beauty card shadow">
+							<img class="product-picture" src="./images/lip-tint.webp" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">Lip tints</h5>
-									$12.75
+									<h5 class="fw-bolder product-name">Lip tints</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$12.75</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(6)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(6)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(6)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
-	   
+					<div class="col mb-5">
+						<div class="product-card-beauty card shadow">
+							<img class="product-picture rounded" src="./images/all-in-one.jpg" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">All-in-1</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$260</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(4)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(4)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-beauty card shadow">
+							<img class="product-picture rounded" src="./images/palette.webp" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Zero makeup kit</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$20.5</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(5)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(5)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-beauty card shadow">
+							<img class="product-picture" src="./images/lip-tint.webp" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Lip tints</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$12.75</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(6)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(6)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-beauty card shadow">
+							<img class="product-picture rounded" src="./images/all-in-one.jpg" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">All-in-1</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$260</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(4)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(4)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-beauty card shadow">
+							<img class="product-picture rounded" src="./images/palette.webp" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Zero makeup kit</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$20.5</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(5)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(5)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="slider">
+						<div class="slide-track">
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.pngg" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							<div class="slide">
+								<img src="https://i.postimg.cc/ZnrLHtvj/icon-7.png" height="100" alt="" />
+							</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
-		<section class="pt-5" id="clothes">
+		<section class="pt-5 reveal" id="clothes">
 			 <h2 class="text-center"><i class="fas fa-tshirt pe-3"></i>Clothes</h2>
 			<div class="container px-4 px-lg-5 mt-5">
 				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-clothes card shadow">
+							<img class="product-picture rounded" src="./images/product.svg" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">Lawn dress</h5>
-									$15
+									<h5 class="fw-bolder product-name">Lawn dress</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$15</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(7)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(7)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(7)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-clothes card shadow">
+							<img class="product-picture rounded" src="./images/product.svg" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">Lawn-chiffon combo</h5>
-									$19.99
+									<h5 class="fw-bolder product-name">Lawn dress</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$15</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(7)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(7)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(8)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
 					<div class="col mb-5">
-						<div class="card h-100">
-							<img class="card-img-top" src="./images/product.svg" alt="..." />
-							<div class="card-body p-4">
+						<div class="product-card-clothes card shadow">
+							<img class="product-picture rounded" src="./images/product.svg" alt="..." />
+							<div class="card-body p-4 card-details">
 								<div class="text-center">
-									<h5 class="fw-bolder">Toddler Frock</h5>
-									$9.99
+									<h5 class="fw-bolder product-name">Lawn-chiffon combo</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$19.99</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(8)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(8)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
 								</div>
-							</div>
-							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-								<div class="text-center"><button type="button" onclick="buy(9)" class="btn btn-outline-dark">Add to cart</button></div>
 							</div>
 						</div>
 					</div>
-	   
+					<div class="col mb-5">
+						<div class="product-card-clothes card shadow">
+							<img class="product-picture rounded" src="./images/product.svg" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Lawn-chiffon combo</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$19.99</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(8)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(8)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-clothes card shadow">
+							<img class="product-picture rounded" src="./images/product.svg" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Lawn-chiffon combo</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$19.99</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(8)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(8)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-clothes card shadow">
+							<img class="product-picture rounded" src="./images/product.svg" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Toddler Frock</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$9.99</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(9)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(9)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-5">
+						<div class="product-card-clothes card shadow">
+							<img class="product-picture rounded" src="./images/product.svg" alt="..." />
+							<div class="card-body p-4 card-details">
+								<div class="text-center">
+									<h5 class="fw-bolder product-name">Toddler Frock</h5>
+									<p class="stars">
+										<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (154)
+									</p>
+									<div class="bottom-row">
+										<p class="price">$9.99</p>
+										<div class="d-flex justify-content-end">
+											<button class="add-cart" onclick="addToCart(9)"><i class="fas fa-plus"></i></button>
+											<button class="add-cart" onclick="removeFromCart(9)"><img src="/images/dash-circle.png" class="img-dash-btn"><i class="minus-btn"></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
-	
         <!-- Footer-->
         <footer class="py-3 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-        </footer>
+			<h3 class="mb-5 text-white text-center pt-5">Contact us</h3>
+				<div class="row  pt-2 pb-5 pe-5 ps-5 bgMap">
+				<div class="col-lg-7">
+				  <form>
+					<div class="row d-flex justify-content-center">
+					  <div class="col-md-9">
+						<div class="row mb-4">
+						  <div class="col-md-6 mb-4 mb-md-0">
+							<div class="form-outline">
+							  <input type="text" id="form3Example1" class="form-control" />
+							  <label class="form-label text-white" for="form3Example1">First name</label>
+							</div>
+						  </div>
+						  <div class="col-md-6">
+							<div class="form-outline">
+							  <input type="email" id="form3Example2" class="form-control" />
+							  <label class="form-label text-white" for="form3Example2">Email Address</label>
+							</div>
+						  </div>
+						</div>
+						<div class="form-outline mb-4">
+						  <input type="text" id="form3Example3" class="form-control" />
+						  <label class="form-label text-white" for="form3Example3">Subject</label>
+						</div>
+						<div class="form-outline mb-4">
+						  <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+						  <label class="form-label text-white" for="form4Example3">Message</label>
+						</div>
+						<div class="text-center text-md-start">
+						  <button type="submit" class="btn btn-outline-light mb-5 mb-md-0">
+							Send
+						  </button>
+						</div>
+					  </div>
+					</div>
+				  </form>
+				</div>
+				<div class="col-lg-5">
+					<iframe
+					  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1779.560238340212!2d2.1896554161703765!3d41.39902796775828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a3ce1b97b0c1%3A0x6d484d4c48323d01!2sAmazon%20BCN15!5e0!3m2!1ses!2ses!4v1671012208819!5m2!1ses!2ses"
+					  class="h-100 w-100 pe-5" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+				  </div>
+			  </div>
+			  <div class="container pt-5 bg-dark"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+		</footer>
 		
 		<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
@@ -237,28 +661,10 @@
 						</tr>
 					  </thead>
 					  <tbody id="cart_list">
-						<tr>
-						  <th scope="row">Cooking oil</th>
-						  <td>$10.5</td>
-						  <td>2</td>
-						  <td>$21</td>
-						</tr>
-						<tr>
-						  <th scope="row">Pasta</th>
-						  <td>$6.25</td>
-						  <td>1</td>
-						  <td>$6.25</td>
-						</tr>
-						<tr>
-						  <th scope="row">Lawn dress</th>
-						  <td>$15</td>
-						  <td>3</td>
-						  <td>$45</td>
-						</tr>
 					  </tbody>
 				  </table>
 				  <div class="text-center fs-3">
-					Total: $<span id="total_price">100</span>
+					Total: $<span id="total_price"></span>
 				  </div>
 				  <div class="text-center"> 
 					<a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
@@ -275,5 +681,6 @@
         <!-- Core theme JS-->
         <script src="js/shop.js"></script>
 		<script src="js/checkout.js"></script>
+		<script src="js/animation.js"></script>
     </body>
 </html>

@@ -22,7 +22,7 @@
 	<!-- Navigation-->
 	<nav class="navbar py-3 py-lg-0 navbar-light bg-light navbar-expand-lg" id="navbar-example2">
 		<div class="container d-flex">
-			<a class="navbar-brand" href="#!">ShopNow</a>
+			<a class="navbar-brand" href="index.html">ShopNow</a>
 			<div class="d-flex flex-row order-lg-last align-items-center">
 
 				<button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse"
@@ -37,22 +37,6 @@
 								id="count_product">0</span>
 						</a>
 					</li>
-				</ul>
-			</div>
-
-			<div id="navbar" class="navbar-collapse collapse">
-
-				<ul class="navbar-nav me-auto mb-4 mb-lg-0 ms-lg-5">
-					<li class="nav-item">
-						<a class="nav-link" href="#grocery"><i class="fas fa-shopping-basket"></i> Grocery</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#beauty"><i class="fas fa-heart"></i> Beauty</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#clothes"><i class="fas fa-tshirt"></i> Clothes</a>
-					</li>
-
 				</ul>
 			</div>
 		</div>
@@ -77,24 +61,24 @@
 				<h3 class="my-3 bord shadow text-center"><i class="fas fa-stopwatch p-2"></i>Delivery on time</h3>
 			</div>
 		</div>
-		<form class="form">
+		<form class="form needs-validation" novalidate>
 			<div class="row bord p-5 shadow m-5">
 				<div class="col-sm-6">
 					<div class="mt-3">
 						<label for="fName" class="form-label">First Name:</label>
-						<input id="fName" class="form-control ml-3" type="text" placeholder="First Name" />
+						<input id="fName" class="form-control ml-3" type="text" pattern="^[a-zA-Z]+$" placeholder="First Name" minlength="3" required/>
 						<div id="errorName" class="invalid-feedback">This field is required and must have, at least, 3 characters
 						</div>
 					</div>
 					<div class="mt-3 ">
 						<label for="fEmail" class="form-label">Email:</label>
-						<input id="fEmail" class="form-control ml-3" type="email" placeholder="Email" minlength="3" />
+						<input id="fEmail" class="form-control ml-3" type="email" placeholder="Email" minlength="3" required/>
 						<div id="errorEmail" class="invalid-feedback">This field is required and must contain an '@' and have, at
 							least, 3 characters</div>
 					</div>
 					<div class="mt-3 ">
 						<label for="fAddress" class="form-label">Address:</label>
-						<input id="fAddress" class="form-control" type="text" placeholder="Address" minlength="3" />
+						<input id="fAddress" class="form-control" type="text" placeholder="Address" minlength="3" required/>
 						<div id="errorAddress" class="invalid-feedback">This field is required and must have, at least, 3 characters
 						</div>
 					</div>
@@ -102,19 +86,19 @@
 				<div class="col-sm-6">
 					<div class="mt-3">
 						<label for="fLastN" class="form-label">Last Name:</label>
-						<input id="fLastN" class="form-control" type="text" placeholder="Last Name" minlength="3" />
+						<input id="fLastN" class="form-control" type="text" pattern="^[a-zA-Z]+$" placeholder="Last Name" minlength="3" required/>
 						<div id="errorLastN" class="invalid-feedback">This field is required and must have, at least, 3 characters
 						</div>
 					</div>
 					<div class="mt-3">
 						<label for="fPassword" class="form-label">Password:</label>
 						<input id="fPassword" class="form-control" title="(4-8 characters)" type="password" minlength="4"
-							maxlength="8" placeholder="Password" />
+							maxlength="8" placeholder="Password" required/>
 						<div id="errorPassword" class="invalid-feedback">Enter a correct password</div>
 					</div>
 					<div class="mt-3">
 						<label for="fPhone" class="form-label">Phone Number:</label>
-						<input id="fPhone" class="form-control" type="number" placeholder="Phone No." />
+						<input id="fPhone" class="form-control" type="text" pattern="\d*" placeholder="Phone No." minlength="9" maxlength="9" required/>
 						<div id="errorPhone" class="invalid-feedback">Invalid phone number!! Must be 9 digits with no letters</div>
 					</div>
 				</div>
