@@ -100,9 +100,27 @@ function calculateTotal(cartList) {
 }
 
 // Exercise 4
-function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+function generateCart(cartList) {
+    for (let i = 0; i < cartList.length; i++) {
+        const product = cartList[i];
+      
+        // Buscamos el producto en el array cart
+        const existingProduct = cart.find(p => p.id === product.id);
+      
+        if (existingProduct) {
+          // Si ya existe, incrementamos la cantidad
+          existingProduct.quantity++;
+        } else {
+          // Si no existe, agregamos el producto al array con cantidad 1
+          product.quantity = 1;
+          product.subtotal = product.price * product.quantity;
+          product.subtotalWithDiscount = product.subtotal;  
+          cart.push(product);
+        }
+    }
+    
+    console.log(cart);
+    return cart;
 }
 
 // Exercise 5
