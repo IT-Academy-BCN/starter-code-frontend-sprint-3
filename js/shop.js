@@ -80,20 +80,17 @@ function buy(id) {
     }
   }
   
-  
-  
   return cartList;
-
 }
 
 // Exercise 2
-function cleanCart() {
-
+function cleanCart(cartList) {
+    cartList.splice(0, cart.length);
 }
 
 // Exercise 3
 function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
+    
 }
 
 // Exercise 4
