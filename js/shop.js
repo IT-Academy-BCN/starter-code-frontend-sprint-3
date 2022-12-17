@@ -79,7 +79,7 @@ function buy(id) {
       cartList.push(products[i]);
     }
   }
-  
+    
   return cartList;
 }
 
@@ -89,8 +89,14 @@ function cleanCart(cartList) {
 }
 
 // Exercise 3
-function calculateTotal() {
+function calculateTotal(cartList) {
+    let total = 0;
+
+    for (let i = 0; i < cartList.length; i++){
+        total += cartList[i].price;
+    }
     
+    return total;
 }
 
 // Exercise 4
