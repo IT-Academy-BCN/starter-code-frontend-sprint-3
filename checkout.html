@@ -31,7 +31,7 @@
 				</button>
 				<ul class="navbar-nav me-3 me-lg-0 d-flex flex-row align-items-center">
 					<li class="dropdown search-dropdown nav-item py-lg-3">
-						<a href="javascript:void(0)" class="btn btn-outline-dark flex-center" type="button" data-bs-toggle="modal"
+						<a href="" class="btn btn-outline-dark flex-center" type="button" data-bs-toggle="modal"
 							data-bs-target="#cartModal" onclick="open_modal()" data-bs-auto-close="outside">
 							<i class="fas fa-shopping-cart me-1"></i> Cart <span class="badge bg-dark text-white ms-1 rounded-pill"
 								id="count_product">0</span>
@@ -77,7 +77,7 @@
 				<h3 class="my-3 bord shadow text-center"><i class="fas fa-stopwatch p-2"></i>Delivery on time</h3>
 			</div>
 		</div>
-		<form class="form">
+		<form class="form"  onsubmit="validate()">
 			<div class="row bord p-5 shadow m-5">
 				<div class="col-sm-6">
 					<div class="mt-3">
@@ -119,7 +119,7 @@
 					</div>
 				</div>
 				<div class="col-12 mt-4 final">
-					<button type="submit" id="btn" class="p-2 px-4 btn btn-primary shadow-lg" onclick="validate()">
+					<button type="submit" id="btn" class="p-2 px-4 btn btn-primary shadow-lg">
 						<i class="fas fa-cart-arrow-down p-2"></i>Save
 					</button>
 				</div>
