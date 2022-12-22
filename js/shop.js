@@ -107,32 +107,7 @@ function calculateTotal(cart) {
 
 // Exercise 4
 function generateCart(cartList) {
-    for (let i = 0; i < cartList.length; i++) {
-        const product = cartList[i];
-      
-        // Buscamos el producto en el array cart
-        const existingProduct = cart.find(p => p.id === product.id);
-      
-        if (existingProduct) {
-          // Si ya existe, incrementamos la cantidad
-            existingProduct.quantity++;
-            product.subtotal = product.quantity * product.price;
-            product.subtotalWithDiscount = product.subtotal; 
-            console.log(product.subtotal);
-        } else {
-          // Si no existe, agregamos el producto al array con cantidad 1
-          product.quantity = 1;
-          product.subtotal = product.price * product.quantity;
-          product.subtotalWithDiscount = product.subtotal;  
-          cart.push(product);
-        }
-        
-    }
     
-    applyPromotionsCart(cart)
-    console.log(cart);
-    
-    return cart;
 }
 
 // Exercise 5
@@ -213,10 +188,33 @@ function printCart() {
 
 // Exercise 7
 function addToCart(id) {
-    // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    // Buscamos el producto en el array products
+    const product = products.find(p => p.id === id);
+
+    // Si encontramos el producto, buscamos en el array cart
+    if (product) {
+        // Buscamos el producto en el array cart
+        const existingProduct = cart.find(p => p.id === product.id);
+
+        if (existingProduct) {
+            // Si ya existe, incrementamos la cantidad
+            ++existingProduct.quantity;
+            console.log(existingProduct.quantity);
+            existingProduct.subtotal = existingProduct.quantity * existingProduct.price;
+            existingProduct.subtotalWithDiscount = existingProduct.subtotal; 
+        } else {
+            // Si no existe, agregamos el producto al array con cantidad 1
+            product.quantity = 1;
+            product.subtotal = product.price * product.quantity;
+            product.subtotalWithDiscount = product.subtotal;  
+            cart.push(product);  
+        }  
+    }
+    applyPromotionsCart(cart);
+    console.log(cart);
+    return cart;
 }
+
 
 // Exercise 8
 function removeFromCart(id) {
