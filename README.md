@@ -33,4 +33,10 @@ Make the `generateCart()` function, which generates an updated version of the sh
 
 ##### ✅ Finished: 22/01/2023
 
+**— Exercise 5**
+
+Make the `applyPromotionsCart()` function, which calculates the subtotal of certain products if promotions are applicable.
+
+##### ✅ Finished: 23/01/2023
+
 </details>
