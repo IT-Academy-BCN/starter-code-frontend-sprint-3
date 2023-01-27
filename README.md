@@ -39,4 +39,14 @@ Make the `applyPromotionsCart()` function, which calculates the subtotal of cert
 
 ##### ✅ Finished: 23/01/2023
 
+**— Exercise 6**
+
+Make the `printCart()` function, which dinamically shows the user's cart list upon clicking the cart button at the top. Since the function was very long and did a lot of stuff, I broke it up into smaller functions.
+
+✏️**Notes:**
+
+- I learned that you can use the logical OR operator (`||`) instead of the ternary operator (`? :`) in certain circumstances, and it's more concise and easier to read.
+
+##### ✅ Finished: 27/01/2023
+
 </details>
