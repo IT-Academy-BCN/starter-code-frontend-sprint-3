@@ -49,4 +49,14 @@ Make the `printCart()` function, which dinamically shows the user's cart list up
 
 ##### ✅ Finished: 27/01/2023
 
+**— Exercise 7**
+
+Validate the checkout form.
+
+✏️**Notes:**
+
+- I started using [JS modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) to organize my code a little better, since I wanted to have a few helper functions in their own separate file. When using modules, it's important to run the files through a server or else it won't work properly. You also need to include `type="module"` in the `<script>` element.
+
+##### ✅ Finished: 31/01/2023
+
 </details>

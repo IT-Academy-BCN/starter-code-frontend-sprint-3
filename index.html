@@ -32,7 +32,7 @@
 				<ul class="navbar-nav me-3 me-lg-0 d-flex flex-row align-items-center">
 					<li class="dropdown search-dropdown nav-item py-lg-3">
 						<a href="javascript:void(0)" class="btn btn-outline-dark flex-center" type="button" data-bs-toggle="modal"
-							data-bs-target="#cartModal" onclick="open_modal()" data-bs-auto-close="outside">
+							data-bs-target="#cartModal" onclick="openModal()" data-bs-auto-close="outside">
 							<i class="fas fa-shopping-cart me-1"></i> Cart <span class="badge bg-dark text-white ms-1 rounded-pill"
 								id="count_product">0</span>
 						</a>
@@ -282,8 +282,8 @@
 
 	<!-- Core theme JS-->
 	<script src="data/products.js"></script>
-	<script src="js/shop.js"></script>
-	<script src="js/checkout.js"></script>
+	<script type="module" src="js/shop.js"></script>
+	<script type="module" src="js/checkout.js"></script>
 </body>
 
 </html>

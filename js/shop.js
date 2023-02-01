@@ -1,18 +1,27 @@
+import {
+  getElement,
+  newElement,
+  addClass,
+  removeClass,
+} from "./helperFunctions.js";
+
 const cartList = [];
 const cart = [];
 const total = 0;
 
 /* ------------------------- // EXERCISE 1 ------------------------ */
-function buy(id) {
+// Since this js file is a module, we make functions available
+// in the global scope with "window.functionName = function () {...}"
+window.buy = function (id) {
   let productToBuy = products.find((product) => product.id === id);
   cartList.push(productToBuy);
-}
+};
 
 /* ------------------------- // EXERCISE 2 ------------------------ */
-function cleanCartList() {
+window.cleanCartList = function () {
   cartList.length = 0;
   console.log(cartList);
-}
+};
 
 /* ------------------------- EXERCISE 3 ------------------------ */
 let totalPrice = 0;
@@ -58,23 +67,13 @@ function applyPromotionsCart() {
 }
 
 /* -------------------------- EXERCISE 6 -------------------------- */
-
-// Helper functions to avoid excessive code repeating
-function getElement(element) {
-  return document.querySelector(element);
-}
-
-function newElement(element) {
-  return document.createElement(element);
-}
-
 // Hide the div with the empty cart message and show the div with the table
 function toggleElements() {
   const emptyCartMsg = getElement(".modal-empty-cart-msg");
-  emptyCartMsg.classList.add("d-none");
+  addClass(emptyCartMsg, "d-none");
 
   const cartModalContent = getElement(".modal-cart-content");
-  cartModalContent.classList.remove("d-none");
+  removeClass(cartModalContent, "d-none");
 }
 
 // Build the contents of the table body by looping through the cart array
@@ -122,11 +121,12 @@ function printTotalCart(total) {
   totalPriceText.textContent = total;
 }
 
-function cleanCart() {
+// Empty the cart and reprint it so it doesn't show any products
+window.cleanCart = function () {
   cartList.length = 0;
   cart.length = 0;
   printCart();
-}
+};
 
 // Main function that calls all the previous functions
 function printCart() {
@@ -151,13 +151,11 @@ function removeFromCart(id) {
   // 2. Add found product to the cartList array
 }
 
-function open_modal() {
-  console.log("Open Modal");
-
+window.openModal = function () {
   generateCart();
 
   if (cart.length > 0) {
     applyPromotionsCart();
     printCart();
   }
-}
+};
