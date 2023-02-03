@@ -5,8 +5,8 @@ import {
   removeClass,
 } from "./helperFunctions.js";
 
-const cartList = [];
-const cart = [];
+// const cartList = [];
+window.cart = [];
 const total = 0;
 
 /* ------------------------- // EXERCISE 1 ------------------------ */
@@ -61,7 +61,8 @@ function applyPromotionsCart() {
       cart[i].subtotalWithDiscount = cart[i].quantity * 10;
       // Instant cupcake mixture discount
     } else if (cart[i].id === 3 && cart[i].quantity >= 10) {
-      cart[i].subtotalWithDiscount = (cart[i].subtotal * 2) / 3;
+      const priceWithTwoDecimals = ((cart[i].subtotal * 2) / 3).toFixed(2);
+      cart[i].subtotalWithDiscount = parseFloat(priceWithTwoDecimals);
     }
   }
 }
@@ -105,7 +106,7 @@ function buildTable() {
 }
 
 // Get the sum of all the products in the cart array
-function calculateTotalCart() {
+window.calculateTotalCart = function () {
   let totalCart = 0;
 
   for (let i = 0; i < cart.length; i++) {
@@ -113,7 +114,7 @@ function calculateTotalCart() {
   }
 
   return totalCart;
-}
+};
 
 // Display the total price under the cart list in the modal
 function printTotalCart(total) {
@@ -123,7 +124,7 @@ function printTotalCart(total) {
 
 // Empty the cart and reprint it so it doesn't show any products
 window.cleanCart = function () {
-  cartList.length = 0;
+  // cartList.length = 0;
   cart.length = 0;
   printCart();
 };
@@ -136,14 +137,26 @@ function printCart() {
   printTotalCart(totalCart);
 }
 
-/* ------------------------- EXERCISE 8 ------------------------ */
-function addToCart(id) {
-  // Refactor previous code in order to simplify it
-  // 1. Loop for to the array products to get the item to add to cart
-  // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-}
-
 // ** Nivell II **
+
+/* ------------------------- EXERCISE 8 ------------------------ */
+window.addToCart = function (id) {
+  let productToBuy = products.find((product) => product.id === id);
+
+  let productIndex = cart.findIndex(
+    (product) => product.id === productToBuy.id
+  );
+
+  if (productIndex < 0) {
+    productToBuy.quantity = 1;
+    productToBuy.subtotal = productToBuy.price;
+    cart.push(productToBuy);
+  } else {
+    cart[productIndex].quantity++;
+    cart[productIndex].subtotal =
+      cart[productIndex].price * cart[productIndex].quantity;
+  }
+};
 
 // Exercise 9
 function removeFromCart(id) {
@@ -152,7 +165,7 @@ function removeFromCart(id) {
 }
 
 window.openModal = function () {
-  generateCart();
+  //   generateCart();
 
   if (cart.length > 0) {
     applyPromotionsCart();

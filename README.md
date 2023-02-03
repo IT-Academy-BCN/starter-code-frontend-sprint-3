@@ -59,4 +59,14 @@ Validate the checkout form.
 
 ##### ✅ Finished: 31/01/2023
 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+### ⭐⭐ **Level 2** ⭐⭐
+
+**— Exercise 8**
+
+Refactor the code by consolidating the `buy()` and `generateCart()` functions into one, `addToCart()`.
+
+##### ✅ Finished: 01/02/2023
+
 </details>
