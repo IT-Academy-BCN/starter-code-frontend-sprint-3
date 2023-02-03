@@ -6,10 +6,15 @@ export function newElement(element) {
   return document.createElement(element);
 }
 
-export function addClass(element, className) {
-  return element.classList.add(className);
+// With the rest parameter, the function accepts multiple arguments for the class names as an array
+export function addClass(element, ...classNames) {
+  for (const className of classNames) {
+    element.classList.add(className);
+  }
 }
 
-export function removeClass(element, className) {
-  return element.classList.remove(className);
+export function removeClass(element, ...classNames) {
+  for (const className of classNames) {
+    element.classList.add(className);
+  }
 }

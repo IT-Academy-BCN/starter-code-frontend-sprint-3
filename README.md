@@ -69,4 +69,14 @@ Refactor the code by consolidating the `buy()` and `generateCart()` functions in
 
 ##### ✅ Finished: 01/02/2023
 
+**— Exercise 9**
+
+Complete the `removeFromCart()` function so users can remove a product from their cart or decrease its quantity in the case that they have more than one of the same product. To make this function invokable through the UI, I added a button next to each product in the cart list table and gave it an `eventListener` so that the function fires when the button is clicked on.
+
+✏️**Notes:**
+
+- I modified the `addClass` and `removeClass` helper functions so that they can accept multiple class names at once. For this, I used the [rest parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) and used a `for...of` loop that iterates through the array of class names, applying them to the target element one by one.
+
+##### ✅ Finished: 03/02/2023
+
 </details>

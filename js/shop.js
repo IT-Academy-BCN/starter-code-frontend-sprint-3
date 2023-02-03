@@ -9,7 +9,10 @@ import {
 window.cart = [];
 const total = 0;
 
-/* ------------------------- // EXERCISE 1 ------------------------ */
+/* ---------------------------------------------------------------- */
+/*                            EXERCISE 1                            */
+/* ---------------------------------------------------------------- */
+
 // Since this js file is a module, we make functions available
 // in the global scope with "window.functionName = function () {...}"
 window.buy = function (id) {
@@ -17,13 +20,19 @@ window.buy = function (id) {
   cartList.push(productToBuy);
 };
 
-/* ------------------------- // EXERCISE 2 ------------------------ */
+/* ---------------------------------------------------------------- */
+/*                            EXERCISE 2                            */
+/* ---------------------------------------------------------------- */
+
 window.cleanCartList = function () {
   cartList.length = 0;
   console.log(cartList);
 };
 
-/* ------------------------- EXERCISE 3 ------------------------ */
+/* ---------------------------------------------------------------- */
+/*                            EXERCISE 3                            */
+/* ---------------------------------------------------------------- */
+
 let totalPrice = 0;
 
 function calculateTotal() {
@@ -32,7 +41,10 @@ function calculateTotal() {
   }
 }
 
-/* ------------------------- EXERCISE 4 ------------------------ */
+/* ---------------------------------------------------------------- */
+/*                            EXERCISE 4                            */
+/* ---------------------------------------------------------------- */
+
 function generateCart() {
   cart.length = 0;
 
@@ -53,7 +65,10 @@ function generateCart() {
   }
 }
 
-/* ------------------------- EXERCISE 5 ------------------------ */
+/* ---------------------------------------------------------------- */
+/*                            EXERCISE 5                            */
+/* ---------------------------------------------------------------- */
+
 function applyPromotionsCart() {
   for (let i = 0; i < cart.length; i++) {
     // Cooking oil discount
@@ -63,11 +78,17 @@ function applyPromotionsCart() {
     } else if (cart[i].id === 3 && cart[i].quantity >= 10) {
       const priceWithTwoDecimals = ((cart[i].subtotal * 2) / 3).toFixed(2);
       cart[i].subtotalWithDiscount = parseFloat(priceWithTwoDecimals);
+    } // No discount
+    else {
+      cart[i].subtotalWithDiscount = cart[i].price * cart[i].quantity;
     }
   }
 }
 
-/* -------------------------- EXERCISE 6 -------------------------- */
+/* ---------------------------------------------------------------- */
+/*                            EXERCISE 6                            */
+/* ---------------------------------------------------------------- */
+
 // Hide the div with the empty cart message and show the div with the table
 function toggleElements() {
   const emptyCartMsg = getElement(".modal-empty-cart-msg");
@@ -100,8 +121,18 @@ function buildTable() {
     tr.appendChild(tdQty);
 
     const tdTotal = newElement("td");
-    tdTotal.textContent = cart[i].subtotalWithDiscount || cart[i].subtotal;
+    tdTotal.textContent = cart[i].subtotalWithDiscount;
     tr.appendChild(tdTotal);
+
+    const tdRemove = newElement("td");
+    const removeBtn = newElement("div");
+    addClass(removeBtn, "btn", "btn-outline-dark", "py-0");
+    removeBtn.textContent = "x";
+    removeBtn.addEventListener("click", function () {
+      removeFromCart(cart[i].id);
+    });
+    tdRemove.appendChild(removeBtn);
+    tr.appendChild(tdRemove);
   }
 }
 
@@ -110,7 +141,7 @@ window.calculateTotalCart = function () {
   let totalCart = 0;
 
   for (let i = 0; i < cart.length; i++) {
-    totalCart += cart[i].subtotalWithDiscount || cart[i].subtotal;
+    totalCart += cart[i].subtotalWithDiscount;
   }
 
   return totalCart;
@@ -137,13 +168,14 @@ function printCart() {
   printTotalCart(totalCart);
 }
 
-// ** Nivell II **
+/* ---------------------------------------------------------------- */
+/*                            EXERCISE 8                            */
+/* ---------------------------------------------------------------- */
 
-/* ------------------------- EXERCISE 8 ------------------------ */
 window.addToCart = function (id) {
-  let productToBuy = products.find((product) => product.id === id);
+  const productToBuy = products.find((product) => product.id === id);
 
-  let productIndex = cart.findIndex(
+  const productIndex = cart.findIndex(
     (product) => product.id === productToBuy.id
   );
 
@@ -156,13 +188,36 @@ window.addToCart = function (id) {
     cart[productIndex].subtotal =
       cart[productIndex].price * cart[productIndex].quantity;
   }
+
+  updateProductCountPill();
 };
 
-// Exercise 9
-function removeFromCart(id) {
-  // 1. Loop for to the array products to get the item to add to cart
-  // 2. Add found product to the cartList array
-}
+/* ---------------------------------------------------------------- */
+/*                           EXERCISE 9                             */
+/* ---------------------------------------------------------------- */
+
+window.removeFromCart = function (id) {
+  let productToRemove = products.find((product) => product.id === id);
+
+  let productIndex = cart.findIndex(
+    (product) => product.id === productToRemove.id
+  );
+
+  if (cart[productIndex].quantity > 1) {
+    cart[productIndex].quantity--;
+    cart[productIndex].subtotal -= cart[productIndex].price;
+  } else {
+    cart.splice(productIndex, 1);
+  }
+
+  updateProductCountPill();
+  applyPromotionsCart();
+  printCart();
+};
+
+/* ---------------------------------------------------------------- */
+/*                            OTHERS                                */
+/* ---------------------------------------------------------------- */
 
 window.openModal = function () {
   //   generateCart();
@@ -170,5 +225,12 @@ window.openModal = function () {
   if (cart.length > 0) {
     applyPromotionsCart();
     printCart();
+  } else {
+    console.log("No products in cart, modal shouldn't open");
   }
 };
+
+function updateProductCountPill() {
+  const productCountPill = getElement("#count_product");
+  productCountPill.textContent = cart.length;
+}
