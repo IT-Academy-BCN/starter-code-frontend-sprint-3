@@ -15,6 +15,6 @@ export function addClass(element, ...classNames) {
 
 export function removeClass(element, ...classNames) {
   for (const className of classNames) {
-    element.classList.add(className);
+    element.classList.remove(className);
   }
 }

@@ -190,6 +190,7 @@ window.addToCart = function (id) {
   }
 
   updateProductCountPill();
+  applyPromotionsCart();
 };
 
 /* ---------------------------------------------------------------- */
@@ -223,10 +224,9 @@ window.openModal = function () {
   //   generateCart();
 
   if (cart.length > 0) {
-    applyPromotionsCart();
     printCart();
   } else {
-    console.log("No products in cart, modal shouldn't open");
+    console.log("No products in cart");
   }
 };
 
