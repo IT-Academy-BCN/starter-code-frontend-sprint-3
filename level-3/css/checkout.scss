@@ -1,0 +1,21 @@
+h2 {
+  font-size: 1em;
+  letter-spacing: 2px;
+}
+
+.highlights {
+  margin-right: 0;
+  margin-left: 0;
+
+  div {
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: #e4ddf4;
+    color: #341e68;
+
+    i {
+      margin: 0 1em 0 0.3em;
+      font-size: 1.5em;
+    }
+  }
+}
