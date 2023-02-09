@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>Checkout</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<!-- Bootstrap icons-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link rel="stylesheet" href="css/main.min.css">
+	<link rel="stylesheet" href="css/checkout.min.css">
+</head>
+
+<body>
+	<!-- Navigation-->
+
+	<nav class="navbar py-3 py-lg-0 navbar-dark navbar-expand-lg position-static" id="navbar-example2">
+		<div class="container d-flex">
+
+			<a class="navbar-brand" href="index.html">IT Academy Shop</a>
+
+			<div class="d-flex flex-row order-lg-last align-items-center">
+				<button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse"
+					data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<ul class="navbar-nav me-3 me-lg-0 d-flex flex-row align-items-center">
+					<li class="dropdown search-dropdown nav-item py-lg-3">
+						<a href="javascript:void(0)" class="btn btn-outline-light flex-center" type="button" data-bs-toggle="modal"
+							data-bs-target="#cartModal" onclick="openModal()" data-bs-auto-close="outside">
+							<i class="fas fa-shopping-cart me-1"></i> Cart <span class="badge bg-light text-dark ms-1 rounded-pill"
+								id="count_product">0</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="navbar" class="navbar-collapse collapse">
+
+				<ul class="navbar-nav me-auto mb-4 mb-lg-0 ms-lg-5 bg-transparent">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html#grocery">Grocery</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="index.html#beauty">Beauty</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="index.html#clothes">Clothes</a>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+
+	<!-- Header end -->
+
+	<div class="container my-5 pb-4">
+		<div class="row">
+			<div class="col-lg-4 order-2">
+				<div class="bg-light p-5 mb-4">
+					<h2 class="text-uppercase fw-bold pb-3">Cart summary</h2>
+					<div class="row">
+
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item d-flex justify-content-between border-0 px-0 pb-0 bg-transparent">
+								1 Cooking Oil
+								<span>$10.50</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between border-0 px-0 pb-0 bg-transparent">
+								3 Pasta
+								<span>$18.75</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between px-0 bg-transparent">
+								1 Lip Tints
+								<p>$12.75</p>
+							</li>
+							<li
+								class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 bg-transparent">
+								<div>
+									<strong>Subtotal</strong>
+								</div>
+								<span><strong>$42</strong></span>
+							</li>
+							<li
+								class="list-group-item d-flex justify-content-between align-items-center border-0 pt-0 px-0 bg-transparent">
+								<div>
+									Taxes
+								</div>
+								<span>$8.65</span>
+							</li>
+							<li
+								class="list-group-item d-flex justify-content-between align-items-center border-0 pt-0 px-0 mb-2 bg-transparent">
+								<div>
+									Delivery
+								</div>
+								<span>$4.99</span>
+							</li>
+							<li
+								class="list-group-item d-flex justify-content-between align-items-center border-top px-0 bg-transparent">
+								<div>
+									<strong>Total</strong>
+								</div>
+								<span class="fs-4"><strong>$55.64</strong></span>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+
+				<div class="row highlights">
+					<div>
+						<i class="fas fa-dollar-sign p-2"></i><span>Cash on delivery</span>
+					</div>
+					<div>
+						<i class="fas fa-arrows-alt-h p-2"></i><span>100% return</span>
+					</div>
+					<div>
+						<i class="far fa-thumbs-up p-2"></i><span>Quality assured</span>
+					</div>
+					<div>
+						<i class="fas fa-stopwatch p-2"></i><span>Fast delivery</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-8 p-5 order-1">
+				<h1>Checkout</h1>
+				<h2 class="text-uppercase">Contact Information</h2>
+
+				<form class="form">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="mt-3">
+								<label for="fName" class="form-label">First Name:</label>
+								<input id="fName" class="form-control ml-3" type="text" placeholder="First Name" minlength="3"
+									required />
+								<div id="errorName" class="invalid-feedback">This field is required and must have, at least, 3
+									characters
+									(letters only)
+								</div>
+							</div>
+							<div class="mt-3 ">
+								<label for="fEmail" class="form-label">Email:</label>
+								<input id="fEmail" class="form-control ml-3" type="email" placeholder="Email" minlength="3" required />
+								<div id="errorEmail" class="invalid-feedback">This field is required and must contain an '@' and
+									have, at
+									least, 3 characters</div>
+							</div>
+							<div class="mt-3 ">
+								<label for="fAddress" class="form-label">Address:</label>
+								<input id="fAddress" class="form-control" type="text" placeholder="Address" minlength="3" required />
+								<div id="errorAddress" class="invalid-feedback">This field is required and must have, at least, 3
+									characters
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="mt-3">
+								<label for="fLastN" class="form-label">Last Name:</label>
+								<input id="fLastN" class="form-control" type="text" placeholder="Last Name" minlength="3" required />
+								<div id="errorLastN" class="invalid-feedback">This field is required and must have, at least, 3
+									characters
+									(letters only)
+								</div>
+							</div>
+							<div class="mt-3">
+								<label for="fPassword" class="form-label">Password:</label>
+								<input id="fPassword" class="form-control" title="(4-8 characters)" type="password" minlength="4"
+									maxlength="8" placeholder="Password" required />
+								<div id="errorPassword" class="invalid-feedback">Must have at least 3 characters and contain letters and
+									numbers.</div>
+							</div>
+							<div class="mt-3">
+								<label for="fPhone" class="form-label">Phone Number:</label>
+								<input id="fPhone" class="form-control" type="number" placeholder="Phone No." required />
+								<div id="errorPhone" class="invalid-feedback">Invalid phone number. Must be 9 digits with no letters
+								</div>
+							</div>
+						</div>
+						<div class="col-12 mt-4 final">
+							<button type="submit" id="btn" class="p-2 px-4 btn btn-dark" onclick="validate()">
+								<i class="fas fa-cart-arrow-down p-2"></i>Save
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer-->
+
+	<footer class="py-3 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; IT Academy Shop 2023</p>
+		</div>
+	</footer>
+
+	<!-- Modal -->
+
+	<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-cart-arrow-down"></i> My Cart</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div>
+						<ul class="list">
+
+						</ul>
+						<div>
+							<h3 class="text-center bill px-5">Select Something</h3>
+						</div>
+						<div class="text-center">
+							<a href="checkout.html" class="btn btn-dark m-3">Checkout</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Bootstrap core JS-->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<!-- Core theme JS-->
+
+	<script src="data/products.js"></script>
+	<script type="module" src="js/shop.js"></script>
+	<script type="module" src="js/checkout.js"></script>
+
+</body>
+
+</html>

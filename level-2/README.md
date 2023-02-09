@@ -4,6 +4,9 @@
 
 This sprint focuses on JavaScript. The goal is to build a simple demo for an e-commerce web application, with a working shopping cart and applicable discounts on the products.
 
+<details>
+<summary>Log</summary>
+
 ### ⭐ **Level 1** ⭐
 
 **— Exercise 1**
@@ -76,12 +79,4 @@ Complete the `removeFromCart()` function so users can remove a product from thei
 
 ##### ✅ Finished: 03/02/2023
 
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-
-### ⭐⭐ **Level 3** ⭐⭐
-
-**— Exercise 10**
-
-Style the website. I wasn't able to do everything I had planned because I ran out of time, but at least I could get the main basic look done.
-
-##### ✅ Finished: 09/02/2023
+</details>

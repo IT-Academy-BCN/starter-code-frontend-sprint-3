@@ -1,0 +1,50 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: $primary;
+  color: #fff;
+  font-family: "Inter", Helvetica, sans-serif;
+
+  .navbar-brand {
+    font-family: "NewYork", "Times New Roman", Times, serif;
+  }
+
+  .nav-link,
+  .navbar-nav a {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}
+
+.blurred-navbar {
+  background-color: #8563ced0;
+  backdrop-filter: blur(10px);
+}
+
+header {
+  padding-top: 7em;
+  background-color: $primary;
+}
+
+.list-group {
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+}
+
+.btn-dark:hover {
+  opacity: 0.7;
+}
+
+.modal {
+  h3 {
+    font-family: "NewYork", "Times New Roman", Times, serif;
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 600px;
+  }
+}

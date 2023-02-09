@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>ShopNow</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<!-- Bootstrap icons-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link rel="stylesheet" href="css/main.min.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="50">
+
+	<!-- Navigation-->
+
+	<nav class="navbar py-3 py-lg-0 navbar-dark navbar-expand-lg blurred-navbar" id="navbar-example2">
+		<div class="container d-flex">
+
+			<a class="navbar-brand" href="#!">IT Academy Shop</a>
+
+			<div class="d-flex flex-row order-lg-last align-items-center">
+				<button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse"
+					data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<ul class="navbar-nav me-3 me-lg-0 d-flex flex-row align-items-center">
+					<li class="dropdown search-dropdown nav-item py-lg-3">
+						<a href="javascript:void(0)" class="btn btn-outline-light flex-center" type="button" data-bs-toggle="modal"
+							data-bs-target="#cartModal" onclick="openModal()" data-bs-auto-close="outside">
+							<i class="fas fa-shopping-cart me-1"></i> Cart <span class="badge bg-light text-dark ms-1 rounded-pill"
+								id="count_product">0</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="navbar" class="navbar-collapse collapse">
+
+				<ul class="navbar-nav me-auto mb-4 mb-lg-0 ms-lg-5 bg-transparent">
+					<li class="nav-item">
+						<a class="nav-link" href="#grocery">Grocery </a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="#beauty"> Beauty</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="#clothes"> Clothes</a>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</nav>
+
+	<!-- Header-->
+
+	<header class="pb-5">
+		<div class="container px-4 px-lg-5 my-5">
+			<div class="text-center text-white">
+				<p class="lead text-uppercase fw-normal text-white mb-0">Welcome to</p>
+				<h1>IT Academy Shop</h1>
+			</div>
+		</div>
+	</header>
+
+	<!-- Section-->
+
+	<div class="sections-wrapper mx-auto">
+		<section class="pt-5 px-3 px-sm-4 px-md-5" id="grocery">
+			<h2 class="my-5">Grocery</h2>
+			<div class="row g-2 g-sm-3 justify-content-center">
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/cooking-oil.jfif" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">Cooking Oil</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$10.50</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(1)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/pasta.jfif" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">Pasta</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$6.25</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(2)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/cupcake-mix.jfif" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">Instant Cupcake Mixture</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$5</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(3)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="pt-0 px-3 px-sm-4 px-md-5" id="beauty">
+			<h2 class="my-5">Beauty</h2>
+			<div class="row g-2 g-sm-3 justify-content-center">
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/all-in-one.webp" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">All-in-1</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$260</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(4)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/zero-makeup-kit.webp" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">Zero Makeup Kit</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$20.50</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(5)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/lip-tints.jpg" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">Lip Tints</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$12.75</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(6)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<section class="pt-0 px-3 px-sm-4 px-md-5 mb-5" id="clothes">
+			<h2 class="my-5">Clothes</h2>
+			<div class="row g-2 g-sm-3 justify-content-center">
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/lawn-dress.webp" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">Lawn dress</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$15</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(7)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/lawn-chiffon-dress.jpg" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">Lawn-chiffon Combo</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$19.99</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(8)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-md-4">
+					<div class="card">
+						<img src="./images/toddler-frock.jpg" alt="" srcset="">
+						<div class="card-content-wrapper">
+							<h6 class="mb-0">Toddler Frock</h6>
+							<h4 class="fw-bolder fs-2 mb-3">$9.99</h4>
+							<div class="card-actions d-flex">
+								<button type="button" class="btn btn-dark me-2 flex-grow-1" onclick="addToCart(9)">Add to cart</button>
+								<button type="button" class="btn btn-outline-dark"><span class="material-symbols-outlined">
+										favorite
+									</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer-->
+
+	<footer class="py-3 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; IT Academy Shop 2023</p>
+		</div>
+	</footer>
+
+	<!-- Modal -->
+
+	<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-empty-cart-msg text-center py-5">
+					<p class="mb-0">Your cart is currently empty.</p>
+				</div>
+
+				<div class="modal-cart-content d-none">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-cart-arrow-down"></i> My Cart</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<h3 class="text-center bill px-5">Shopping Cart</h3>
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Product</th>
+									<th scope="col">Price</th>
+									<th scope="col">Qty.</th>
+									<th scope="col">Total <small>(with discount)</small></th>
+								</tr>
+							</thead>
+							<tbody id="cart_list">
+							</tbody>
+						</table>
+						<div class="text-center fs-3">
+							Total: $<span id="total_price">100</span>
+						</div>
+
+						<div class="text-center">
+							<a href="checkout.html" class="btn btn-dark m-3">Checkout</a>
+							<a href="javascript:void(0)" onclick="cleanCart()" class="btn btn-dark m-3">Clean Cart</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JS-->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+	<!-- Core theme JS-->
+
+	<script src="data/products.js"></script>
+	<script type="module" src="js/shop.js"></script>
+	<script type="module" src="js/checkout.js"></script>
+
+</body>
+
+</html>
