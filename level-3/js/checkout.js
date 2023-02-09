@@ -1,6 +1,8 @@
 import { getElement, addClass, removeClass } from "./helperFunctions.js";
 
-/* ------------------------- // EXERCISE 6 ------------------------ */
+/* ---------------------------------------------------------------- */
+/*                            EXERCISE 6                            */
+/* ---------------------------------------------------------------- */
 
 // Regex
 const lettersOnlyRegex = /^[A-Za-z]+$/;
