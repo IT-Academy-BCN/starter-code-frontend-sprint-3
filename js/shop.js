@@ -7,11 +7,12 @@ const totalPrice = document.getElementById('total_price')
 const countProduct = document.getElementById('count_product')
 
 // make modular functions
-window.buy = buy
+// window.buy = buy
 window.cleanCart = cleanCart
 window.calculateTotal = calculateTotal
-window.generateCart = generateCart
+// window.generateCart = generateCart
 window.applyPromotionsCart = applyPromotionsCart
+window.addToCart = addToCart
 window.open_modal= open_modal
 
 // Array with products (objects) added directly with push(). Products in this array are repeated.
@@ -23,18 +24,18 @@ var cart = [];
 var total = 0;
 
 // Exercise 1
-function buy(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    for(let i = 0; i < products.length; i++) {
-        if(products[i].id === id){
-    // 2. Add found product to the cartList array
-            cartList.push(products[i])
-        }
-    }
-    // Log results
-    // console.log(cartList)
-    generateCart()
-}
+// function buy(id) {
+//     // 1. Loop for to the array products to get the item to add to cart
+//     for(let i = 0; i < products.length; i++) {
+//         if(products[i].id === id){
+//     // 2. Add found product to the cartList array
+//             cartList.push(products[i])
+//         }
+//     }
+//     // Log results
+//     // console.log(cartList)
+//     generateCart()
+// }
 
 // Exercise 2
 function cleanCart() {
@@ -62,25 +63,25 @@ function calculateTotal() {
 }
 
 // Exercise 4
-function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-    cartList.map(product => {
-        const find = cart.find(item => item.id === product.id)
-        if(find === undefined) {
-            cart.push({qty: 1, ...product})
-            cartList = []
-        } else {
-            find.qty += 1
-            cartList = []
-        }
-    })
-    // Log results
-    // console.log(cart)
-    cartList = []
-    countProduct.textContent = `${cart.length}`
-    applyPromotionsCart()
-}
+// function generateCart() {
+//     // Using the "cartlist" array that contains all the items in the shopping cart, 
+//     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+//     cartList.map(product => {
+//         const find = cart.find(item => item.id === product.id)
+//         if(find === undefined) {
+//             cart.push({qty: 1, ...product})
+//             cartList = []
+//         } else {
+//             find.qty += 1
+//             cartList = []
+//         }
+//     })
+//     // Log results
+//     // console.log(cart)
+//     cartList = []
+//     countProduct.textContent = `${cart.length}`
+//     applyPromotionsCart()
+// }
 
 // Exercise 5
 function applyPromotionsCart() {
@@ -95,7 +96,7 @@ function applyPromotionsCart() {
                 product.subtotalWithDiscount = (product.price * product.qty)
             } else if(product.id === 3 && product.qty > 9) {
                 product.price = ((5/100)*66).toFixed(2) 
-                product.subtotalWithDiscount = ((product.price * product.qty).toFixed(2))
+                product.subtotalWithDiscount = (product.price * product.qty)
             } 
         } 
     })
@@ -137,7 +138,26 @@ function printCart() {
 function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
+    for(let product of products) {
+        if(product.id === id){
+            cartList.push(product)
+        }
+    }
+    
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    cartList.map(product => {
+        const find = cart.find(item => item.id === product.id)
+        if(find === undefined) {
+            cart.push({qty: 1, ...product})
+            cartList = []
+        } else {
+            find.qty += 1
+            cartList = []
+        }
+    })
+    cartList = []
+    countProduct.textContent = `${cart.length}`
+    applyPromotionsCart()
 }
 
 // Exercise 8
