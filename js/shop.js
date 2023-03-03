@@ -9,7 +9,7 @@ const countProduct = document.getElementById('count_product')
 // make modular functions
 // window.buy = buy
 window.cleanCart = cleanCart
-window.calculateTotal = calculateTotal
+// window.calculateTotal = calculateTotal
 // window.generateCart = generateCart
 window.applyPromotionsCart = applyPromotionsCart
 window.addToCart = addToCart
@@ -49,18 +49,18 @@ function cleanCart() {
 }
 
 // Exercise 3
-function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
-    let finalPrice = 0
-    let priceArr = []
-    for(let i = 0; i < cartList.length; i++) {
-        if(cartList.length > 0) {
-            priceArr.push(cartList[i].price)
-            finalPrice = priceArr.reduce((a, b) => a + b)
-        }
-    }
-    return finalPrice
-}
+// function calculateTotal() {
+//     // Calculate total price of the cart using the "cartList" array
+//     let finalPrice = 0
+//     let priceArr = []
+//     for(let i = 0; i < cartList.length; i++) {
+//         if(cartList.length > 0) {
+//             priceArr.push(cartList[i].price)
+//             finalPrice = priceArr.reduce((a, b) => a + b)
+//         }
+//     }
+//     return finalPrice
+// }
 
 // Exercise 4
 // function generateCart() {
