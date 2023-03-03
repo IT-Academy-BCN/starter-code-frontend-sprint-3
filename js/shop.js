@@ -3,6 +3,7 @@ import products from './data.js'
 
 // make modular functions
 window.buy = buy
+window.cleanCart = cleanCart
 
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
@@ -27,7 +28,10 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
+    cartList = []
 
+    // Log results
+    // console.log(cartList)
 }
 
 // Exercise 3
