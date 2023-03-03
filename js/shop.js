@@ -6,6 +6,7 @@ window.buy = buy
 window.cleanCart = cleanCart
 window.calculateTotal = calculateTotal
 window.generateCart = generateCart
+window.applyPromotionsCart = applyPromotionsCart
 
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
@@ -26,12 +27,12 @@ function buy(id) {
     }
     // Log results
     // console.log(cartList)
+    generateCart()
 }
 
 // Exercise 2
 function cleanCart() {
     cartList = []
-
     // Log results
     // console.log(cartList)
 }
@@ -66,11 +67,29 @@ function generateCart() {
     })
     // Log results
     // console.log(cart)
+    cartList = []
+    applyPromotionsCart()
 }
 
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    cart.map(product => {
+        product.totalPerItem = (product.price * product.qty)
+
+        if(cart.length > 0 && product.offer){
+
+            if(product.id === 1 && product.qty > 2) {
+                product.price = 10
+                product.subtotalWithDiscount = (product.price * product.qty)
+            } else if(product.id === 3 && product.qty > 9) {
+                product.price = ((5/100)*66).toFixed(2) 
+                product.subtotalWithDiscount = ((product.price * product.qty).toFixed(2))
+            } 
+        } 
+    })
+    // Log results
+    // console.log(cart)
 }
 
 // Exercise 6
