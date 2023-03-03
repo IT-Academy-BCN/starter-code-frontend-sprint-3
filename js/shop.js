@@ -1,12 +1,18 @@
 // I exported the "products" array to its own file so I am importing it now.
 import products from './data.js'
 
+// Global Elements 
+const cartListModal = document.getElementById('cart_list')
+const totalPrice = document.getElementById('total_price')
+const countProduct = document.getElementById('count_product')
+
 // make modular functions
 window.buy = buy
 window.cleanCart = cleanCart
 window.calculateTotal = calculateTotal
 window.generateCart = generateCart
 window.applyPromotionsCart = applyPromotionsCart
+window.open_modal= open_modal
 
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
@@ -33,6 +39,10 @@ function buy(id) {
 // Exercise 2
 function cleanCart() {
     cartList = []
+    cart = []
+    cartListModal.innerHTML = ''
+    totalPrice.textContent = ''
+    countProduct.textContent = 0
     // Log results
     // console.log(cartList)
 }
@@ -68,6 +78,7 @@ function generateCart() {
     // Log results
     // console.log(cart)
     cartList = []
+    countProduct.textContent = `${cart.length}`
     applyPromotionsCart()
 }
 
@@ -95,6 +106,28 @@ function applyPromotionsCart() {
 // Exercise 6
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    cartListModal.innerHTML = ''
+    totalPrice.textContent = ''
+    let totalArr = []
+    cart.map(product => {
+        const { name, price, qty, subtotalWithDiscount, totalPerItem } = product
+        cartListModal.innerHTML += `
+            <tr>
+                <th scope="row">${name}</th>
+                <td>$${price}</td>
+                <td>${qty}</td>
+                <td>$${subtotalWithDiscount ? subtotalWithDiscount : totalPerItem}</td>
+            </tr>
+        `
+        // totalPrice.textContent += `${total}`
+        if (subtotalWithDiscount){
+            totalArr.push(subtotalWithDiscount)
+        } else {totalArr.push(totalPerItem)}
+    })
+    if(totalArr.length > 0) {
+        total = totalArr.reduce((a, b) => a + b)
+        totalPrice.textContent += `${total.toFixed(2)}`
+    }
 }
 
 
@@ -114,6 +147,6 @@ function removeFromCart(id) {
 }
 
 function open_modal(){
-	console.log("Open Modal");
+	// console.log("Open Modal");
 	printCart();
 }
