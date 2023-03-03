@@ -5,6 +5,7 @@ import products from './data.js'
 window.buy = buy
 window.cleanCart = cleanCart
 window.calculateTotal = calculateTotal
+window.generateCart = generateCart
 
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
@@ -53,6 +54,18 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    cartList.map(product => {
+        const find = cart.find(item => item.id === product.id)
+        if(find === undefined) {
+            cart.push({qty: 1, ...product})
+            cartList = []
+        } else {
+            find.qty += 1
+            cartList = []
+        }
+    })
+    // Log results
+    // console.log(cart)
 }
 
 // Exercise 5
