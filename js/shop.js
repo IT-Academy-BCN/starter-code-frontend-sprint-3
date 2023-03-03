@@ -4,6 +4,7 @@ import products from './data.js'
 // make modular functions
 window.buy = buy
 window.cleanCart = cleanCart
+window.calculateTotal = calculateTotal
 
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
@@ -37,6 +38,15 @@ function cleanCart() {
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
+    let finalPrice = 0
+    let priceArr = []
+    for(let i = 0; i < cartList.length; i++) {
+        if(cartList.length > 0) {
+            priceArr.push(cartList[i].price)
+            finalPrice = priceArr.reduce((a, b) => a + b)
+        }
+    }
+    return finalPrice
 }
 
 // Exercise 4
