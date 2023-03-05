@@ -134,16 +134,16 @@ function addToCart(id) {
     }
     
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-    cartList.map(product => {
+    cartList.forEach(product => {
         const find = cart.find(item => item.id === product.id)
         if(find === undefined) {
             cart.push({qty: 1, ...product})
-            cartList = []
-        } else {
+        } 
+        else {
             find.qty += 1
-            cartList = []
         }
     })
+    
     cartList = []
     countProduct.textContent = `${cart.length}`
     applyPromotionsCart()
