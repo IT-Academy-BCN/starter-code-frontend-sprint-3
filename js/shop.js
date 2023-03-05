@@ -86,22 +86,17 @@ function cleanCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
-    cart.map(product => {
-        product.totalPerItem = (product.price * product.qty)
+    cart.forEach(product => {
 
-        if(cart.length > 0 && product.offer){
-
-            if(product.id === 1 && product.qty > 2) {
-                product.price = 10
-                product.subtotalWithDiscount = (product.price * product.qty)
-            } else if(product.id === 3 && product.qty > 9) {
-                product.price = ((5/100)*66).toFixed(2) 
-                product.subtotalWithDiscount = (product.price * product.qty)
-            } 
+        if(product.id === 1 && product.qty > 2) {
+            product.price = 10
         } 
+            else if(product.id === 3 && product.qty > 9) {
+                product.price = ((5/100)*66).toFixed(2) 
+            } 
+
+        product.totalPerItem = (product.price * product.qty)
     })
-    // Log results
-    // console.log(cart)
 }
 
 // Exercise 6
