@@ -14,6 +14,7 @@ window.cleanCart = cleanCart
 window.applyPromotionsCart = applyPromotionsCart
 window.addToCart = addToCart
 window.open_modal= open_modal
+window.removeFromCart = removeFromCart
 
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
@@ -105,13 +106,19 @@ function printCart() {
     cartListModal.innerHTML = ''
     totalPrice.textContent = ''
     let totalArr = []
-    cart.map(product => {
-        const { name, price, qty, totalPerItem } = product
+    cart.forEach(product => {
+        const { name, price, qty, totalPerItem, id } = product
         cartListModal.innerHTML += `
             <tr>
                 <th scope="row">${name}</th>
                 <td>$${price}</td>
-                <td>${qty}</td>
+                <td class="text-center">
+                        ${qty}
+                    <div class="d-flex">
+                        <button onclick="addToCart(${id})"class="text-center ms-1 px-3 py-0 btn btn-outline-dark rounded">+</ button>
+                        <button onclick="removeFromCart(${id})"class="text-center ms-1 px-3 py-0 btn btn-outline-dark rounded">-</button>
+                    </div>
+                </td>
                 <td>$${totalPerItem.toFixed(2)}</td>
             </tr>
         `
@@ -143,16 +150,49 @@ function addToCart(id) {
             find.qty += 1
         }
     })
-    
+
     cartList = []
     countProduct.textContent = `${cart.length}`
     applyPromotionsCart()
+    printCart()
 }
 
 // Exercise 8
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
+    for(let product of products) {
+        if(product.id === id){
+            cartList.push(product)
+        }
+    }
     // 2. Add found product to the cartList array
+    cart.forEach(product => {
+
+        if(product.qty > 0)
+
+            if(product.id === id){
+                product.qty -= 1
+
+                if(product.qty < 1) {
+                    let index = cart.indexOf(product)
+                    cart.splice(index, 1)
+                }   
+
+                if(product.id === 1 && product.qty <= 2) {
+                product.price = 10.50
+                product.totalPerItem = (10.50 * product.qty)
+                } else if(product.id === 3 && product.qty <= 9) {
+                    product.price = 5
+                    product.totalPerItem = (5 * product.qty)
+                } else {
+                    product.totalPerItem = (product.price * product.qty)
+                }
+            }
+    })
+
+    cartList = []
+    countProduct.textContent = `${cart.length}`
+    printCart()
 }
 
 function open_modal(){
