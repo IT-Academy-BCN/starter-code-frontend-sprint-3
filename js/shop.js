@@ -106,26 +106,20 @@ function printCart() {
     totalPrice.textContent = ''
     let totalArr = []
     cart.map(product => {
-        const { name, price, qty, subtotalWithDiscount, totalPerItem } = product
+        const { name, price, qty, totalPerItem } = product
         cartListModal.innerHTML += `
             <tr>
                 <th scope="row">${name}</th>
                 <td>$${price}</td>
                 <td>${qty}</td>
-                <td>$${subtotalWithDiscount ? subtotalWithDiscount : totalPerItem}</td>
+                <td>$${totalPerItem.toFixed(2)}</td>
             </tr>
         `
-        // totalPrice.textContent += `${total}`
-        if (subtotalWithDiscount){
-            totalArr.push(subtotalWithDiscount)
-        } else {totalArr.push(totalPerItem)}
+        totalArr.push(totalPerItem)
     })
-    if(totalArr.length > 0) {
-        total = totalArr.reduce((a, b) => a + b)
-        totalPrice.textContent += `${total.toFixed(2)}`
-    }
+    total = totalArr.reduce((a, b) => a + b)
+    totalPrice.textContent += `${total.toFixed(2)}`
 }
-
 
 // ** Nivell II **
 
