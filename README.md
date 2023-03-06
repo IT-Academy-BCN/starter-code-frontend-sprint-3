@@ -2,7 +2,7 @@
 
 ![Javascript I](screenshot.png)
 
-[Live Site](https://react-sprint-3.netlify.app/)
+## [Live Site](https://react-sprint-3.netlify.app/)
 
 Implementation of a shopping cart and redesign of the whole look and feel of the site. [GSAP](https://greensock.com/) helped me handle the animations. Used [Parcel](https://parceljs.org/) for bundling. Styling entirely in CSS (using SASS as preprocessor), no bootstrap.
 
