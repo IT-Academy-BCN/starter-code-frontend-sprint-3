@@ -87,6 +87,8 @@ function cleanCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    let subtotalWithDiscount = []
+
     cart.forEach(product => {
 
         if(product.id === 1 && product.qty > 2) {
@@ -97,7 +99,11 @@ function applyPromotionsCart() {
             } 
 
         product.totalPerItem = (product.price * product.qty)
+        subtotalWithDiscount.push(product.totalPerItem)
     })
+    
+    return subtotalWithDiscount.reduce((a, b) => a + b)
+
 }
 
 // Exercise 6
