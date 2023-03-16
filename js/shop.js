@@ -185,15 +185,21 @@ function removeFromCart(id) {
                 if(product.id === 1 && product.qty <= 2) {
                 product.price = 10.50
                 product.totalPerItem = (10.50 * product.qty)
-                } else if(product.id === 3 && product.qty <= 9) {
+                delete product.subtotalWithDiscount
+
+                } 
+                else if(product.id === 3 && product.qty <= 9) {
                     product.price = 5
                     product.totalPerItem = (5 * product.qty)
-                } else {
+                    delete product.subtotalWithDiscount
+                } 
+                else {
                     product.totalPerItem = (product.price * product.qty)
+                    product.subtotalWithDiscount = (product.price * product.qty)
                 }
             }
     })
-
+    console.log(cart)
     cartList = []
     countProduct.textContent = `${cart.length}`
     printCart()
