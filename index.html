@@ -21,7 +21,8 @@
 			 <div class="container d-flex">
 				 <a class="navbar-brand" href="#!">ShopNow</a>
 				 <div class="d-flex flex-row order-lg-last align-items-center">
-				 
+					<!-- Button per cridar la funció generateCart()-->
+					<button type="button" class="btn btn-dark" id="btn" onclick="generateCart()">Generate Cart</button>
 					 <button type="button" class="navbar-toggler order-last collapsed" data-bs-toggle="collapse" data-bs-target="#navbar" aria-expanded="false" aria-controls="navbar">
 						 <span class="navbar-toggler-icon"></span>
 					 </button>
@@ -232,12 +233,12 @@
 						<tr>
 						  <th scope="col">Product</th>
 						  <th scope="col">Price</th>
-						  <th scope="col">Qty.</th>
 						  <th scope="col">Total <small>(with discount)</small></th>
+						  <th scope="col" colspan="2">Qty.</th>
 						</tr>
 					  </thead>
-					  <tbody id="cart_list">
-						<!-- <tr>
+					  <tbody id="cart_list" style="vertical-align: center;">
+						<tr>
 						  <th scope="row">Cooking oil</th>
 						  <td>$10.5</td>
 						  <td>2</td>
@@ -254,7 +255,7 @@
 						  <td>$15</td>
 						  <td>3</td>
 						  <td>$45</td>
-						</tr> -->
+						</tr>
 					  </tbody>
 				  </table>
 				  <div class="text-center fs-3">
