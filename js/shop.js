@@ -89,17 +89,15 @@ function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
     cart.forEach(product => {
 
-        if(product.id === 1 && product.qty > 2) {
-            product.price = 10
-            product.subtotalWithDiscount = (product.price * product.qty)
+    if(product.id === 1 && product.qty > 2) {
+        product.subtotalWithDiscount = (10 * product.qty)
+    } 
+        else if(product.id === 3 && product.qty > 9) {
+            product.subtotalWithDiscount = (((5/100)*66).toFixed(2) * product.qty) 
         } 
-            else if(product.id === 3 && product.qty > 9) {
-                product.price = ((5/100)*66).toFixed(2)
-                product.subtotalWithDiscount = (product.price * product.qty) 
-            } 
 
-        product.totalPerItem = (product.price * product.qty)
-    })
+    product.subtotal = (product.price * product.qty)
+})
 
     console.log(cart)
 }
@@ -111,7 +109,7 @@ function printCart() {
     totalPrice.textContent = ''
     let totalArr = []
     cart.forEach(product => {
-        const { name, price, qty, totalPerItem, id } = product
+        const { name, price, qty, subtotal, subtotalWithDiscount, id } = product
         cartListModal.innerHTML += `
             <tr>
                 <th scope="row">${name}</th>
@@ -123,10 +121,10 @@ function printCart() {
                         <button onclick="removeFromCart(${id})"class="text-center ms-1 px-3 py-0 btn btn-outline-dark rounded">-</button>
                     </div>
                 </td>
-                <td>$${totalPerItem.toFixed(2)}</td>
+                <td>$${subtotalWithDiscount ? subtotalWithDiscount.toFixed(2) : subtotal.toFixed(2)}</td>
             </tr>
         `
-        totalArr.push(totalPerItem)
+        totalArr.push(subtotalWithDiscount ? subtotalWithDiscount : subtotal)
     })
     total = totalArr.reduce((a, b) => a + b)
     totalPrice.textContent += `${total.toFixed(2)}`
@@ -183,19 +181,21 @@ function removeFromCart(id) {
                 }   
 
                 if(product.id === 1 && product.qty <= 2) {
-                product.price = 10.50
-                product.totalPerItem = (10.50 * product.qty)
+                product.subtotal = (product.price * product.qty)
                 delete product.subtotalWithDiscount
 
                 } 
                 else if(product.id === 3 && product.qty <= 9) {
-                    product.price = 5
-                    product.totalPerItem = (5 * product.qty)
+                    product.subtotal = (product.price * product.qty)
                     delete product.subtotalWithDiscount
                 } 
                 else {
-                    product.totalPerItem = (product.price * product.qty)
-                    product.subtotalWithDiscount = (product.price * product.qty)
+                    product.subtotal = (product.price * product.qty)
+                    if(product.subtotalWithDiscount && product.id === 1) {
+                        product.subtotalWithDiscount = (10 * product.qty)
+                    } else if(product.subtotalWithDiscount && product.id === 3) {
+                        product.subtotalWithDiscount = (((5/100)*66).toFixed(2) * product.qty)
+                    }
                 }
             }
     })
