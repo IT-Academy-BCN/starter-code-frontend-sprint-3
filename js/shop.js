@@ -158,51 +158,74 @@ function generateCart() {
 
 // Exercise 6
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
-    const cartTable = document.querySelector('#cartModal .modal-body table');
-    const cartTotal = document.querySelector('#cartModal .modal-footer .total');
+  // Obtener el modal del carrito de la compra
+  var modal = document.getElementById("cartModal");
+
+  // Obtener la tabla del carrito de la compra
+  var cartTable = document.getElementById("cartTable");
+
+  // Obtener el cuerpo de la tabla
+  var cartTableBody = cartTable.getElementsByTagName("tbody")[0];
+
+  // Inicializar el contenido de la tabla
+  cartTableBody.innerHTML = "";
+
+  // Crear una fila por cada producto del carrito
+  for (var i = 0; i < cart.length; i++) {
+    // Crear una nueva fila en la tabla
+    var newRow = cartTableBody.insertRow();
+
+    // Insertar las celdas en la fila
+    var nameCell = newRow.insertCell();
+    var priceCell = newRow.insertCell();
+    var quantityCell = newRow.insertCell();
+    var subtotalCell = newRow.insertCell();
+
+    // Rellenar las celdas con los datos del producto
+    nameCell.innerHTML = cart[i].name;
+    priceCell.innerHTML = cart[i].price + " €";
+    quantityCell.innerHTML = cart[i].quantity;
+    subtotalCell.innerHTML = cart[i].subtotal + " €";
+  }
+
+  // Calcular el total de la compra
+  var total = 0;
+  for (var i = 0; i < cart.length; i++) {
+    total += cart[i].subtotal;
+  }
+
+  // Actualizar el contenido del elemento HTML que muestra el total
+  var totalElement = document.getElementById("total");
+  totalElement.innerHTML = total.toFixed(2);
   
-    // Clear the current cart table
-    cartTable.innerHTML = '';
-  
-    // Generate the table header row
-    const headerRow = document.createElement('tr');
-    headerRow.innerHTML = `
-      <th>Product</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Subtotal</th>
-      <th>Discount</th>
-      <th>Total</th>
-    `;
-    cartTable.appendChild(headerRow);
-  
-    // Generate a table row for each product in the cart
-    cart.forEach(product => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${product.name}</td>
-        <td>${product.price} €</td>
-        <td>${product.quantity}</td>
-        <td>${product.subtotal} €</td>
-        <td>${product.discount} €</td>
-        <td>${product.total} €</td>
-      `;
-      cartTable.appendChild(row);
-    });
-  
-    // Update the cart total
-    cartTotal.innerHTML = `Total: ${calculateTotal()} €`;
+  // Mostrar el modal del carrito de la compra
+  modal.style.display = "block";
 }
 
 
 // ** Nivell II **
 
 // Exercise 7
-function addToCart(id) {
-    // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+function addToCart(product) {
+  // Comprobar si el producto ya está en el carrito
+  var cartItem = cart.find(item => item.id === product.id);
+
+  if (cartItem) {
+    // Si el producto ya está en el carrito, incrementar la cantidad y el subtotal
+    cartItem.quantity++;
+    cartItem.subtotal = cartItem.quantity * cartItem.price;
+  } else {
+    // Si el producto no está en el carrito, añadirlo con cantidad 1 y subtotal igual al precio
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      subtotal: product.price,
+      hasDiscount: false,
+      subtotalWithDiscount: 0 
+    });
+  }
 }
 
 // Exercise 8
