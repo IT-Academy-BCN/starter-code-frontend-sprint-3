@@ -76,7 +76,7 @@ function buy(id) {
 
     for (let i = 0; i < products.length; i++) {
 
-        if (id === products[i].id) {
+        if (id == products[i].id) {
 
             cartList.push(products[i]);
             // test
@@ -101,7 +101,7 @@ function cleanCart() {
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
     for (let i = 0; i < cartList.length; i++) {
-        // const element = array[i];
+        
         total += cartList[i].price;
     }
     console.log(total);
@@ -111,37 +111,32 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-    // Ajuda: Simplement, s'ha de fer un bucle sobre l'array cartList que rep la funció. 
-
 
     for (let i = 0; i < cartList.length; i++) {
 
-        console.log(cartList[i].id);
+        let item = cartList[i];
+        const itExists = cart.find( (itemCart) => itemCart.id == item.id);
 
-            if ( cartList[i].id) {
-                test
-            } 
-        };
-
+        if(itExists){
+                itExists.quantity++
+        } else {
+                cart.push({...item, quantity: 1})
+                // {...item, quantity: 1, subtotal: 31.5,  subtotalWithDiscount : 30 ?oil?????}
+            }
     }
 
-    console.log(cart)
 
-    //   cartList[i].id.includes(cart[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
+    console.log(cart);
 
-
-    // cart.includes(cartList[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
-
-        // if(cartList[i].id === item.id){
-        //     item.quantity++
-        // } else{
-        //     cart.push(item.quantity = 1);
-        // }
+}
 
         
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    // Si l'usuari/ària compra 3 o més ampolles d'oli, el preu del producte descendeix a 10 euros.
+    // Quan es compren 10 o més productes per a fer pastís, el seu preu es rebaixa a 2/3.
+
 
 
 }
