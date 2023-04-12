@@ -120,35 +120,31 @@ function generateCart() {
 
     for (let i = 0; i < cartList.length; i++) {
 
-    // console.log(cartList[i])
-    // // console.log(cart);
     //   cartList[i].id.includes(cart[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
 
-    //   if (cartList[i].id === cart) {
-        
-    //   }
-
     //     console.log(cartList[i].quantity = 1);
-        // cart.includes(cartList[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
 
-    console.log(cartList[i].id)
+    // cart.includes(cartList[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
 
+    // console.log(cartList[i].id)
+    console.log(cartList[0].name);
 
-        
         // if(cartList[i].id === item.id){
         //     item.quantity++
         // } else{
         //     cart.push(item.quantity = 1);
         // }
     }
-     console.log(cart)
+     ;
 
 }
-
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+
+    
 }
+
 
 // Exercise 6
 function printCart() {
