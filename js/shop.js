@@ -111,20 +111,37 @@ function calculateTotal() {
 function generateCart() {
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-    const cart = [];
+    // Ajuda: Simplement, s'ha de fer un bucle sobre l'array cartList que rep la funció. 
+
+    // - Per cada element de cartList, hem de validar si existeix en l'array cart:
+
+    // En cas que no existeixi, l'afegim a l'array cart (compte, que no se t'oblidi d'agregar la propietat quantity amb valor 1 al producte abans de fer push). 
+    // Si, en canvi, ja existeix aquest producte al carretó, haurem d'incrementar el camp quantity.
 
     for (let i = 0; i < cartList.length; i++) {
-        cartList[i].quantity = 1;
-        if (cartList[i].quantity === 1) {
 
-            cartList[i].quantity++;
-            // noooooooooooa 
-            cart.push(cartList);
-        }
+    // console.log(cartList[i])
+    // // console.log(cart);
+    //   cartList[i].id.includes(cart[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
+
+    //   if (cartList[i].id === cart) {
+        
+    //   }
+
+    //     console.log(cartList[i].quantity = 1);
+        // cart.includes(cartList[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
+
+    console.log(cartList[i].id)
+
+
+        
+        // if(cartList[i].id === item.id){
+        //     item.quantity++
+        // } else{
+        //     cart.push(item.quantity = 1);
+        // }
     }
-
-    console.log(cart);
-
+     console.log(cart)
 
 }
 
