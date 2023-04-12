@@ -120,29 +120,41 @@ function generateCart() {
 
     for (let i = 0; i < cartList.length; i++) {
 
+        // let item = cartList[i];
+        console.log(cartList[i].id);
+        cart.find( (item) => { 
+            if (cartList[i].id === cart.item.id) {
+                // item.quantity++
+                console.log("hix2");
+            } else {
+                // item.quantity = 1;
+                // console.log(item.quantity = 1);
+                cart.push(...cartList[i]);
+            }
+        });
+
+
+    }
+    // cart.push(...cartList);
+    console.log(cart)
+
     //   cartList[i].id.includes(cart[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
 
-    //     console.log(cartList[i].quantity = 1);
 
     // cart.includes(cartList[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
-
-    // console.log(cartList[i].id)
-    console.log(cartList[0].name);
 
         // if(cartList[i].id === item.id){
         //     item.quantity++
         // } else{
         //     cart.push(item.quantity = 1);
         // }
-    }
-     ;
 
 }
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
 
-    
+
 }
 
 
