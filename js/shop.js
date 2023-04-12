@@ -79,6 +79,7 @@ function buy(id) {
         if (id === products[i].id) {
 
             cartList.push(products[i]);
+            // test
         }
 
       }
@@ -117,7 +118,7 @@ function generateCart() {
         if (cartList[i].quantity === 1) {
 
             cartList[i].quantity++;
-            // nooooooooooo
+            // noooooooooooa
             cart.push(cartList);
         }
     }
