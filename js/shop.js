@@ -113,29 +113,18 @@ function generateCart() {
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
     // Ajuda: Simplement, s'ha de fer un bucle sobre l'array cartList que rep la funció. 
 
-    // - Per cada element de cartList, hem de validar si existeix en l'array cart:
-
-    // En cas que no existeixi, l'afegim a l'array cart (compte, que no se t'oblidi d'agregar la propietat quantity amb valor 1 al producte abans de fer push). 
-    // Si, en canvi, ja existeix aquest producte al carretó, haurem d'incrementar el camp quantity.
 
     for (let i = 0; i < cartList.length; i++) {
 
-        // let item = cartList[i];
         console.log(cartList[i].id);
-        cart.find( (item) => { 
-            if (cartList[i].id === cart.item.id) {
-                // item.quantity++
-                console.log("hix2");
-            } else {
-                // item.quantity = 1;
-                // console.log(item.quantity = 1);
-                cart.push(...cartList[i]);
-            }
-        });
 
+            if ( cartList[i].id) {
+                
+            } 
+        };
 
     }
-    // cart.push(...cartList);
+
     console.log(cart)
 
     //   cartList[i].id.includes(cart[i]) ? cartList[i].quantity++ : cart.push(cartList[i].quantity = 1)
@@ -149,7 +138,7 @@ function generateCart() {
         //     cart.push(item.quantity = 1);
         // }
 
-}
+        
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
