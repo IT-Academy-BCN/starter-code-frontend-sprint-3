@@ -118,7 +118,7 @@ function generateCart() {
         if (cartList[i].quantity === 1) {
 
             cartList[i].quantity++;
-            // noooooooooooa
+            // noooooooooooa 
             cart.push(cartList);
         }
     }
