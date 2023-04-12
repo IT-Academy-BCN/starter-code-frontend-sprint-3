@@ -119,7 +119,7 @@ function generateCart() {
         console.log(cartList[i].id);
 
             if ( cartList[i].id) {
-                
+                test
             } 
         };
 
