@@ -129,7 +129,24 @@ function generateCart() {
     console.log(cart);
 
 }
+// function generateCart() {
 
+//     for (let i = 0; i < cartList.length; i++) {
+//         const item = cartList[i];
+//         for (let j = 0; j < cart.length; j++) {
+            
+//             if (item.id == cart[j].id) {
+//                 cart[j].quantity++
+//             } else {
+//                 cart.push({...item, quantity : 1})
+//             }
+
+//         }
+//     }
+
+//     console.log(cart);
+
+// }
         
 // Exercise 5
 function applyPromotionsCart() {
