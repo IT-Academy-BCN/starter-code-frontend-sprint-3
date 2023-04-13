@@ -109,6 +109,7 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
+    console.log("============GenerateCart func=====================");
     // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
@@ -127,7 +128,7 @@ function generateCart() {
 
 
     console.log(cart);
-
+    console.log("========================promotions log below==============");
 }
 // function generateCart() {
 
@@ -150,12 +151,38 @@ function generateCart() {
         
 // Exercise 5
 function applyPromotionsCart() {
+    // var discount = discount + (price - specialprice); var discount = discount + (price - specialprice); Then, calculate the price difference between those prices and add it to the discount variable.
+
     // Apply promotions to each item in the array "cart"
     // Si l'usuari/ària compra 3 o més ampolles d'oli, el preu del producte descendeix a 10 euros.
     // Quan es compren 10 o més productes per a fer pastís, el seu preu es rebaixa a 2/3.
 
+    // if item quantity >= offer.number aplicamos offer.percent descuento a item.price
+    // subtotalWithDiscount se guarda precio total
 
+        for (let i = 0; i < cart.length; i++) {
 
+                if ('offer' in cart[i] && cart[i].offer.number >= cart[i].quantity){
+                
+                    const subtotal = cart[i].price * cart[i].quantity;
+                    const calculateTotalDiscount = cart[i].price - (cart[i].price * cart[i].offer.percent / 100);
+                    const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity).toFixed(2);
+
+                    cart[i].subtotal = subtotal;
+                    cart[i].subtotalWithDiscount = subtotalWithDiscount;
+
+                    // console.log(typeof(subtotalWithDiscount));
+
+                    // console.log("Subtotal => " + subtotal);
+                    // console.log("calcTotalDisc => " + calculateTotalDiscount);
+                    // console.log(cart[i].name + " => total " + subtotalWithDiscount);
+
+                } 
+                
+            
+        }
+
+    console.log(cart);
 }
 
 
