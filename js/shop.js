@@ -188,11 +188,16 @@ function printCart() {
        const name = document.createElement("th");
        name.setAttribute("scope", "col");
        name.textContent = cart[i].name;
+
        const price = document.createElement("td");
        price.textContent = cart[i].price;
+
        const quantity = document.createElement("td");
        quantity.textContent = cart[i].quantity;
-       console.log(name);
+
+       tr.appendChild(name);
+       tr.appendChild(price);
+       tr.appendChild(quantity);
 
         if ("subtotalWithDiscount" in cart[i]) {
             const totalDisc = document.createElement("td");
@@ -204,9 +209,7 @@ function printCart() {
             tr.appendChild(total);
         }
 
-       tr.appendChild(name);
-       tr.appendChild(price);
-       tr.appendChild(quantity);
+       
 
        tablebody.appendChild(tr);
 
