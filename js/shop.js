@@ -130,24 +130,6 @@ function generateCart() {
     console.log(cart);
     console.log("========================promotions log below==============");
 }
-// function generateCart() {
-
-//     for (let i = 0; i < cartList.length; i++) {
-//         const item = cartList[i];
-//         for (let j = 0; j < cart.length; j++) {
-            
-//             if (item.id == cart[j].id) {
-//                 cart[j].quantity++
-//             } else {
-//                 cart.push({...item, quantity : 1})
-//             }
-
-//         }
-//     }
-
-//     console.log(cart);
-
-// }
         
 // Exercise 5
 function applyPromotionsCart() {
@@ -163,14 +145,14 @@ function applyPromotionsCart() {
         for (let i = 0; i < cart.length; i++) {
 
                 if ('offer' in cart[i] ){
-                    // && cart[i].offer.number >= cart[i].quantity
+
                     const subtotal = cart[i].price * cart[i].quantity;
                     cart[i].subtotal = subtotal;
 
                     if ( cart[i].quantity >=  cart[i].offer.number) {
 
                         const calculateTotalDiscount = cart[i].price - (cart[i].price * cart[i].offer.percent / 100);
-                        console.log("hola");
+
                         const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity).toFixed(2);
 
                             cart[i].subtotalWithDiscount = parseFloat(subtotalWithDiscount);
@@ -194,7 +176,42 @@ function applyPromotionsCart() {
 
 // Exercise 6
 function printCart() {
+    console.log("hii");
     // Fill the shopping cart modal manipulating the shopping cart dom
+    // crear una tr por cada item del array cart y dentro los td's necesarios.
+
+    const tablebody = document.getElementById("cart_list");
+
+    for (let i = 0; i < cart.length; i++) {
+        console.log("hell");
+       const tr = document.createElement("tr");
+       const name = document.createElement("th");
+       name.setAttribute("scope", "col");
+       name.textContent = cart[i].name;
+       const price = document.createElement("td");
+       price.textContent = cart[i].price;
+       const quantity = document.createElement("td");
+       quantity.textContent = cart[i].quantity;
+       console.log(name);
+
+        if ("subtotalWithDiscount" in cart[i]) {
+            const totalDisc = document.createElement("td");
+            totalDisc.textContent = cart[i].subtotalWithDiscount;
+            tr.appendChild(totalDisc);
+        } else { 
+            const total = document.createElement("td");
+            total.textContent = cart[i].total;
+            tr.appendChild(total);
+        }
+
+       tr.appendChild(name);
+       tr.appendChild(price);
+       tr.appendChild(quantity);
+
+       tablebody.appendChild(tr);
+
+    }
+
 }
 
 
