@@ -166,7 +166,7 @@ function applyPromotionsCart() {
                 
                     const subtotal = cart[i].price * cart[i].quantity;
                     const calculateTotalDiscount = cart[i].price - (cart[i].price * cart[i].offer.percent / 100);
-                    const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity).toFixed(2);
+                    const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity);
 
                     cart[i].subtotal = subtotal;
                     cart[i].subtotalWithDiscount = subtotalWithDiscount;
