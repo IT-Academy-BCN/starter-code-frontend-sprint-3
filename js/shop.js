@@ -79,7 +79,7 @@ function buy(id) {
         if (id == products[i].id) {
 
             cartList.push(products[i]);
-            // test
+
         }
 
       }
@@ -122,7 +122,6 @@ function generateCart() {
                 itExists.quantity++
         } else {
                 cart.push({...item, quantity: 1})
-                // {...item, quantity: 1, subtotal: 31.5,  subtotalWithDiscount : 30 ?oil?????}
             }
     }
 
