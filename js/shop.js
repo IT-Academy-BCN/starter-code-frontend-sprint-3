@@ -179,11 +179,11 @@ function printCart() {
 
     const tablebody = document.getElementById("cart_list");
 
-
+    let totalCost = 0;
     for (let i = 0; i < cart.length; i++) {
 
        const tr = document.createElement("tr");
-       let totalCost = 0;
+       
 
        const name = document.createElement("th");
        name.setAttribute("scope", "col");
@@ -198,8 +198,6 @@ function printCart() {
        tr.appendChild(name);
        tr.appendChild(price);
        tr.appendChild(quantity);
-
-    //    TO DO TOTALCOST
 
         if ("subtotalWithDiscount" in cart[i]) {
 
@@ -220,12 +218,11 @@ function printCart() {
         }
 
 
-       tablebody.appendChild(tr);
-
-       const spanTotal = document.getElementById("total_price");
-       spanTotal.textContent = totalCost; 
+       tablebody.appendChild(tr);   
 
     }
+    const spanTotal = document.getElementById("total_price");
+    spanTotal.textContent = totalCost; 
 
 }
 
