@@ -93,7 +93,7 @@ function buy(id) {
 function cleanCart() {
 
     cartList = [];  
-
+    cart = [];
     console.log(cartList);
 }
 
@@ -132,11 +132,8 @@ function generateCart() {
         
 // Exercise 5
 function applyPromotionsCart() {
-    // var discount = discount + (price - specialprice); var discount = discount + (price - specialprice); Then, calculate the price difference between those prices and add it to the discount variable.
 
     // Apply promotions to each item in the array "cart"
-    // Si l'usuari/ària compra 3 o més ampolles d'oli, el preu del producte descendeix a 10 euros.
-    // Quan es compren 10 o més productes per a fer pastís, el seu preu es rebaixa a 2/3.
 
     // if item quantity >= offer.number aplicamos offer.percent descuento a item.price
     // subtotalWithDiscount se guarda precio total
@@ -234,6 +231,24 @@ function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    for (let i = 0; i < products.length; i++) {
+
+            let item = products[i];
+
+            if (id == item.id) {
+
+                let itExists = cart.find( (cartItem) => cartItem.id === item.id );
+                itExists ? itExists.quantity++ : cart.push({...item, quantity: 1});
+            }
+           
+        }
+
+        console.log(cart);
+    
+    // let countItems = 0;
+    // let cartbutton = document.getElementById("cart_product");
+   
+
 }
 
 // Exercise 8
