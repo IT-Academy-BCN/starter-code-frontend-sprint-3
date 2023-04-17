@@ -212,6 +212,7 @@
 				</div>
 			</div>
 		</section>
+		<button type="button" onclick="generateCart(), applyPromotionsCart()">Click to call generateCart and applyPromotionsCart</button>
 	
         <!-- Footer-->
         <footer class="py-3 bg-dark">
@@ -237,13 +238,16 @@
 						</tr>
 					  </thead>
 					  <tbody id="cart_list">
-						<tr>
+
+						<!-- <tr>
 						  <th scope="row">Cooking oil</th>
 						  <td>$10.5</td>
 						  <td>2</td>
 						  <td>$21</td>
-						</tr>
-						<tr>
+						</tr> -->
+
+
+						<!-- <tr>
 						  <th scope="row">Pasta</th>
 						  <td>$6.25</td>
 						  <td>1</td>
@@ -254,14 +258,14 @@
 						  <td>$15</td>
 						  <td>3</td>
 						  <td>$45</td>
-						</tr>
+						</tr> -->
 					  </tbody>
 				  </table>
 				  <div class="text-center fs-3">
-					Total: $<span id="total_price">100</span>
+					Total: $<span id="total_price"></span>
 				  </div>
 				  <div class="text-center"> 
-					<button type="button" onclick="generateCart(), applyPromotionsCart()">Hola</button>
+					
 					<a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
 					<a href="javascript:void(0)" onclick="cleanCart()" class="btn btn-primary m-3">Clean Cart</a>
 				  </div>

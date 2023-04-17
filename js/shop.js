@@ -130,24 +130,6 @@ function generateCart() {
     console.log(cart);
     console.log("========================promotions log below==============");
 }
-// function generateCart() {
-
-//     for (let i = 0; i < cartList.length; i++) {
-//         const item = cartList[i];
-//         for (let j = 0; j < cart.length; j++) {
-            
-//             if (item.id == cart[j].id) {
-//                 cart[j].quantity++
-//             } else {
-//                 cart.push({...item, quantity : 1})
-//             }
-
-//         }
-//     }
-
-//     console.log(cart);
-
-// }
         
 // Exercise 5
 function applyPromotionsCart() {
@@ -166,10 +148,11 @@ function applyPromotionsCart() {
                 
                     const subtotal = cart[i].price * cart[i].quantity;
                     const calculateTotalDiscount = cart[i].price - (cart[i].price * cart[i].offer.percent / 100);
-                    const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity);
+                    const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity).toFixed(2);
 
-                    cart[i].subtotal = subtotal;
-                    cart[i].subtotalWithDiscount = subtotalWithDiscount;
+                            cart[i].subtotalWithDiscount = parseFloat(subtotalWithDiscount);
+
+                    }
 
                     // console.log(typeof(subtotalWithDiscount));
 
@@ -189,6 +172,57 @@ function applyPromotionsCart() {
 // Exercise 6
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
+    // crear una tr por cada item del array cart y dentro los td's necesarios.
+
+    const tablebody = document.getElementById("cart_list");
+
+
+    for (let i = 0; i < cart.length; i++) {
+
+       const tr = document.createElement("tr");
+       let totalCost = 0;
+
+       const name = document.createElement("th");
+       name.setAttribute("scope", "col");
+       name.textContent = cart[i].name;
+
+       const price = document.createElement("td");
+       price.textContent = cart[i].price;
+
+       const quantity = document.createElement("td");
+       quantity.textContent = cart[i].quantity;
+
+       tr.appendChild(name);
+       tr.appendChild(price);
+       tr.appendChild(quantity);
+
+
+        if ("subtotalWithDiscount" in cart[i]) {
+
+            const totalDisc = document.createElement("td");
+            totalDisc.textContent = "$" + cart[i].subtotalWithDiscount;
+            tr.appendChild(totalDisc);
+
+            totalCost += cart[i].subtotalWithDiscount;
+
+        } else { 
+            const subtotal = document.createElement("td");
+            subtotal.textContent = "$" + cart[i].subtotal;
+            tr.appendChild(subtotal);
+
+            totalCost += cart[i].subtotal;
+
+        }
+
+       
+
+       tablebody.appendChild(tr);
+
+       const spanTotal = document.getElementById("total_price");
+       spanTotal.innerText = totalCost; 
+
+    }
+
 }
 
 
