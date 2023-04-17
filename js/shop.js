@@ -200,6 +200,7 @@ function printCart() {
        tr.appendChild(price);
        tr.appendChild(quantity);
 
+    //    TO DO TOTALCOST
 
         if ("subtotalWithDiscount" in cart[i]) {
 
@@ -208,6 +209,7 @@ function printCart() {
             tr.appendChild(totalDisc);
 
             totalCost += cart[i].subtotalWithDiscount;
+         
 
         } else { 
             const subtotal = document.createElement("td");
@@ -218,12 +220,11 @@ function printCart() {
 
         }
 
-       
 
        tablebody.appendChild(tr);
 
        const spanTotal = document.getElementById("total_price");
-       spanTotal.innerText = totalCost; 
+       spanTotal.textContent = totalCost; 
 
     }
 
