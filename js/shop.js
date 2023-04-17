@@ -144,11 +144,15 @@ function applyPromotionsCart() {
 
         for (let i = 0; i < cart.length; i++) {
 
-                if ('offer' in cart[i] && cart[i].offer.number >= cart[i].quantity){
-                
-                    const subtotal = cart[i].price * cart[i].quantity;
-                    const calculateTotalDiscount = cart[i].price - (cart[i].price * cart[i].offer.percent / 100);
-                    const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity).toFixed(2);
+            const subtotal = cart[i].price * cart[i].quantity;
+                    cart[i].subtotal = subtotal;
+
+                if ('offer' in cart[i] ){
+
+                    if ( cart[i].quantity >=  cart[i].offer.number) {
+
+                        const calculateTotalDiscount = cart[i].price - (cart[i].price * cart[i].offer.percent / 100);
+                        const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity).toFixed(2);
 
                             cart[i].subtotalWithDiscount = parseFloat(subtotalWithDiscount);
 
