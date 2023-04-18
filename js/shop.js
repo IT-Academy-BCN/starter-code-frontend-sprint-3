@@ -94,6 +94,9 @@ function cleanCart() {
 
     cartList = [];  
     cart = [];
+    
+    document.getElementById('cart_list').innerHTML = '';
+    document.getElementById("total_price").innerHTML = '0';
     console.log(cartList);
 }
 
@@ -132,18 +135,13 @@ function generateCart() {
         
 // Exercise 5
 function applyPromotionsCart() {
+    console.log("applypromotions");
 
     // Apply promotions to each item in the array "cart"
-
-    // if item quantity >= offer.number aplicamos offer.percent descuento a item.price
-    // subtotalWithDiscount se guarda precio total
-
         for (let i = 0; i < cart.length; i++) {
 
-            const subtotal = cart[i].price * cart[i].quantity;
-                    cart[i].subtotal = subtotal;
-
                 if ('offer' in cart[i] ){
+        // la propiedad subtotalWithDiscount solo aparecera cuando un item tenga descuento
 
                     if ( cart[i].quantity >=  cart[i].offer.number) {
 
@@ -153,16 +151,7 @@ function applyPromotionsCart() {
                             cart[i].subtotalWithDiscount = parseFloat(subtotalWithDiscount);
 
                     }
-
-                    // console.log(typeof(subtotalWithDiscount));
-
-                    // console.log("Subtotal => " + subtotal);
-                    // console.log("calcTotalDisc => " + calculateTotalDiscount);
-                    // console.log(cart[i].name + " => total " + subtotalWithDiscount);
-
-                } 
-                
-            
+                }         
         }
 
     console.log(cart);
@@ -173,11 +162,14 @@ function applyPromotionsCart() {
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
     // crear una tr por cada item del array cart y dentro los td's necesarios.
+    console.log("printcart");
 
     const tablebody = document.getElementById("cart_list");
-
     let totalCost = 0;
+
     for (let i = 0; i < cart.length; i++) {
+
+        // carrito se duplica. if the item already is in the car then just increase quantity
 
        const tr = document.createElement("tr");
        
@@ -205,7 +197,8 @@ function printCart() {
             totalCost += cart[i].subtotalWithDiscount;
          
 
-        } else { 
+        } else {
+
             const subtotal = document.createElement("td");
             subtotal.textContent = "$" + cart[i].subtotal;
             tr.appendChild(subtotal);
@@ -218,6 +211,7 @@ function printCart() {
        tablebody.appendChild(tr);   
 
     }
+
     const spanTotal = document.getElementById("total_price");
     spanTotal.textContent = totalCost; 
 
@@ -226,11 +220,12 @@ function printCart() {
 
 // ** Nivell II **
 
-// Exercise 7
+// Exercise 8
 function addToCart(id) {
     // Refactor previous code in order to simplify it 
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    console.log("===== addtocart function =====");
     for (let i = 0; i < products.length; i++) {
 
             let item = products[i];
@@ -238,24 +233,45 @@ function addToCart(id) {
             if (id == item.id) {
 
                 let itExists = cart.find( (cartItem) => cartItem.id === item.id );
+
                 itExists ? itExists.quantity++ : cart.push({...item, quantity: 1});
+                console.log(cart);
             }
            
         }
+        for (let i = 0; i < cart.length; i++) {
 
-        console.log(cart);
-    
-    // let countItems = 0;
-    // let cartbutton = document.getElementById("cart_product");
-   
+            const subtotal = cart[i].price * cart[i].quantity;
+            cart[i].subtotal = subtotal;
+            
+        }
 
 }
 
-// Exercise 8
+// Exercise 9
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+
+        for (let i = 0; i < cart.length; i++) {
+            
+            const index = cart.indexOf(cart[i])
+            if (id == cart[i].id) {
+                cart.splice(index, 1);
+            
+            }
+        }
+        console.log(cart);
 }
+// const array = [2, 5, 9];
+
+// console.log(array);
+
+// const index = array.indexOf(5);
+// if (index > -1) { // only splice array when item is found
+//   array.splice(index, 1); // 2nd parameter means remove one item only
+// }
+
 
 function open_modal(){
 	console.log("Open Modal");
