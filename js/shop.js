@@ -136,12 +136,10 @@ function generateCart() {
         
 // Exercise 5
 function applyPromotionsCart() {
-    console.log("applypromotions");
-
     // Apply promotions to each item in the array "cart"
         for (let i = 0; i < cart.length; i++) {
 
-                if ('offer' in cart[i] ){
+            if ('offer' in cart[i] ){
         // la propiedad subtotalWithDiscount solo aparecera cuando un item tenga descuento
 
                     if ( cart[i].quantity >=  cart[i].offer.number) {
@@ -149,7 +147,7 @@ function applyPromotionsCart() {
                         const calculateTotalDiscount = cart[i].price - (cart[i].price * cart[i].offer.percent / 100);
                         const subtotalWithDiscount = (calculateTotalDiscount * cart[i].quantity).toFixed(2);
 
-                            cart[i].subtotalWithDiscount = parseFloat(subtotalWithDiscount);
+                        cart[i].subtotalWithDiscount = parseFloat(subtotalWithDiscount);
 
                     }
 
@@ -159,7 +157,6 @@ function applyPromotionsCart() {
                 }         
         }
 
-    console.log(cart);
 }
 
 
@@ -176,7 +173,6 @@ function printCart() {
 
     for (let i = 0; i < cart.length; i++) {
 
-        // carrito se duplica. if the item already is in the car then just increase quantity
        const tr = document.createElement("tr");
        
 
@@ -239,6 +235,7 @@ function addToCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array or update its quantity in case it has been added previously.
     console.log("===== addtocart function =====");
+
     for (let i = 0; i < products.length; i++) {
 
             let item = products[i];
@@ -249,6 +246,8 @@ function addToCart(id) {
 
                 itExists ? itExists.quantity++ : cart.push({...item, quantity: 1});
                 console.log(cart);
+
+                document.getElementById("count_product").textContent = cart.length;
             }
            
         }
@@ -270,30 +269,19 @@ function removeFromCart(id) {
             cart[i].subtotal = cart[i].price * cart[i].quantity;
 
             applyPromotionsCart();
-            console.log("cart after promos");
-            console.log(cart);
             
             if (cart[i].quantity == 0) {
-                console.log("cart when quantity == 0");
 
                 const index = cart.indexOf(cart[i]);
-                cart.splice(index, 1)
+                cart.splice(index, 1);
+
+                document.getElementById("count_product").textContent = cart.length;
+
                 console.log(cart);
             }
         }
    }    
 }
-// loop en el array cart.
-// Si el item tiene el mismo id reducimos la cantidad
-// recalculamos el precio subtotal y subtotalwdiscount
-// si la cantidad == 0, quitamos el item del array;
-// cad
-
-// const index = array.indexOf(5);
-// if (index > -1) { // only splice array when item is found
-//   array.splice(index, 1); // 2nd parameter means remove one item only
-// }
-
 
 function open_modal(){
 	console.log("Open Modal");
