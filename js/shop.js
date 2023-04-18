@@ -152,6 +152,10 @@ function applyPromotionsCart() {
                             cart[i].subtotalWithDiscount = parseFloat(subtotalWithDiscount);
 
                     }
+
+                    if (cart[i].quantity < cart[i].offer.number) {
+                        delete cart[i].subtotalWithDiscount;
+                    }
                 }         
         }
 
@@ -167,6 +171,8 @@ function printCart() {
 
     const tablebody = document.getElementById("cart_list");
     let totalCost = 0;
+
+    tablebody.innerHTML = "";
 
     for (let i = 0; i < cart.length; i++) {
 
@@ -185,7 +191,7 @@ function printCart() {
        quantity.textContent = cart[i].quantity;
 
        const deleteIcon = document.createElement("td");
-       deleteIcon.innerHTML = `<i; class='fas fa-trash-alt' id='trashcan' onclick='removeFromCart(${cart[i].id})'></i>`;
+       deleteIcon.innerHTML = `<i; class='fas fa-trash-alt' id='trashcan' onclick='removeFromCart(${cart[i].id}); printCart();'></i>`;
 
        tr.appendChild(name);
        tr.appendChild(price);
@@ -213,11 +219,6 @@ function printCart() {
        tr.appendChild(deleteIcon).classList.add("trashcan");
 
        tablebody.appendChild(tr);   
-
-        // if (cart[i].name) {
-        //     console.error()
-        //     quantity.textContent = cart[i].quantity++;    
-        // }
 
     }
 
@@ -262,30 +263,25 @@ function addToCart(id) {
 
 // Exercise 9
 function removeFromCart(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
    for (let i = 0; i < cart.length; i++) {
 
         if (id == cart[i].id) {
             cart[i].quantity--;
+            cart[i].subtotal = cart[i].price * cart[i].quantity;
 
-            // applyPromotionsCart();
-            // const subtotal = cart[i].price * cart[i].quantity;
-            // cart[i].subtotal = subtotal;
-            
+            applyPromotionsCart();
+            console.log("cart after promos");
             console.log(cart);
             
             if (cart[i].quantity == 0) {
-                console.log("cart when quantity ==0");
+                console.log("cart when quantity == 0");
 
                 const index = cart.indexOf(cart[i]);
                 cart.splice(index, 1)
                 console.log(cart);
             }
         }
-   }
-
-       
+   }    
 }
 // loop en el array cart.
 // Si el item tiene el mismo id reducimos la cantidad
