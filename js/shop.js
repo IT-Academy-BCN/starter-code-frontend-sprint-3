@@ -93,6 +93,7 @@ function buy(id) {
 function cleanCart() {
 
     cartList = [];  
+
     cart = [];
     
     document.getElementById('cart_list').innerHTML = '';
@@ -170,7 +171,6 @@ function printCart() {
     for (let i = 0; i < cart.length; i++) {
 
         // carrito se duplica. if the item already is in the car then just increase quantity
-
        const tr = document.createElement("tr");
        
 
@@ -183,6 +183,9 @@ function printCart() {
 
        const quantity = document.createElement("td");
        quantity.textContent = cart[i].quantity;
+
+       const deleteIcon = document.createElement("td");
+       deleteIcon.innerHTML = `<i; class='fas fa-trash-alt' id='trashcan' onclick='removeFromCart(${cart[i].id})'></i>`;
 
        tr.appendChild(name);
        tr.appendChild(price);
@@ -207,10 +210,19 @@ function printCart() {
 
         }
 
+       tr.appendChild(deleteIcon).classList.add("trashcan");
 
        tablebody.appendChild(tr);   
 
+        // if (cart[i].name) {
+        //     console.error()
+        //     quantity.textContent = cart[i].quantity++;    
+        // }
+
     }
+
+
+    
 
     const spanTotal = document.getElementById("total_price");
     spanTotal.textContent = totalCost; 
@@ -252,20 +264,34 @@ function addToCart(id) {
 function removeFromCart(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+   for (let i = 0; i < cart.length; i++) {
 
-        for (let i = 0; i < cart.length; i++) {
+        if (id == cart[i].id) {
+            cart[i].quantity--;
+
+            // applyPromotionsCart();
+            // const subtotal = cart[i].price * cart[i].quantity;
+            // cart[i].subtotal = subtotal;
             
-            const index = cart.indexOf(cart[i])
-            if (id == cart[i].id) {
-                cart.splice(index, 1);
+            console.log(cart);
             
+            if (cart[i].quantity == 0) {
+                console.log("cart when quantity ==0");
+
+                const index = cart.indexOf(cart[i]);
+                cart.splice(index, 1)
+                console.log(cart);
             }
         }
-        console.log(cart);
-}
-// const array = [2, 5, 9];
+   }
 
-// console.log(array);
+       
+}
+// loop en el array cart.
+// Si el item tiene el mismo id reducimos la cantidad
+// recalculamos el precio subtotal y subtotalwdiscount
+// si la cantidad == 0, quitamos el item del array;
+// cad
 
 // const index = array.indexOf(5);
 // if (index > -1) { // only splice array when item is found
