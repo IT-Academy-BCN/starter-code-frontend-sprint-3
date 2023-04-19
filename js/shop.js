@@ -90,7 +90,7 @@ function cleanCart() {
 
 // Exercise 3
 function calculateTotal() {
-    var total = 0;
+    total = 0;
   for (var i = 0; i < cartList.length; i++) {
     total += cartList[i].price;
   }
