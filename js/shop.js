@@ -77,6 +77,7 @@ function buy(id) {
         if (products[i].id === id) {
             cartList.push(products[i]);
             console.log(cartList);
+            printCart();
             break;
         }
     }
@@ -158,48 +159,44 @@ function generateCart() {
 
 // Exercise 6
 function printCart() {
-  // Obtener el modal del carrito de la compra
-  var modal = document.getElementById("cartModal");
+  const cart_list = document.querySelector('#cart_list');
+  let listHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
 
-  // Obtener la tabla del carrito de la compra
-  var cartTable = document.getElementById("cartTable");
+  // Recorrer los productos en el carrito y crear una fila de la tabla para cada uno
+  for (let i = 0; i < cart.length; i++) {
+    const product = cart[i];
+    const productName = product.name;
+    const productPrice = product.price;
+    const productQuantity = product.quantity;
+    const productTotal = productPrice * productQuantity;
 
-  // Obtener el cuerpo de la tabla
-  var cartTableBody = cartTable.getElementsByTagName("tbody")[0];
-
-  // Inicializar el contenido de la tabla
-  cartTableBody.innerHTML = "";
-
-  // Crear una fila por cada producto del carrito
-  for (var i = 0; i < cart.length; i++) {
-    // Crear una nueva fila en la tabla
-    var newRow = cartTableBody.insertRow();
-
-    // Insertar las celdas en la fila
-    var nameCell = newRow.insertCell();
-    var priceCell = newRow.insertCell();
-    var quantityCell = newRow.insertCell();
-    var subtotalCell = newRow.insertCell();
-
-    // Rellenar las celdas con los datos del producto
-    nameCell.innerHTML = cart[i].name;
-    priceCell.innerHTML = cart[i].price + " €";
-    quantityCell.innerHTML = cart[i].quantity;
-    subtotalCell.innerHTML = cart[i].subtotal + " €";
+    listHTML += `
+      <tr>
+        <td>${productName}</td>
+        <td>${productPrice}</td>
+        <td>${productQuantity}</td>
+        <td>${productTotal}</td>
+      </tr>
+    `;
   }
 
-  // Calcular el total de la compra
-  var total = 0;
-  for (var i = 0; i < cart.length; i++) {
-    total += cart[i].subtotal;
-  }
+  listHTML += `
+      </tbody>
+    </table>
+  `;
 
-  // Actualizar el contenido del elemento HTML que muestra el total
-  var totalElement = document.getElementById("total");
-  totalElement.innerHTML = total.toFixed(2);
-  
-  // Mostrar el modal del carrito de la compra
-  modal.style.display = "block";
+  cart_list.innerHTML = listHTML;
 }
 
 
