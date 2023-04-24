@@ -78,7 +78,7 @@
 
 body {
   margin: 0;
-  font-family: var(--bs-body-font-family);
+  font-family: helvetica, sans-serif!important;
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
@@ -3981,7 +3981,7 @@ textarea.form-control-lg {
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
+  color: #FF759F;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -4444,7 +4444,7 @@ textarea.form-control-lg {
   color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.55);
+  color: #212529 !important;
 }
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(0, 0, 0, 0.7);
@@ -4517,6 +4517,7 @@ textarea.form-control-lg {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  box-shadow: #FF759F 1px 1px 1px!important;
 }
 .card > hr {
   margin-right: 0;
@@ -7843,6 +7844,7 @@ textarea.form-control-lg {
 .bg-dark {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+
 }
 
 .bg-black {
@@ -7857,7 +7859,6 @@ textarea.form-control-lg {
 
 .bg-body {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-body-bg-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-transparent {
@@ -11285,4 +11286,58 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+.main-color {
+  color: #FF759F !important;
+}
+
+.cstm-background {
+  background-color: #FF759F!important;
+}
+
+.bg-cstm {
+  background-image: url("../images/main-header.jpg")!important;
+  background-position: center;
+  background-size: cover;
+  border-bottom: 5px solid #FF759F;
+}
+
+#test-button1, #test-button2 {
+  border-radius: 5px;
+  padding: 5px 6px;
+  background-color: #FF759F;
+  border: 1px solid black;
+}
+
+#test-button1:hover {
+  color: white;
+}
+
+#test-button2:hover {
+  color: white;
+}
+
+.shadowing {
+  text-shadow: black 1px 1px 1px !important;
+}
+
+#beauty, #about {
+  background-color: #FF759F!important;
+}
+
+#navbar-example2 {
+  border-bottom: 5px solid #FF759F;
+}
+
+.test-hover:hover {
+  background: #FF759F!important;
+}
+
+.second-color {
+  color: white!important;
+}
+
+#italic-slogan {
+  font-style: italic!important;
 }
