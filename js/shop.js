@@ -1,6 +1,6 @@
 // If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
 var products = [
-   {
+    {
         id: 1,
         name: 'cooking oil',
         price: 10.5,
@@ -73,44 +73,156 @@ var total = 0;
 
 // Exercise 1
 function buy(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].id === id) {
+            cartList.push(products[i]);
+            console.log(cartList);
+            printCart();
+            break;
+        }
+    }
 }
 
 // Exercise 2
 function cleanCart() {
-
+    cartList = [];
+    console.log(cartList);
 }
 
 // Exercise 3
 function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
+    total = 0;
+  for (var i = 0; i < cartList.length; i++) {
+    total += cartList[i].price;
+  }
+  return total;
+  console.log("Total: " + total);
 }
 
 // Exercise 4
-function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
+ // Using the "cartlist" array that contains all the items in the shopping cart, 
     // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+
+function generateCart() {
+    let cart = [];
+  for (let i = 0; i < cartList.length; i++) {
+    let item = cartList[i];
+    let existingItem = cart.find(elem => elem.id === item.id);
+    if (existingItem) {
+      existingItem.quantity++;
+      existingItem.subtotal = existingItem.price * existingItem.quantity;
+      if (existingItem.offer) {
+        let discount = Math.floor(existingItem.quantity / existingItem.offer.number) * existingItem.offer.percent * existingItem.price / 100;
+        existingItem.subtotalWithDiscount = existingItem.subtotal - discount;
+      } else {
+        existingItem.subtotalWithDiscount = existingItem.subtotal;
+      }
+    } else {
+      let newItem = {...item, quantity: 1, subtotal: item.price, subtotalWithDiscount: item.price};
+      cart.push(newItem);
+    }
+  }
+  return cart;
 }
+   
 
 // Exercise 5
-function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
-}
+    function applyPromotionsCart(cart) {
+        // Promoción botellas de aceite
+        for (let i = 0; i < cart.length; i++) {
+          const product = cart[i];
+          if (product.name === 'cooking oil' && product.cuantidad >= 3) {
+            const discountedPrice = 10;
+            product.subtotalWithDiscount = discountedPrice * product.cuantidad;
+          }
+        }
+      
+        // Promoción productos para hacer pastel
+        let totalCakeProducts = 0;
+        for (let i = 0; i < cart.length; i++) {
+          const product = cart[i];
+          if (product.name === 'Instant cupcake mixture') {
+            totalCakeProducts += product.cuantidad;
+          }
+        }
+        if (totalCakeProducts >= 10) {
+          const discountedPrice = 2/3;
+          for (let i = 0; i < cart.length; i++) {
+            const product = cart[i];
+            if (product.name === 'Instant cupcake mixture') {
+              product.subtotalWithDiscount = product.price * product.cuantidad * discountedPrice;
+            }
+          }
+        }
+      }
 
 // Exercise 6
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
+  const cart_list = document.querySelector('#cart_list');
+  let listHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  // Recorrer los productos en el carrito y crear una fila de la tabla para cada uno
+  for (let i = 0; i < cart.length; i++) {
+    const product = cart[i];
+    const productName = product.name;
+    const productPrice = product.price;
+    const productQuantity = product.quantity;
+    const productTotal = productPrice * productQuantity;
+
+    listHTML += `
+      <tr>
+        <td>${productName}</td>
+        <td>${productPrice}</td>
+        <td>${productQuantity}</td>
+        <td>${productTotal}</td>
+      </tr>
+    `;
+  }
+
+  listHTML += `
+      </tbody>
+    </table>
+  `;
+
+  cart_list.innerHTML = listHTML;
 }
 
 
 // ** Nivell II **
 
 // Exercise 7
-function addToCart(id) {
-    // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+function addToCart(product) {
+  // Comprobar si el producto ya está en el carrito
+  var cartItem = cart.find(item => item.id === product.id);
+
+  if (cartItem) {
+    // Si el producto ya está en el carrito, incrementar la cantidad y el subtotal
+    cartItem.quantity++;
+    cartItem.subtotal = cartItem.quantity * cartItem.price;
+  } else {
+    // Si el producto no está en el carrito, añadirlo con cantidad 1 y subtotal igual al precio
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      subtotal: product.price,
+      hasDiscount: false,
+      subtotalWithDiscount: 0 
+    });
+  }
 }
 
 // Exercise 8
@@ -119,7 +231,7 @@ function removeFromCart(id) {
     // 2. Add found product to the cartList array
 }
 
-function open_modal(){
-	console.log("Open Modal");
-	printCart();
+function open_modal() {
+    console.log("Open Modal");
+    printCart();
 }
