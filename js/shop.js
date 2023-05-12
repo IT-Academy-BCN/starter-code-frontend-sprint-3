@@ -80,7 +80,6 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-    cartList.splice(0,-1)
 }
 
 // Exercise 3
