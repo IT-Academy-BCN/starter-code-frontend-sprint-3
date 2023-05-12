@@ -80,6 +80,7 @@ function buy(id) {
             cartList.push(product)
         }
     })
+    
 }
 
 // Exercise 2
