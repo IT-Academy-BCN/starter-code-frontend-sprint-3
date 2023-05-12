@@ -75,11 +75,12 @@ var total = 0;
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+
 }
 
 // Exercise 2
 function cleanCart() {
-
+    cartList.splice(0,-1)
 }
 
 // Exercise 3
