@@ -75,6 +75,11 @@ var total = 0;
 function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
+    products.forEach( product => {
+        if(product.id === id){
+            cartList.push(product)
+        }
+    })
 }
 
 // Exercise 2
@@ -99,7 +104,10 @@ function generateCart() {
         let cartItem = cart.find( (item) => item.id == cartList[i].id) ?? null
         if(cartItem != null){
             cartItem.quantity++
-            break;
+            let indexItem = cart.lastIndexOf(cartItem)
+            console.log(indexItem);
+            cart.splice(cartItem,1)
+            
         }else{
             cart.push(
                 {
@@ -113,6 +121,7 @@ function generateCart() {
             )
         }
     }
+    console.log(cart);
 }
 
 // Exercise 5
