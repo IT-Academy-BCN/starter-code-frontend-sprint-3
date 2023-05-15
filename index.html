@@ -218,7 +218,7 @@
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
 		<button onclick="generateCart()">Total</button>
-		<button onclick="applyPromotionsCart()"></button>
+		<button onclick="applyPromotionsCart()">Oferta</button>
 		<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 			<div class="modal-content">
@@ -231,14 +231,14 @@
 				  <table class="table">
 					<thead>
 						<tr>
-						  <th id="product" scope="col" >Product</th>
-						  <th id="price" scope="col">Price</th>
-						  <th id="quantity" scope="col">Qty.</th>
-						  <th id="total" scope="col">Total <small>(with discount)</small></th>
+						  <th scope="col" >Product</th>
+						  <th scope="col">Price</th>
+						  <th scope="col">Qty.</th>
+						  <th scope="col">Total <small>(with discount)</small></th>
 						</tr>
 					  </thead>
 					  <tbody id="cart_list">
-						<tr>
+						<!-- <tr>
 						  <th scope="row">Cooking oil</th>
 						  <td>$10.5</td>
 						  <td>2</td>
@@ -255,11 +255,11 @@
 						  <td>$15</td>
 						  <td>3</td>
 						  <td>$45</td>
-						</tr>
+						</tr> -->
 					  </tbody>
 				  </table>
 				  <div class="text-center fs-3">
-					Total: $<span id="total_price">100</span>
+					Total: $<span id="total_price"></span>
 				  </div>
 				  <div class="text-center"> 
 					<a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
