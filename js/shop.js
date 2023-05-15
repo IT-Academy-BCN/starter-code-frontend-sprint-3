@@ -72,6 +72,7 @@ var total = 0;
 
 // Exercise 1
 function buy(id) {
+
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cartList array
     products.forEach((product) => {
@@ -84,16 +85,20 @@ function buy(id) {
 // Exercise 2
 function cleanCart() {
     cartList.splice(0, -1);
+
+  // 1. Loop for to the array products to get the item to add to cart
+  // 2. Add found product to the cartList array
 }
+
 
 // Exercise 3
 function calculateTotal() {
+
     // Calculate total price of the cart using the "cartList" array
     for (let i = 0; i < cartList.length; i++) {
         let indice = cartList[i] - 1;
         total += products[indice].price;
     }
-    return total;
 }
 
 // Exercise 4
@@ -117,11 +122,11 @@ function generateCart() {
             });
         }
     }
-    return cart
 }
 
 // Exercise 5
 function applyPromotionsCart() {
+
     // Apply promotions to each item in the array "cart".
 
     for (let i = 0; i < cart.length; i++) {
