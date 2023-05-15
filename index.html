@@ -218,6 +218,7 @@
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
 		<button onclick="generateCart()">Total</button>
+		<button onclick="applyPromotionsCart()"></button>
 		<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 			<div class="modal-content">
@@ -230,10 +231,10 @@
 				  <table class="table">
 					<thead>
 						<tr>
-						  <th scope="col">Product</th>
-						  <th scope="col">Price</th>
-						  <th scope="col">Qty.</th>
-						  <th scope="col">Total <small>(with discount)</small></th>
+						  <th id="product" scope="col" >Product</th>
+						  <th id="price" scope="col">Price</th>
+						  <th id="quantity" scope="col">Qty.</th>
+						  <th id="total" scope="col">Total <small>(with discount)</small></th>
 						</tr>
 					  </thead>
 					  <tbody id="cart_list">
