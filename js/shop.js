@@ -114,6 +114,7 @@ function generateCart() {
         type: cartList[i].type,
         quantity: 1,
         offer: cartList[i].offer,
+        subtotalWithDiscount:0
       });
     }
   }
@@ -124,20 +125,24 @@ function generateCart() {
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
   for (let i = 0; i < cart.length; i++) {
-    if (cart[i].id == 1 && cart[i].quantity == cart[i][offer].number) {
-      cart[i][offer].percent == 10;
-      console.log(cart[i][offer].percent);
+    if(cart[i].id == 1 && cart[i].quantity >= 3){
+        cart[i].price = 10
+    }else{
+        cart[i].price = cart[i].price
     }
+    if(cart[i].id == 3 && cart[i].quantity >= 10){
+        let descuento = cart[i].price / 3
+        cart[i].price = descuento.toFixed(2) * 2
+    }else{
+        cart[i].price = cart[i].price
+    }
+    cart[i].subtotalWithDiscount = cart[i].price * cart[i].quantity
   }
 }
 
 // Exercise 6
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
-  let productName = document.getElementById("product");
-  let productPrice = document.getElementById("price");
-  let productQuantity = document.getElementById("quantity");
-  let totalProducts = document.getElementById("total");
 }
 
 // ** Nivell II **
