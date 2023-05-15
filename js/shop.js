@@ -75,69 +75,35 @@ var total = 0;
 function buy(id) {
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cartList array
-  products.forEach((product) => {
-    if (product.id === id) {
-      cartList.push(product);
-    }
-  });
 }
 
 // Exercise 2
-function cleanCart() {
-  cartList.splice(0, -1);
+
 }
 
 // Exercise 3
 function calculateTotal() {
   // Calculate total price of the cart using the "cartList" array
-  for (let i = 0; i < cartList.length; i++) {
-    let indice = cartList[i] - 1;
-    total += products[indice].price;
-  }
-  return total;
+
 }
 
 // Exercise 4
 function generateCart() {
   // Using the "cartlist" array that contains all the items in the shopping cart,
   // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-  cart = [];
-  for (let i = 0; i < cartList.length; i++) {
-    let cartItem = cart.find((item) => item.id == cartList[i].id) ?? null;
-    if (cartItem != null) {
-      cartItem.quantity++;
-    } else {
-      cart.push({
-        id: cartList[i].id,
-        name: cartList[i].name,
-        price: cartList[i].price,
-        type: cartList[i].type,
-        quantity: 1,
-        offer: cartList[i].offer,
-      });
-    }
-  }
-  console.log(cart);
+
 }
 
 // Exercise 5
 function applyPromotionsCart() {
   // Apply promotions to each item in the array "cart"
-  for (let i = 0; i < cart.length; i++) {
-    if (cart[i].id == 1 && cart[i].quantity == cart[i][offer].number) {
-      cart[i][offer].percent == 10;
-      console.log(cart[i][offer].percent);
-    }
-  }
+
 }
 
 // Exercise 6
 function printCart() {
   // Fill the shopping cart modal manipulating the shopping cart dom
-  let productName = document.getElementById("product");
-  let productPrice = document.getElementById("price");
-  let productQuantity = document.getElementById("quantity");
-  let totalProducts = document.getElementById("total");
+
 }
 
 // ** Nivell II **
