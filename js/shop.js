@@ -138,6 +138,7 @@ function applyPromotionsCart() {
     }
     cart[i].subtotalWithDiscount = cart[i].price * cart[i].quantity
   }
+  
 }
 
 // Exercise 6
