@@ -162,7 +162,7 @@ function printCart() {
   });
 
 
-  totalPriceElement.textContent = totalPrice;
+  totalPriceElement.textContent = totalPrice.toFixed(2);
 }
 
 
