@@ -7,7 +7,7 @@ var products = [
          type: 'grocery',
          offer: {
              number: 3,
-             percent: 20
+             percent: 4.5,
          }
      },
      {
@@ -23,7 +23,7 @@ var products = [
          type: 'grocery',
          offer: {
              number: 10,
-             percent: 30
+             percent: 33,
          }
      },
      {
