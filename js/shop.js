@@ -1,68 +1,3 @@
-// If you have time, you can move this variable "products" to a json or js file and load the data in this js. It will look more professional
-var products = [
-   {
-        id: 1,
-        name: 'cooking oil',
-        price: 10.5,
-        type: 'grocery',
-        offer: {
-            number: 3,
-            percent: 20
-        }
-    },
-    {
-        id: 2,
-        name: 'Pasta',
-        price: 6.25,
-        type: 'grocery'
-    },
-    {
-        id: 3,
-        name: 'Instant cupcake mixture',
-        price: 5,
-        type: 'grocery',
-        offer: {
-            number: 10,
-            percent: 30
-        }
-    },
-    {
-        id: 4,
-        name: 'All-in-one',
-        price: 260,
-        type: 'beauty'
-    },
-    {
-        id: 5,
-        name: 'Zero Make-up Kit',
-        price: 20.5,
-        type: 'beauty'
-    },
-    {
-        id: 6,
-        name: 'Lip Tints',
-        price: 12.75,
-        type: 'beauty'
-    },
-    {
-        id: 7,
-        name: 'Lawn Dress',
-        price: 15,
-        type: 'clothes'
-    },
-    {
-        id: 8,
-        name: 'Lawn-Chiffon Combo',
-        price: 19.99,
-        type: 'clothes'
-    },
-    {
-        id: 9,
-        name: 'Toddler Frock',
-        price: 9.99,
-        type: 'clothes'
-    }
-]
 // Array with products (objects) added directly with push(). Products in this array are repeated.
 var cartList = [];
 
@@ -72,54 +7,162 @@ var cart = [];
 var total = 0;
 
 // Exercise 1
-function buy(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
-}
+/* function buy(id) {
+  // 1. Loop for to the array products to get the item to add to cart
+  let item;
+
+  for (let i in products) {
+    if (products[i].id == id) {
+      item = products[i];
+    }
+  }
+
+  // 2. Add found product to the cartList array
+  cartList.push(item);
+} */
 
 // Exercise 2
 function cleanCart() {
-
+  cart.length = 0;
+  total = 0;
+  printCart();
 }
 
 // Exercise 3
 function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
+  // Calculate total price of the cart using the "cartList" array
+  // Update: calculateTotal using array "cart" + quantities + added promotions
+
+  for (let i in cart) {
+    if (cart[i].subtotalWithDiscount != undefined) {
+      total += cart[i].subtotalWithDiscount;
+    } else {
+      total += cart[i].subtotal;
+    }
+  }
 }
 
 // Exercise 4
-function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-}
+/* function generateCart() {
+  // Using the "cartlist" array that contains all the items in the shopping cart,
+  // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+  let foundItem;
+
+  cartList.forEach((item) => {
+    foundItem = cart.find((product) => product.id === item.id);
+    if (foundItem == undefined) {
+      item.quantity = 1;
+      cart.push(item);
+    } else {
+      foundItem.quantity++;
+    }
+  });
+} */
 
 // Exercise 5
 function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
+  // Apply promotions to each item in the array "cart"
+  cart.forEach((item) => {
+    item.subtotal = item.price * item.quantity;
+    if (item.offer != undefined) {
+      if (item.quantity >= item.offer.number) {
+        item.subtotalWithDiscount = Math.floor(
+          item.subtotal - (item.subtotal * item.offer.percent) / 100
+        );
+      }
+    }
+  });
 }
 
 // Exercise 6
 function printCart() {
-    // Fill the shopping cart modal manipulating the shopping cart dom
+  // Fill the shopping cart modal manipulating the shopping cart dom
+  //generateCart();
+  applyPromotionsCart();
+  calculateTotal();
+  printItems();
+  printTotal();
 }
 
+function printItems() {
+  // Manipulate the <tbody> to add the items in array "cart"
+  let tableBody, tableRow, finalSubtotal;
+  tableBody = document.querySelector("tbody#cart_list");
+
+  tableBody.innerHTML = "";
+
+  cart.forEach((item) => {
+    tableRow = document.createElement("tr");
+
+    if (item.subtotalWithDiscount != undefined) {
+      finalSubtotal = item.subtotalWithDiscount;
+    } else {
+      finalSubtotal = item.subtotal;
+    }
+
+    tableRow.innerHTML = `
+            <th scope="row">${item.name}</th>
+            <td>$${item.price}</td>
+            <td>${item.quantity}</td>
+            <td>$${finalSubtotal}</td>
+            <td><button onclick="removeFromCart(${item.id})" class="btn btn-primary m-3">Remove</button></td>
+        `;
+
+    tableBody.appendChild(tableRow);
+  });
+}
+
+function printTotal() {
+  // Display the total price of the items in array "cart"
+  document.getElementById("total_price").innerHTML = total;
+}
 
 // ** Nivell II **
 
-// Exercise 7
-function addToCart(id) {
-    // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
-}
-
 // Exercise 8
-function removeFromCart(id) {
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cartList array
+function addToCart(id) {
+  // Refactor previous code in order to simplify it
+  // 1. Loop for to the array products to get the item to add to cart
+  // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+  let newItem;
+  let foundItem;
+
+  products.forEach((product) => {
+    if (product.id === id) {
+      newItem = product;
+    }
+  });
+
+  foundItem = cart.find((product) => product.id === newItem.id);
+  if (foundItem == undefined) {
+    newItem.quantity = 1;
+    cart.push(newItem);
+  } else {
+    foundItem.quantity++;
+  }
 }
 
-function open_modal(){
-	console.log("Open Modal");
-	printCart();
+// Exercise 9
+function removeFromCart(id) {
+  // 1. Loop for to the array cart to get the item
+  // 2. Remove item from cart array or reduce by 1 the quantity of that item taking into account total price and promotions
+  let itemToRemove;
+
+  itemToRemove = cart.find((product) => product.id === id);
+  if (itemToRemove.quantity === 1) {
+    cart.splice(cart.indexOf(itemToRemove), 1);
+  } else {
+    itemToRemove.quantity--;
+  }
+  
+  //Reset values and reset cart modal 
+  itemToRemove.subtotalWithDiscount = undefined;
+  total = 0;
+  printCart();
+
+}
+
+function open_modal() {
+  console.log("Open Modal");
+  printCart();
 }
