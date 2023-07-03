@@ -98,8 +98,6 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
     for (let i = 0; i < cartList.length; i++) {
         cartList[i].quantity = 1;
@@ -117,13 +115,28 @@ function generateCart() {
     }
 
     console.log('Array cart: ', cart);
+    applyPromotionsCart();
+
 
 
 }
 
 // Exercise 5
 function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
+    let subTotalWithDiscount = 0;
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].name === 'cooking oil' && cart[i].quantity >= 3) {
+            cart[i].price = 10;
+            subTotalWithDiscount = cart[i].price * cart[i].quantity;
+
+        } else if (cart[i].name === 'Instant cupcake mixture' && cart[i].quantity >= 10) {
+            const productsThree = Math.floor(cart[i].quantity / 3);
+            const restOfProducts = cart[i].quantity % 3;
+            subTotalWithDiscount = (productsThree * 2 * cart[i].price) + (restOfProducts * cart[i].price);
+
+            cart[i].price = subTotalWithDiscount;
+        }
+    }
 }
 
 // Exercise 6
