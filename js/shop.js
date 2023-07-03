@@ -105,6 +105,7 @@ function printItems() {
             <td>$${item.price}</td>
             <td>${item.quantity}</td>
             <td>$${finalSubtotal}</td>
+            <td><button onclick="removeFromCart(${item.id})" class="btn btn-primary m-3">Remove</button></td>
         `;
 
     tableBody.appendChild(tableRow);
@@ -127,24 +128,38 @@ function addToCart(id) {
   let foundItem;
 
   products.forEach((product) => {
-    if(product.id === id) {
-        newItem = product;
+    if (product.id === id) {
+      newItem = product;
     }
   });
 
   foundItem = cart.find((product) => product.id === newItem.id);
-    if (foundItem == undefined) {
-      newItem.quantity = 1;
-      cart.push(newItem);
-    } else {
-      foundItem.quantity++;
-    }  
+  if (foundItem == undefined) {
+    newItem.quantity = 1;
+    cart.push(newItem);
+  } else {
+    foundItem.quantity++;
+  }
 }
 
 // Exercise 9
 function removeFromCart(id) {
-  // 1. Loop for to the array products to get the item to add to cart
-  // 2. Add found product to the cartList array
+  // 1. Loop for to the array cart to get the item
+  // 2. Remove item from cart array or reduce by 1 the quantity of that item taking into account total price and promotions
+  let itemToRemove;
+
+  itemToRemove = cart.find((product) => product.id === id);
+  if (itemToRemove.quantity === 1) {
+    cart.splice(cart.indexOf(itemToRemove), 1);
+  } else {
+    itemToRemove.quantity--;
+  }
+  
+  //Reset values and reset cart modal 
+  itemToRemove.subtotalWithDiscount = undefined;
+  total = 0;
+  printCart();
+
 }
 
 function open_modal() {
