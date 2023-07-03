@@ -7,7 +7,7 @@ var cart = [];
 var total = 0;
 
 // Exercise 1
-function buy(id) {
+/* function buy(id) {
   // 1. Loop for to the array products to get the item to add to cart
   let item;
 
@@ -19,7 +19,7 @@ function buy(id) {
 
   // 2. Add found product to the cartList array
   cartList.push(item);
-}
+} */
 
 // Exercise 2
 function cleanCart() {
@@ -121,6 +121,22 @@ function addToCart(id) {
   // Refactor previous code in order to simplify it
   // 1. Loop for to the array products to get the item to add to cart
   // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+  let newItem;
+  let foundItem;
+
+  products.forEach((product) => {
+    if(product.id === id) {
+        newItem = product;
+    }
+  });
+
+  foundItem = cart.find((product) => product.id === newItem.id);
+    if (foundItem == undefined) {
+      newItem.quantity = 1;
+      cart.push(newItem);
+    } else {
+      foundItem.quantity++;
+    }  
 }
 
 // Exercise 9
