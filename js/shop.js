@@ -80,6 +80,7 @@ function buy(id) {
         if (id === products[i].id) {
             // 2. Add found product to the cartList array
             cartList.push(products[i]);
+            document.getElementById('count_product').innerHTML = cartList.length;
         }
     }
     console.log('New Cart List: ', cartList);
