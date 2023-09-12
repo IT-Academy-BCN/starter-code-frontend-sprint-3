@@ -79,7 +79,6 @@ var total = 0;
     // Implement a function which allows you to empty the cart 
 
 function cleanCart(){
-    cartList.length = 0;
     total = 0;
     cart.length = 0;
     document.getElementById("cart_list").innerHTML = "";
